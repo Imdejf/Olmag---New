@@ -52,7 +52,7 @@ useHead({
         <div class="relative bg-cover bg-no-repeat bg-center h-full">
           <img
             data-src="assets/tlo.webp"
-            class="lazyload hidden md:block absolute h-full"
+            class="lazyload hidden md:block absolute w-full h-full"
           />
           <img
             data-src="assets/tlo-moblie.webp"
@@ -251,6 +251,18 @@ useHead({
           </div>
         </div>
       </PageSection>
+      <PageSection class="section__most_view_category container mx-auto mt-8">
+        <div class="px-2 md:px-0">
+          <div class="tracking-1px font-semibold text-2xl">
+            <div class="flex">
+              <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
+            </div>
+            <div>
+              <GridCategoryMostView />
+            </div>
+          </div>
+        </div>
+      </PageSection>
     </PageBody>
   </PageWrapper>
 </template>
@@ -265,5 +277,17 @@ useHead({
 .blur-up.lazyloaded {
   -webkit-filter: blur(0);
   filter: blur(0);
+}
+
+.diagonal-split-background {
+  background-color: #013a6b;
+  background-image: -webkit-linear-gradient(-55deg, black 50%, #2bd483 50%);
+}
+
+.distinction__title {
+  position: relative;
+  color: #00263a;
+  border-bottom: 2px solid rgb(110, 231, 183);
+  padding-bottom: 5px;
 }
 </style>

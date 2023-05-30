@@ -17,7 +17,7 @@ export const productStore = defineStore({
                     languageId: useCookie('dsLanguage'),
                     storeId: useCookie('dsStore')
                 }})
-                //@ts-ignore:next-line
+                console.log(data.value)
                 const products: ProductDTO[] = data.value.data
 
                 this.SET_PRODUCTS(products)

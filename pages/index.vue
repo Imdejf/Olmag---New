@@ -4,6 +4,9 @@ definePageMeta({
   layout: "page",
 });
 
+const $gtm = useGTM();
+$gtm.enable();
+
 useHead({
   link: [
     {

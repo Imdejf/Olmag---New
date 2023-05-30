@@ -50,6 +50,11 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
+    ['nuxt-gtag', {
+      id: GlobalSettings[appEnv].google_analytics_id,
+      initialConsent: true,
+    }],
+    ['@nuxtjs/robots', { configPath: "~/config/robots.config" }]
   ],
     
 })

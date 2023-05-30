@@ -149,7 +149,7 @@
               <img
                 data-src="assets/DS-min.png"
                 alt="logo Data Sharp"
-                class="m-auto md:m-0"
+                class="lazyload m-auto md:m-0 w-[30px] h-[30px]"
               />
               <p>
                 Data Sharp<br />Polna 6 66-340 Przytoczna <br />

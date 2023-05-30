@@ -96,11 +96,11 @@ const application = useApplication();
               class="md:hidden text-center text-gray-700 hover:text-primary transition relative"
             >
               <img
-                data-src="/icons/menu.svg"
+                data-src="icons/menu.svg"
                 width="23"
                 height="23"
-                alt="Ikona kategorii"
-                class="mx-auto"
+                alt=" Ikona kategorii"
+                class="lazyload mx-auto"
               />
               <div class="text-[9.5px] font-semibold leading-3 uppercase">
                 Kategorie

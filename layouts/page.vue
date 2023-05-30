@@ -2,7 +2,9 @@
 import { useApplication } from "~/stores/application";
 
 const application = useApplication();
+const nuxtApp = useNuxtApp();
 const cookie = ref(useCookie("cookies"));
+const isLoading = ref(false);
 
 const show = ref(false);
 
@@ -19,6 +21,10 @@ function acceptCookie(value: boolean) {
   newCookie.value = "true";
   cookie.value = "true";
 }
+
+nuxtApp.hook("page:finish", () => {
+  isLoading.value = true;
+});
 </script>
 <template>
   <div>
@@ -38,7 +44,7 @@ function acceptCookie(value: boolean) {
         <slot></slot>
       </div>
       <slot name="footer">
-        <PageFooter />
+        <PageFooter v-show="isLoading" />
       </slot>
     </div>
     <div

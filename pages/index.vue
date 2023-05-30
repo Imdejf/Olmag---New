@@ -1,30 +1,9 @@
 <script lang="ts" setup>
-import { productStore } from "~/stores/product";
-
 // compiler macro
 definePageMeta({
   layout: "page",
 });
 
-const productsStore = productStore();
-
-function fetchProduct() {
-  productsStore.fetchProducts();
-}
-
-if (useCookie("dsStore")) {
-  // fetchProduct();
-}
-
-// onMounted(() => {
-//   window.addEventListener("pageshow", (event) => {
-//     if (event.persisted) {
-//       console.log("This page was restored from the bfcache.");
-//     } else {
-//       console.log("This page was loaded normally.");
-//     }
-//   });
-// });
 useHead({
   link: [
     {

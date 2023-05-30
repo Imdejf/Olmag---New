@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
 
-const application = useApplication();
 const nuxtApp = useNuxtApp();
+const application = useApplication();
+
 const cookie = ref(useCookie("cookies"));
 const isLoading = ref(false);
 
@@ -44,7 +45,7 @@ nuxtApp.hook("page:finish", () => {
         <slot></slot>
       </div>
       <slot name="footer">
-        <PageFooter v-show="isLoading" />
+        <PageFooter />
       </slot>
     </div>
     <div

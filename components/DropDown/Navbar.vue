@@ -1,27 +1,14 @@
 <script lang="ts" setup>
-import { useCategories } from "~/stores/category";
+const categories = ref([]);
 
-const categories = useCategories();
-
-// async function fetchData() {
-//   categories.fetchCategories();
-// }
-
-// // if (useCookie("dsStore")) {
-//   fetchData();
-// // }
-
-const testValue = ref([]);
-useFetch("https://olmagpl.azurewebsites.net/api/product/category", {
+Fetch("/product/category", {
   method: "GET",
 }).then((response) => {
-  console.log(response.data.value.data);
-  testValue.value = response.data.value.data;
+  categories.value = response.data.value.data;
 });
 
 const allCategories = computed((): any => {
-  console.log(testValue.value);
-  return testValue.value;
+  return categories.value;
 });
 </script>
 
@@ -51,7 +38,7 @@ const allCategories = computed((): any => {
                   ? category.thumbnailImage.mediaLangs[0].altAttribute
                   : category.thumbnailImage.altAttribute
               "
-              class="w-12"
+              class="lazyload w-12 h-5"
             />
             <p class="w-full md:text-sm break-normal ml-5">
               {{

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { useApplication } from "./stores/application";
 import "lazysizes";
 import "lazysizes/plugins/parent-fit/ls.parent-fit";
+import { useApplication } from "./stores/application";
+
 const application = useApplication();
 </script>
 

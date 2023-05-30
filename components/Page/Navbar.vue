@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
-
 const application = useApplication();
 </script>
 

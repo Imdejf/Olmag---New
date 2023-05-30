@@ -1,10 +1,14 @@
 <script lang="ts" setup>
-import { useCategories } from "~/stores/category";
+const categories = ref([]);
 
-const categories = useCategories();
+Fetch("/product/category", {
+  method: "GET",
+}).then((response) => {
+  categories.value = response.data.value.data;
+});
 
-const allCategories = computed(() => {
-  return categories.categories.filter((c) => c.mostVisited === true);
+const allCategories = computed((): any => {
+  return categories.value.filter((c) => c.mostVisited === true);
 });
 </script>
 
@@ -36,9 +40,9 @@ const allCategories = computed(() => {
                   ? category.thumbnailImage.mediaLangs[0].altAttribute
                   : category.thumbnailImage.altAttribute
               "
-              quality="80"
-              height="120px"
-              width="120px"
+              height="140"
+              width="140"
+              class="lazyload"
             />
           </div>
           <div

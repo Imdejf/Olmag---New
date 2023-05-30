@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 const categories = ref([]);
 
-// Fetch("/product/category", {
-//   method: "GET",
-// }).then((response) => {
-//   categories.value = response.data.value.data;
-// });
+Fetch("/product/category", {
+  method: "GET",
+}).then((response) => {
+  categories.value = response.data.value.data;
+});
 
 const allCategories = computed((): any => {
   return categories.value.filter((c) => c.mostVisited === true);

@@ -15,6 +15,18 @@ export default defineNuxtConfig({
     payloadExtraction: true
   },
 
+  css: [
+    '@/assets/css/main.css',
+  ],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
+
   app: {
     head: {
       title: "Wyposażenie magazynów - Olmag.pl",
@@ -41,7 +53,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    // ...
+    '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
   ],
     

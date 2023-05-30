@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'nunito';
+    src: url('../fonts/nunito.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+  } 
+
+.font-nunito { 
+  font-family: 'Nunito', sans-serif;
+}
+
+.content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

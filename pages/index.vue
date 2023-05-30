@@ -242,6 +242,124 @@ useHead({
           </div>
         </div>
       </PageSection>
+      <PageSection>
+        <div class="relative bg-slate-300 w-full">
+          <div class="grid md:flex">
+            <svg
+              class="absolute md:relative max-w-md -ml-64"
+              viewBox="0 0 423 423"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <defs>
+                <linearGradient
+                  x1="100%"
+                  y1="0%"
+                  x2="4.48%"
+                  y2="0%"
+                  id="linearGradient-1"
+                >
+                  <stop stop-color="#6ee7b7" offset="0%"></stop>
+                  <stop stop-color="#10b981" offset="100%"></stop>
+                </linearGradient>
+                <filter
+                  x="-9.3%"
+                  y="-6.7%"
+                  width="118.7%"
+                  height="118.7%"
+                  filterUnits="objectBoundingBox"
+                  id="filter-3"
+                >
+                  <feOffset
+                    dy="8"
+                    in="SourceAlpha"
+                    result="shadowOffsetOuter1"
+                  ></feOffset>
+                  <feGaussianBlur
+                    stdDeviation="8"
+                    in="shadowOffsetOuter1"
+                    result="shadowBlurOuter1"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+                    in="shadowBlurOuter1"
+                  ></feColorMatrix>
+                </filter>
+                <rect
+                  id="path-2"
+                  x="63"
+                  y="504"
+                  width="300"
+                  height="300"
+                  rx="40"
+                ></rect>
+              </defs>
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+                opacity=".9"
+              >
+                <g id="Desktop-HD" transform="translate(-39 -531)">
+                  <g id="Hero" transform="translate(43 83)">
+                    <g id="Rectangle-6" transform="rotate(45 213 654)">
+                      <use
+                        fill="#000"
+                        filter="url(#filter-3)"
+                        xlink:href="#path-2"
+                      ></use>
+                      <use
+                        fill="url(#linearGradient-1)"
+                        xlink:href="#path-2"
+                      ></use>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <div
+              class="md:mt-[180px] text-center w-full relative my-10 md:my-0"
+            >
+              <h1
+                class="text-gray-900 z-40 font-black w-full text-3xl sm:text-3xl leading-tight relative mb-4 xl:mb-8"
+              >
+                Potrzebujesz pomocy lub wyceny?
+              </h1>
+              <p
+                class="text-lg sm:text-xl z-40 w-full xl:text-xl text-gray-600 mb-8 pr-0"
+              >
+                Skontaktuj się z nami
+              </p>
+              <NuxtLink
+                to="/contact"
+                class="hover:cursor-pointer hover:opacity-[0.5] px-8 py-4 bg-blue-900 text-orange-500 rounded-xl font-semibold text-base"
+              >
+                <span class="uppercase">Kontakt</span>
+              </NuxtLink>
+            </div>
+            <div class="-mr-64 w-full relative md:flex">
+              <img
+                data-src="assets/content/macbook-emagazynowo.webp"
+                class="lazyload float-right"
+              />
+            </div>
+          </div>
+        </div>
+      </PageSection>
+      <PageSection class="section__category_awarded container mx-auto mt-8">
+        <div class="px-2 md:px-0">
+          <div class="tracking-1px font-semibold text-2xl">
+            <div class="flex">
+              <h2 class="distinction__title mx-auto">Wyróżnione kategorie</h2>
+            </div>
+            <div>
+              <GridCategoryAwarded />
+            </div>
+          </div>
+        </div>
+      </PageSection>
       <PageSection class="section__category_awarded bg-slate-300 mt-8">
         <div class="px-2 md:px-0">
           <div class="tracking-1px font-semibold text-2xl">

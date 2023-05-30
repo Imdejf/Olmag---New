@@ -9,7 +9,6 @@ const { data } = Fetch("/product/HeighlightProduct", {
 
 const allProducts = computed((): any => {
   return data?.value?.data.filter((c) => c.isBestseller === true);
-  //   return products.value.filter((c) => c.isBestseller === true);
 });
 </script>
 

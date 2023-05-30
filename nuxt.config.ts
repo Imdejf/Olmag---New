@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     public: {
       siteEnvironment: GlobalSettings[appEnv].siteEnvironment,
       baseURL: GlobalSettings[appEnv].baseURL,
-      apBaseURL: GlobalSettings[appEnv].apiBaseURL,
+      apiBaseURL: GlobalSettings[appEnv].apiBaseURL,
       gtm_id: GlobalSettings[appEnv].googleTagManagerKey,
       gtm_enabled: GlobalSettings[appEnv].googleTagManagerEnabled,
       gtm_debug: GlobalSettings[appEnv].googleTagManagerDebug,

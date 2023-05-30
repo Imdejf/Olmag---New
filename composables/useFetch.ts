@@ -16,9 +16,11 @@ export function Fetch<T>(
     | undefined
 ) {
   const config = useRuntimeConfig().public
+  console.log("WYWOŁAJ API")
+  console.log(config.apiBaseURL)
 //@ts-ignore
   return useFetch<T>(request, {
-    baseURL: config.apBaseURL,
+    baseURL: config.apiBaseURL,
     credentials: 'include',
     ...opts,
   })

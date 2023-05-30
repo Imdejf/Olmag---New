@@ -1,19 +1,15 @@
 <script lang="ts" setup>
-const products = ref([]);
-
-Fetch("/product/HeighlightProduct", {
+const { data } = Fetch("/product/HeighlightProduct", {
   method: "GET",
   params: {
     languageId: useCookie("dsLanguage"),
     storeId: useCookie("dsStore"),
   },
-}).then((response) => {
-  console.log(response);
-  products.value = response.data.value.data;
 });
 
 const allProducts = computed((): any => {
-  return products.value.filter((c) => c.isBestseller === true);
+  return data?.value?.data.filter((c) => c.isBestseller === true);
+  //   return products.value.filter((c) => c.isBestseller === true);
 });
 </script>
 

@@ -43,7 +43,14 @@ useHead({
     <PageBody>
       <PageSection class="section__welcome">
         <div class="relative bg-cover bg-no-repeat bg-center h-full">
-          <img data-src="assets/tlo.webp" class="lazyload absolute h-full" />
+          <img
+            data-src="assets/tlo.webp"
+            class="lazyload hidden md:block absolute h-full"
+          />
+          <img
+            data-src="assets/tlo-moblie.webp"
+            class="lazyload md:hidden block absolute h-full"
+          />
           <div class="relative">
             <h1 class="font-base text-center text-md">
               Olmag.pl - wyposażenie magazynu

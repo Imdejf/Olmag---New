@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 console.log("dkwoakdawo");
 const testValuee = ref(null);
-Fetch("product/category", {
+Fetch("https://olmagpl.azurewebsites.net/api/product/category", {
   method: "GET",
 }).then((response) => {
   console.log(response.data.value.data);

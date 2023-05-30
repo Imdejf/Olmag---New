@@ -30,7 +30,8 @@ useHead({
   link: [
     {
       rel: "preload",
-      href: "/assets/tlo.webp",
+      href: "/assets/tlo-mobile.webp",
+      fetchpriority: "high",
       as: "image",
       type: "image/webp",
     },
@@ -46,7 +47,7 @@ useHead({
           class="bg-cover bg-no-repeat bg-center h-full"
           style="
             background-size: 100% 100%;
-            background-image: url('assets/tlo.webp');
+            background-image: url('assets/tlo-mobile.webp');
           "
         >
           <h1 class="font-base text-center text-md">

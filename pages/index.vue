@@ -13,7 +13,7 @@ function fetchProduct() {
 }
 
 if (useCookie("dsStore")) {
-  fetchProduct();
+  // fetchProduct();
 }
 
 // onMounted(() => {

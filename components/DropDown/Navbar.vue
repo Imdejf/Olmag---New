@@ -7,9 +7,9 @@ async function fetchData() {
   categories.fetchCategories();
 }
 
-if (useCookie("dsStore")) {
+// if (useCookie("dsStore")) {
   fetchData();
-}
+// }
 
 const allCategories = computed((): any => {
   return categories.categories;

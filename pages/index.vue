@@ -34,6 +34,13 @@ useHead({
       as: "image",
       type: "image/webp",
     },
+    {
+      rel: "preload",
+      href: "/assets/tlo-mobile.webp",
+      fetchpriority: "high",
+      as: "image",
+      type: "image/webp",
+    },
   ],
 });
 </script>
@@ -49,7 +56,7 @@ useHead({
           />
           <img
             data-src="assets/tlo-moblie.webp"
-            class="lazyload md:hidden block absolute h-full"
+            class="lazyload blur-up md:hidden block absolute h-full"
           />
           <div class="relative">
             <h1 class="font-base text-center text-md">
@@ -85,3 +92,16 @@ useHead({
     </PageBody>
   </PageWrapper>
 </template>
+
+<style>
+.blur-up {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  transition: filter 400ms, -webkit-filter 400ms;
+}
+
+.blur-up.lazyloaded {
+  -webkit-filter: blur(0);
+  filter: blur(0);
+}
+</style>

@@ -10,6 +10,11 @@ export default defineNuxtConfig({
           crawlLinks:true
       }
   },
+
+  experimental: {
+    payloadExtraction: true
+  },
+
   app: {
     head: {
       title: "Wyposażenie magazynów - Olmag.pl",

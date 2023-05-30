@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { data } = Fetch("/product/HeighlightProduct", {
+const { data } = await Fetch("/product/HeighlightProduct", {
   method: "GET",
   params: {
     languageId: useCookie("dsLanguage"),

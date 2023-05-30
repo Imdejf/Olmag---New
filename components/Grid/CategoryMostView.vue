@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { data } = Fetch("/product/category", {
+const { data } = await Fetch("/product/category", {
   method: "GET",
 })
 

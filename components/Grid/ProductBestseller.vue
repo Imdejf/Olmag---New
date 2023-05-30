@@ -8,6 +8,7 @@ Fetch("/product/HeighlightProduct", {
     storeId: useCookie("dsStore"),
   },
 }).then((response) => {
+  console.log(response);
   products.value = response.data.value.data;
 });
 

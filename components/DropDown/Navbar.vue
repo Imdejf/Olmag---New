@@ -3,16 +3,25 @@ import { useCategories } from "~/stores/category";
 
 const categories = useCategories();
 
-async function fetchData() {
-  categories.fetchCategories();
-}
-
-// if (useCookie("dsStore")) {
-  fetchData();
+// async function fetchData() {
+//   categories.fetchCategories();
 // }
 
+// // if (useCookie("dsStore")) {
+//   fetchData();
+// // }
+
+const testValue = ref([]);
+useFetch("https://olmagpl.azurewebsites.net/api/product/category", {
+  method: "GET",
+}).then((response) => {
+  console.log(response.data.value.data);
+  testValue.value = response.data.value.data;
+});
+
 const allCategories = computed((): any => {
-  return categories.categories;
+  console.log(testValue.value);
+  return testValue.value;
 });
 </script>
 

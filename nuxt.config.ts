@@ -11,10 +11,6 @@ export default defineNuxtConfig({
       }
   },
 
-  experimental: {
-    payloadExtraction: true
-  },
-
   css: [
     '@/assets/css/main.css',
   ],

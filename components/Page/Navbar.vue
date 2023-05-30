@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
+
 const application = useApplication();
 </script>
 
@@ -35,16 +36,18 @@ const application = useApplication();
         <div class="flex items-center justify-between">
           <button @click="application.changeTopMenu" class="hidden md:block">
             <img
-              data-src="/icons/menu.svg"
+              data-src="icons/menu.svg"
               alt="Ikona kategorii"
-              class="mx-auto"
+              data-sizes="auto"
+              class="lazyload mx-auto w-[40px] h-[40px]"
             />
             <span class="tracking-1px font-bold uppercase">Kategorie</span>
           </button>
           <a href="/" class="md:block md:mx-8">
             <img
               data-src="assets/logo.webp"
-              class="w-[12rem] h-[4rem]"
+              data-sizes="auto"
+              class="lazyload w-[200px] h-[70px]"
               alt="Logo Olmag.pl"
             />
           </a>

@@ -2,7 +2,6 @@
 import { useApplication } from "./stores/application";
 import "lazysizes";
 import "lazysizes/plugins/parent-fit/ls.parent-fit";
-
 const application = useApplication();
 </script>
 

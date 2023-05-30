@@ -25,12 +25,11 @@ if (useCookie("dsStore")) {
 //     }
 //   });
 // });
-
 useHead({
   link: [
     {
       rel: "preload",
-      href: "/assets/tlo-mobile.webp",
+      href: "/assets/tlo.webp",
       fetchpriority: "high",
       as: "image",
       type: "image/webp",
@@ -43,36 +42,34 @@ useHead({
   <PageWrapper>
     <PageBody>
       <PageSection class="section__welcome">
-        <div
-          class="bg-cover bg-no-repeat bg-center h-full"
-          style="
-            background-size: 100% 100%;
-            background-image: url('assets/tlo-mobile.webp');
-          "
-        >
-          <h1 class="font-base text-center text-md">
-            Olmag.pl - wyposażenie magazynu
-          </h1>
-          <div class="container mx-auto py-4 md:py-24">
-            <h2
-              class="text-lg md:text-6xl text-center font-bold md:font-medium mb-4 capitalize"
-            >
-              Sprawdź Naszą Ofertę Na Pojemniki Magazynowe I Drabiny Aluminiowe
-            </h2>
-            <div class="md:mt-12 flex">
-              <div class="mx-auto md:flex text-center md:w-auto gap-10">
-                <NuxtLink
-                  to="/category/pojemniki-magazynowe"
-                  class="bg-blue-900 block md:mt-0 hover:bg-opacity-80 text-orange-500 font-semibold md:font-bold p-2.5 md:p-4 rounded-full"
-                >
-                  POJEMNIKI MAGAZYNOWE
-                </NuxtLink>
-                <NuxtLink
-                  to="/category/drabiny-aluminiowe"
-                  class="bg-blue-900 block mt-3 md:mt-0 hover:bg-opacity-80 text-orange-500 font-semibold md:font-bold p-2.5 md:p-4 rounded-full"
-                >
-                  DRABINY ALUMINIOWE
-                </NuxtLink>
+        <div class="relative bg-cover bg-no-repeat bg-center h-full">
+          <img data-src="assets/tlo.webp" class="lazyload absolute h-full" />
+          <div class="relative">
+            <h1 class="font-base text-center text-md">
+              Olmag.pl - wyposażenie magazynu
+            </h1>
+            <div class="container mx-auto py-4 md:py-24">
+              <h2
+                class="text-lg md:text-6xl text-center font-bold md:font-medium mb-4 capitalize"
+              >
+                Sprawdź Naszą Ofertę Na Pojemniki Magazynowe I Drabiny
+                Aluminiowe
+              </h2>
+              <div class="md:mt-12 flex">
+                <div class="mx-auto md:flex text-center md:w-auto gap-10">
+                  <NuxtLink
+                    to="/category/pojemniki-magazynowe"
+                    class="bg-blue-900 block md:mt-0 hover:bg-opacity-80 text-orange-500 font-semibold md:font-bold p-2.5 md:p-4 rounded-full"
+                  >
+                    POJEMNIKI MAGAZYNOWE
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/category/drabiny-aluminiowe"
+                    class="bg-blue-900 block mt-3 md:mt-0 hover:bg-opacity-80 text-orange-500 font-semibold md:font-bold p-2.5 md:p-4 rounded-full"
+                  >
+                    DRABINY ALUMINIOWE
+                  </NuxtLink>
+                </div>
               </div>
             </div>
           </div>

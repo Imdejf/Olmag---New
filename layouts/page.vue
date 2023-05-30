@@ -45,7 +45,7 @@ nuxtApp.hook("page:finish", () => {
         <slot></slot>
       </div>
       <slot name="footer">
-        <PageFooter />
+        <PageFooter v-show="isLoading" />
       </slot>
     </div>
     <div

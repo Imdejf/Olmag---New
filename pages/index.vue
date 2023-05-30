@@ -15,7 +15,7 @@ useHead({
     },
     {
       rel: "preload",
-      href: "/assets/tlo-mobile.webp",
+      href: "/assets/tlo-moblie.webp",
       fetchpriority: "high",
       as: "image",
       type: "image/webp",

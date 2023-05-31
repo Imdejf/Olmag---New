@@ -33,10 +33,16 @@ definePageMeta({
                               <div
                                 class="bg-green-400 rounded-md shadow-md w-9 h-9 xl:w-12 xl:h-12 flex items-center justify-center"
                               >
-                                <Icon
-                                  name="fa6-solid:headset"
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
                                   class="text-white w-4 h-4"
-                                />
+                                  viewBox="0 0 512 512"
+                                >
+                                  <path
+                                    fill="currentColor"
+                                    d="M256 48C141.1 48 48 141.1 48 256v40c0 13.3-10.7 24-24 24S0 309.3 0 296v-40C0 114.6 114.6 0 256 0s256 114.6 256 256v144.1c0 48.6-39.4 88-88.1 88l-110.3-.1c-8.3 14.3-23.8 24-41.6 24h-32c-26.5 0-48-21.5-48-48s21.5-48 48-48h32c17.8 0 33.3 9.7 41.6 24l110.4.1c22.1 0 40-17.9 40-40V256c0-114.9-93.1-208-208-208zM144 208h16c17.7 0 32 14.3 32 32v112c0 17.7-14.3 32-32 32h-16c-35.3 0-64-28.7-64-64v-48c0-35.3 28.7-64 64-64zm224 0c35.3 0 64 28.7 64 64v48c0 35.3-28.7 64-64 64h-16c-17.7 0-32-14.3-32-32V240c0-17.7 14.3-32 32-32h16z"
+                                  />
+                                </svg>
                               </div>
                             </div>
                             <div class="grow ml-2">
@@ -92,10 +98,16 @@ definePageMeta({
                               <div
                                 class="bg-green-400 rounded-md shadow-md w-9 h-9 xl:w-12 xl:h-12 flex items-center justify-center"
                               >
-                                <Icon
-                                  name="material-symbols:mail"
-                                  class="text-white text-base w-4 h-4"
-                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="text-white w-4 h-4"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    fill="currentColor"
+                                    d="M4 20q-.825 0-1.413-.588T2 18V6q0-.825.588-1.413T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.588 1.413T20 20H4Zm8-7l8-5V6l-8 5l-8-5v2l8 5Z"
+                                  />
+                                </svg>
                               </div>
                             </div>
                             <div class="grow ml-2">
@@ -121,7 +133,23 @@ definePageMeta({
                       <div class="form-group mb-6">
                         <FormVTextInput
                           type="text"
-                          name="username"
+                          name="phone"
+                          label="Telefon*"
+                          placeholder="Telefon*"
+                        ></FormVTextInput>
+                      </div>
+                      <div class="form-group mb-6">
+                        <FormVTextInput
+                          type="text"
+                          name="email"
+                          label="Email*"
+                          placeholder="Email*"
+                        ></FormVTextInput>
+                      </div>
+                      <div class="form-group mb-6">
+                        <FormVTextInput
+                          type="text"
+                          name="topic"
                           label="Temat*"
                           placeholder="Temat*"
                         ></FormVTextInput>
@@ -129,8 +157,8 @@ definePageMeta({
                       <div class="form-group mb-6">
                         <FormVTextInput
                           type="text"
-                          textarea="true"
-                          name="username"
+                          :textarea="true"
+                          name="description"
                           label="Treść wiadomości*"
                           placeholder="Treść wiadomości*"
                           class="font-bold"
@@ -161,23 +189,14 @@ definePageMeta({
               <div class="h-full md:mb-12 lg:mb-0 px-2">
                 <div class="h-full relative shadow-lg rounded-lg">
                   <iframe
-                    title="olmag"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d752.8212919687434!2d15.680698657802472!3d52.57281524967542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa06193f6f5541f1%3A0x8cf7b91b48c27247!2seMagazynowo%20-%20wyposa%C5%BCenie%20do%20magazynu!5e0!3m2!1spl!2spl!4v1672257120771!5m2!1spl!2spl"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2424.8192678198643!2d15.678654212026439!3d52.57287957195864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4706ed9ffdc54efb%3A0x532cf79278532f9e!2sOlmag.pl%20-%20wyposa%C5%BCenie%20magazynowe!5e0!3m2!1spl!2spl!4v1685552149372!5m2!1spl!2spl"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
                     class="h-full w-full absolute rounded-lg"
                   ></iframe>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </PageSection>
-      <PageSection>
-        <div class="section__selected_product">
-          <div class="container py-5 mx-auto block <md:px-2">
-            <h2 class="uppercase tracking-3px font-600 text-lg">
-              Zobacz również
-            </h2>
-            <GridCategory />
           </div>
         </div>
       </PageSection>

@@ -102,16 +102,16 @@ const selectedFontSizeStyle = computed(
 </script>
 
 <template>
-  <div :class="`text-input-container relative flex`">
+  <div :class="`text-input-container  relative flex`">
     <div
       v-if="slots['prefix-disabled']"
-      :class="`flex rounded-l  bg-gray-100 dark:bg-slate-800 text-gray-500 border ${selectedBorderStyle}`"
+      :class="`flex rounded-l  bg-gray-100 text-gray-500 border-1 ${selectedBorderStyle}`"
     >
       <slot name="prefix-disabled" />
     </div>
     <div
       v-if="slots.prefix"
-      :class="`flex rounded-l border ${selectedBorderStyle}`"
+      :class="`flex rounded-l  border ${selectedBorderStyle}`"
     >
       <slot name="prefix" />
     </div>
@@ -128,7 +128,7 @@ const selectedFontSizeStyle = computed(
         :v-validate="validate"
         :class="
           textarea
-            ? `flex rounded-l  bg-gray-100 dark:bg-slate-800 text-gray-500 border ${selectedBorderStyle}`
+            ? `flex rounded-l  bg-gray-100 text-gray-500 border-1 border ${selectedBorderStyle}`
             : ''
         "
         v-slot="{ field, meta, errors }"
@@ -137,12 +137,12 @@ const selectedFontSizeStyle = computed(
           v-show="!nipActive"
           required
           v-bind="field"
-          :class="` w-full border-1  bg-gray-100  ${css} ${
+          :class="` w-full bg-gray-100  ${css} ${
             !meta.valid && meta.touched == true
               ? 'border-red-300'
               : 'border-gray-300'
           } ${
-            visable == true ? '' : 'pointer-events-none bg-gray-300'
+            visable == true ? '' : 'pointer-events-none bg-orange-300 '
           } ${selectedBorderStyle} ${selectedOnHoverBorderStyle} ${selectedPaddingStyle} ${selectedFontSizeStyle}`"
           :type="type"
         />
@@ -150,7 +150,7 @@ const selectedFontSizeStyle = computed(
           v-show="nipActive"
           required
           v-bind="field"
-          :class="` w-full border-1  bg-gray-100  ${css} ${
+          :class="` w-full border-1  bg-gray-400  ${css} ${
             !meta.valid && meta.touched == true
               ? 'border-red-300'
               : 'border-gray-300'
@@ -224,6 +224,7 @@ const selectedFontSizeStyle = computed(
 .text-field input {
   display: inline-block;
   border-radius: 10px;
+  border: 1px solid #e2e8f0;
 }
 
 .text-field input:focus {
@@ -238,7 +239,7 @@ const selectedFontSizeStyle = computed(
   transition: 0.2s;
 }
 .text-field input:valid {
-  background: white;
+  border: 1px solid #e2e8f0;
 }
 
 .text-field input:focus ~ div label,

@@ -15,6 +15,11 @@ export default defineNuxtConfig({
     '@/assets/css/main.css',
   ],
 
+  // build
+  build: {
+    transpile: ['@vee-validate/rules'],
+  },
+
   postcss: {
     plugins: {
       tailwindcss: {},

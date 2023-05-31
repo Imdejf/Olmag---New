@@ -371,7 +371,7 @@ useHead({
         <div class="px-2 md:px-0">
           <div class="tracking-1px font-semibold text-2xl">
             <div class="flex">
-              <h2 class="distinction__title mx-auto">BestSellery</h2>
+              <h2 class="distinction__title mx-auto">Bestsellery</h2>
             </div>
             <div class="container mx-auto">
               <LazyGridProductBestseller />

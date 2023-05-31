@@ -342,10 +342,10 @@ useHead({
                 <span class="uppercase">Kontakt</span>
               </NuxtLink>
             </div>
-            <div class="-mr-64 w-full relative md:flex">
+            <div class="-mr-64 w-full h-36 relative flex">
               <img
                 data-src="assets/content/macbook-emagazynowo.webp"
-                class="lazyload float-right"
+                class="lazyload hidden md:flex float-right w-[380px] h-[240px] md:h-[390px] md:w-[580px] m-auto"
               />
             </div>
           </div>

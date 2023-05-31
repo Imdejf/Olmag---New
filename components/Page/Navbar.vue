@@ -51,7 +51,9 @@ const application = useApplication();
             />
             <img
               data-src="assets/logo-mobile.webp"
-              class="lazyload block md:hidden w-[240px] h-[50px]"
+              class="lazyload block md:hidden"
+              height="100"
+              width="280"
               alt="Logo Olmag.pl"
             />
           </a>

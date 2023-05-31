@@ -32,6 +32,12 @@ export default defineNuxtConfig({
           content: "Olmag.pl to sklep oferujący wyposażenie magazynowe od najlepszych producentów - 📦 pojemniki magazynowe, 📦 drabiny aluminiowe, 📦 regały magazynowe oraz inne."
         }
       ],
+      link: [
+        {
+          rel: "dns-prefetch",
+          href: "https://www.googletagmanager.com"
+        }
+      ]
     }
   },
 

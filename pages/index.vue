@@ -387,6 +387,11 @@ useHead({
           </div>
         </div>
       </PageSection>
+      <PageSection class="section__about-compnay bg-slate-200">
+        <div class="container m-auto">
+          <FormPageAbout />
+        </div>
+      </PageSection>
     </PageBody>
   </PageWrapper>
 </template>

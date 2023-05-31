@@ -67,7 +67,7 @@ function getProductAvailabilityDescription(
             <div class="flex flex-col">
               <h3></h3>
               <h3 class="sr-only">Name</h3>
-              <h3 class="font-medium text-lg">{{ product.name }}</h3>
+              <h3 class="font-medium text-sm md:text-lg">{{ product.name }}</h3>
               <p class="sr-only">Price</p>
               <p class="text-blue-600 my-3 font-bold text-lg">
                 {{ product.price.toFixed(2) }} zł

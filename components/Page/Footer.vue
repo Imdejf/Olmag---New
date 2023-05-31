@@ -48,18 +48,18 @@
                 <a class="transition" href="#">
                   <span class="section_text text_line">Oferta sklepu</span>
                 </a>
-                <NuxtLink to="/help/privacy-policy" class="transition">
+                <NuxtLink to="/privacy-policy" class="transition">
                   <span class="section_text text_line"
                     >Polityka prywatności</span
                   >
                 </NuxtLink>
-                <NuxtLink to="/" class="transition" href="#">
+                <NuxtLink to="/terms-of-use" class="transition" href="#">
                   <span class="section_text text_line">Regulamin</span>
                 </NuxtLink>
               </nav>
             </div>
             <div>
-              <strong class="font-medium font-700"> Usługi </strong>
+              <strong class="font-medium font-700"> Obsługa klineta </strong>
 
               <nav
                 aria-label="Footer Services Nav"
@@ -85,7 +85,7 @@
                 aria-label="Footer Support Nav"
                 class="mt-6 flex flex-col space-y-1"
               >
-                <NuxtLink class="transition" href="#">
+                <NuxtLink class="transition" to="/blog">
                   <span class="section_text text_line">Blog</span>
                 </NuxtLink>
 

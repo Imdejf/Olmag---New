@@ -42,10 +42,10 @@
                 <NuxtLink to="/" class="transition">
                   <span class="section_text text_line">O nas</span>
                 </NuxtLink>
-                <a class="transition" href="#">
+                <a class="transition">
                   <span class="section_text text_line">Jak kupować?</span>
                 </a>
-                <a class="transition" href="#">
+                <a class="transition">
                   <span class="section_text text_line">Oferta sklepu</span>
                 </a>
                 <NuxtLink to="/privacy-policy" class="transition">
@@ -53,7 +53,7 @@
                     >Polityka prywatności</span
                   >
                 </NuxtLink>
-                <NuxtLink to="/terms-of-use" class="transition" href="#">
+                <NuxtLink to="/terms-of-use" class="transition">
                   <span class="section_text text_line">Regulamin</span>
                 </NuxtLink>
               </nav>
@@ -65,16 +65,16 @@
                 aria-label="Footer Services Nav"
                 class="mt-6 flex flex-col space-y-1"
               >
-                <a class="transition" href="#">
+                <a class="transition">
                   <span class="section_text text_line"> Dostawa produktu</span>
                 </a>
-                <a class="transition" href="#">
+                <a class="transition">
                   <span class="section_text text_line">Zwrot produktu</span>
                 </a>
                 <NuxtLink to="/" class="transition">
                   <span class="section_text text_line">Płatności</span>
                 </NuxtLink>
-                <a class="transition" href="#">
+                <a class="transition">
                   <span class="section_text text_line">Gwarancja</span>
                 </a>
               </nav>

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
 const application = useApplication();
+const showContatct = ref(false);
 </script>
 
 <template>
@@ -107,9 +108,9 @@ const application = useApplication();
                 Kategorie
               </div>
             </button>
-            <a
-              href="#"
-              class="text-center text-gray-700 hover:text-primary transition relative"
+            <NuxtLink
+              to="/contact"
+              class="text-center md:hidden text-gray-700 hover:text-primary transition relative"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +127,73 @@ const application = useApplication();
               <div class="text-[9.5px] font-semibold leading-3 uppercase">
                 Kontakt
               </div>
-            </a>
+            </NuxtLink>
+            <NuxtLink
+              @mouseover="showContatct = true"
+              @mouseleave="showContatct = false"
+              class="text-center hidden md:block text-gray-700 hover:text-primary transition relative"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                class="h-6 mx-auto"
+              >
+                <path
+                  fill="currentColor"
+                  d="M15 12h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3zm4 0h2a9 9 0 0 0-9-9v2c3.87 0 7 3.13 7 7zm1 3.5c-1.25 0-2.45-.2-3.57-.57c-.1-.03-.21-.05-.31-.05c-.26 0-.51.1-.71.29l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1c0 9.39 7.61 17 17 17c.55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM5.03 5h1.5c.07.88.22 1.75.45 2.58l-1.2 1.21c-.4-1.21-.66-2.47-.75-3.79zM19 18.97c-1.32-.09-2.6-.35-3.8-.76l1.2-1.2c.85.24 1.72.39 2.6.45v1.51z"
+                />
+              </svg>
+              <div class="text-[9.5px] font-semibold leading-3 uppercase">
+                Kontakt
+              </div>
+              <div
+                v-if="showContatct"
+                @mouseover="showContatct = true"
+                @mouseleave="showContatct = false"
+                class="hidden absolute md:block -end-24 z-10 w-56 rounded-md border border-gray-100 bg-white shadow-lg"
+                role="menu"
+              >
+                <ul class="p-2">
+                  <span class="text-sm font-semibold">Kontakt</span>
+                  <li
+                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                    role="menuitem"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="w-4 h-4"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M4 20q-.825 0-1.413-.588T2 18V6q0-.825.588-1.413T4 4h16q.825 0 1.413.588T22 6v12q0 .825-.588 1.413T20 20H4Zm8-7l8-5V6l-8 5l-8-5v2l8 5Z"
+                      />
+                    </svg>
+
+                    sklep@olmag.pl
+                  </li>
+                  <li
+                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                    role="menuitem"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      class="h-4 w-4"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M15 12h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3zm4 0h2a9 9 0 0 0-9-9v2c3.87 0 7 3.13 7 7zm1 3.5c-1.25 0-2.45-.2-3.57-.57c-.1-.03-.21-.05-.31-.05c-.26 0-.51.1-.71.29l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1c0 9.39 7.61 17 17 17c.55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM5.03 5h1.5c.07.88.22 1.75.45 2.58l-1.2 1.21c-.4-1.21-.66-2.47-.75-3.79zM19 18.97c-1.32-.09-2.6-.35-3.8-.76l1.2-1.2c.85.24 1.72.39 2.6.45v1.51z"
+                      />
+                    </svg>
+
+                    +48 698 304 621
+                  </li>
+                </ul>
+              </div>
+            </NuxtLink>
             <a
               href="#"
               class="text-center text-gray-700 hover:text-primary transition relative"

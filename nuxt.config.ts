@@ -56,6 +56,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
+    'nuxt-swiper',
     ['nuxt-gtag', {
       id: GlobalSettings[appEnv].google_analytics_id,
       initialConsent: true,
@@ -63,4 +64,9 @@ export default defineNuxtConfig({
     ['@nuxtjs/robots', { configPath: "~/config/robots.config" }]
   ],
     
+  //swiper options
+  swiper: {
+    styleLang: 'css',
+    modules: ['navigation', 'pagination', 'free-mode', 'thumbs', 'mousewheel'],
+  }
 })

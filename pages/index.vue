@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 // compiler macro
 definePageMeta({
   layout: "page",
@@ -383,6 +387,24 @@ useHead({
             </div>
             <div class="container mx-auto">
               <LazyGridProductRecommended />
+            </div>
+          </div>
+        </div>
+      </PageSection>
+
+      <PageSection class="section__blogs mt-8 pb-8 bg-white">
+        <div class="px-2 md:px-0">
+          <div class="tracking-1px font-semibold text-2xl">
+            <div class="text-center font-bold mt-10">
+              <span class="text-sm section-title uppercase text-gray-500">
+                Zobacz również...
+              </span>
+            </div>
+            <div class="flex">
+              <h2 class="distinction__title mx-auto">Blog magazynowy</h2>
+            </div>
+            <div class="mx-auto mx-10">
+              <SwiperBlogCard />
             </div>
           </div>
         </div>

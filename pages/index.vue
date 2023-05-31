@@ -358,7 +358,7 @@ useHead({
               <h2 class="distinction__title mx-auto">Wyróżnione kategorie</h2>
             </div>
             <div>
-              <GridCategoryAwarded />
+              <LazyGridCategoryAwarded />
             </div>
           </div>
         </div>
@@ -370,7 +370,7 @@ useHead({
               <h2 class="distinction__title mx-auto">BestSellery</h2>
             </div>
             <div class="container mx-auto">
-              <GridProductBestseller />
+              <LazyGridProductBestseller />
             </div>
           </div>
         </div>
@@ -382,7 +382,7 @@ useHead({
               <h2 class="distinction__title mx-auto">Polecamy</h2>
             </div>
             <div class="container mx-auto">
-              <GridProductRecommended />
+              <LazyGridProductRecommended />
             </div>
           </div>
         </div>

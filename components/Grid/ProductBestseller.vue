@@ -13,7 +13,7 @@ const allProducts = computed((): any => {
 </script>
 
 <template>
-  <ul class="grid md:grid-cols-4 grid-cols-2 gap-7 py-8">
+  <ul class="grid md:grid-cols-4 grid-cols-2 gap-7">
     <li v-for="product in allProducts" :key="product.productId">
       <div
         class="max-w-2xl mx-auto relative transform hover:scale-102 hover:shadow-2xl transition duration-400 ease-in-out rounded-lg"

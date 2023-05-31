@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const { data } = await Fetch("/product/category", {
   method: "GET",
-})
+});
 
 const allCategories = computed((): any => {
   return data?.value?.data.filter((c) => c.mostVisited === true);

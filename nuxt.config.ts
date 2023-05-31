@@ -34,7 +34,7 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: "dns-prefetch",
+          rel: "preconnect",
           href: "https://www.googletagmanager.com"
         }
       ]

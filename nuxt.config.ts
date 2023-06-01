@@ -1,4 +1,5 @@
 import { GlobalSettings } from "./environmentsettings"
+import axios from "axios";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const appEnv = process.env.ENV || 'development'
@@ -10,6 +11,17 @@ export default defineNuxtConfig({
           crawlLinks:true
       }
   },
+
+  hooks: {
+    async 'nitro:config'(nitroConfig) {
+        // if (nitroConfig.dev) {
+        //     return
+        // }
+        const slugs = await getBlogRoutes();
+        nitroConfig.prerender.routes.push(...slugs)
+        return
+    }
+},
 
   css: [
     '@/assets/css/main.css',
@@ -75,3 +87,15 @@ export default defineNuxtConfig({
     modules: ['navigation', 'pagination', 'free-mode', 'thumbs', 'mousewheel'],
   }
 })
+
+const getBlogRoutes = async () => {
+  const categoryList = await axios.get(GlobalSettings[appEnv].apiBaseURL + 'product/blogCategory/slugs', {
+    params: {
+      storeId: GlobalSettings[appEnv].storeId
+    }
+  })
+  // return the array of routes
+  return categoryList.data.data.map((category) => `/blog/${category}`);
+};
+
+//https://github.com/Smef/nuxt-ssg-issue-demo/tree/main

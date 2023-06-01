@@ -1,3 +1,45 @@
+<script lang="ts" setup>
+definePageMeta({
+  layout: "page",
+});
+
+const config = useRuntimeConfig().public;
+const route = useRoute();
+
+const post = ref(null);
+
+const url =
+  config.apiBaseURL +
+  "product/blogItem/" +
+  route.params.slug +
+  "?languageId=" +
+  useCookie("dsLanguage").value;
+console.log(url);
+
+const { data: postDetail } = await useAsyncData("slug", () => $fetch(url));
+
+post.value = postDetail.value.data;
+</script>
+
 <template>
-  <div>POST</div>
+  <Head>
+    <Title>{{ post?.metaTitle }}</Title>
+    <Meta name="description" :content="post?.metaDescription" />
+  </Head>
+  <PageHeader>
+    <PageTitle></PageTitle>
+  </PageHeader>
+  <PageBody>
+    <div class="container m-auto text-blue-900 my-10">
+      <PageWrapper class="container mx-auto flex gap-15">
+        <PageSection class="w-1/4">
+          <PageBlogNavigation />
+        </PageSection>
+        <PageSection class="product__section__title w-3/4">
+          <h1 class="font-800 text-34px">{{ post?.name }}</h1>
+          <div class="mt-10" v-html="post?.description"></div>
+        </PageSection>
+      </PageWrapper>
+    </div>
+  </PageBody>
 </template>

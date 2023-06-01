@@ -17,8 +17,9 @@ export default defineNuxtConfig({
         // if (nitroConfig.dev) {
         //     return
         // }
-        const slugs = await getBlogRoutes();
-        nitroConfig.prerender.routes.push(...slugs)
+        const blogSlugs = await getBlogRoutes();
+        const postSlugs = await getPostRoutes()
+        nitroConfig.prerender.routes.push(...blogSlugs, ...postSlugs)
         return
     }
 },
@@ -97,5 +98,17 @@ const getBlogRoutes = async () => {
   // return the array of routes
   return categoryList.data.data.map((category) => `/blog/${category}`);
 };
+
+const getPostRoutes = async () => {
+  const postList = await axios.get(GlobalSettings[appEnv].apiBaseURL + 'product/blogItem/slugs', {
+    params: {
+      storeId: GlobalSettings[appEnv].storeId
+    }
+  })
+  console.log(postList.data)
+  // return the array of routes
+  return postList.data.data.map((post) => `/post/${post}`);
+};
+
 
 //https://github.com/Smef/nuxt-ssg-issue-demo/tree/main

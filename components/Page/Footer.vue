@@ -147,7 +147,7 @@
               class="mt-6 flex flex-col space-y-1"
             >
               <img
-                data-src="assets/DS-min.png"
+                data-src="/assets/DS-min.png"
                 alt="logo Data Sharp"
                 class="lazyload m-auto md:m-0 w-[30px] h-[30px]"
               />

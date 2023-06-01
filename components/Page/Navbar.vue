@@ -36,7 +36,7 @@ const showContatct = ref(false);
         <div class="flex items-center justify-between">
           <button @click="application.changeTopMenu" class="hidden md:block">
             <img
-              data-src="icons/menu.svg"
+              data-src="/icons/menu.svg"
               alt="Ikona kategorii"
               data-sizes="auto"
               class="lazyload mx-auto w-[40px] h-[40px]"
@@ -45,13 +45,13 @@ const showContatct = ref(false);
           </button>
           <a href="/" class="md:block md:mx-8">
             <img
-              data-src="assets/logo.webp"
+              data-src="/assets/logo.webp"
               data-sizes="auto"
               class="lazyload hidden md:block md:w-[240px] md:h-[70px]"
               alt="Logo Olmag.pl"
             />
             <img
-              data-src="assets/logo-mobile.webp"
+              data-src="/assets/logo-mobile.webp"
               class="lazyload block md:hidden"
               height="100"
               width="280"

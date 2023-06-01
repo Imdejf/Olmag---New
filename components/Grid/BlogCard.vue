@@ -1,13 +1,18 @@
 <script lang="ts" setup>
-const { data: blogData } = await Fetch("/product/blogCategory", {
-  method: "get",
-  params: {
-    storeId: useCookie("dsStore"),
-    languageId: useCookie("dsLanguage"),
-  },
-});
+const config = useRuntimeConfig().public;
+const allBlogs = ref(null);
 
-const allBlogs = blogData.value.data;
+const url =
+  config.apiBaseURL +
+  "product/blogCategory" +
+  "?languageId=" +
+  useCookie("dsLanguage").value +
+  "&storeId=" +
+  useCookie("dsStore").value;
+
+const { data: postDetail } = await useAsyncData("slug", () => $fetch(url));
+
+allBlogs.value = postDetail.value?.data;
 </script>
 
 <template>
@@ -17,7 +22,6 @@ const allBlogs = blogData.value.data;
     </div>
     <div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-[40px]">
-        <!-- This is an example component -->
         <div
           v-for="blog in allBlogs"
           :key="blog.blogCategoryId"

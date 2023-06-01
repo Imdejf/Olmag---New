@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+// compiler macro
+definePageMeta({
+  layout: "page",
+});
+</script>
+
 <template>
   <PageWrapper>
     <PageHeader>
@@ -6,7 +13,7 @@
     <PageBody>
       <PageSection>
         <div class="pb-5">
-          <LazyGridBlogCard />
+          <GridBlogCard />
         </div>
       </PageSection>
     </PageBody>

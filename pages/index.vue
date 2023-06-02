@@ -22,12 +22,19 @@ const instance = axios.create({
   },
 });
 
-const { data: categories } = useCachedAsyncData("categories", async () => {
+const { data: categories } = useAsyncData("categories", async () => {
   const categories = await instance.get(config.apiBaseURL + "product/category");
   return categories.data;
 });
 
 console.log(categories);
+
+const { data: categories2 } = useCachedAsyncData("categories", async () => {
+  const categories = await instance.get(config.apiBaseURL + "product/category");
+  return categories.data;
+});
+
+console.log(categories2);
 
 const { data: products } = useCachedAsyncData("heighlightProduct", async () => {
   const products = await instance.get(

@@ -22,9 +22,11 @@ const instance = axios.create({
   },
 });
 
-const { data: categories } = useAsyncData("categories", async () => {
-  const categories = await instance.get(config.apiBaseURL + "product/category");
-  return categories.data;
+const { data: categories } = await Fetch("product/category", {
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
 });
 
 console.log(categories);

@@ -29,28 +29,19 @@ const { data: categories } = await Fetch("product/category", {
   },
 });
 
-console.log(categories);
-
-const { data: categories2 } = useCachedAsyncData("categories", async () => {
-  const categories = await instance.get(config.apiBaseURL + "product/category");
-  return categories.data;
+const { data: products } = await Fetch("product/HeighlightProduct", {
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
 });
 
-console.log(categories2);
-
-const { data: products } = useCachedAsyncData("heighlightProduct", async () => {
-  const products = await instance.get(
-    config.apiBaseURL + "product/HeighlightProduct"
-  );
-  return products.data;
+const { data: blogs } = await Fetch("product/blogCategory", {
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
 });
-console.log(products);
-
-const { data: blogs } = useCachedAsyncData("blogs", async () => {
-  const blogs = await instance.get(config.apiBaseURL + "product/blogCategory");
-  return blogs.data;
-});
-console.log(blogs);
 
 useHead({
   link: [

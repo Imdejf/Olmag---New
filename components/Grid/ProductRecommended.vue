@@ -12,6 +12,7 @@ const { data } = await Fetch("/product/HeighlightProduct", {
 const allProducts = computed((): any => {
   return data?.value?.data.filter((c) => c.isHomePage === true);
 });
+
 function getProductAvailabilityDescription(
   availability: ProductAvailability
 ): string {

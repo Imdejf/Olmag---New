@@ -1,16 +1,21 @@
 <script lang="ts" setup>
+import axios from "axios";
+
+const config = useRuntimeConfig().public;
 const allBlogs = ref(null);
 
-const { data } = await Fetch("/product/blogCategory", {
-  method: "GET",
+const instance = axios.create({
+  withCredentials: true,
   params: {
-    storeId: useCookie("dsStore"),
-    languageId: useCookie("dsLanguage"),
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
   },
 });
 
-watch(data, (blogs) => {
-  allBlogs.value = blogs.data;
+const { data } = await useAsyncData("data", async () => {
+  const res = await instance.get(config.apiBaseURL + "/product/blogCategory");
+  allBlogs.value = res.data.data;
+  return res.data;
 });
 </script>
 

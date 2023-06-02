@@ -1,8 +1,8 @@
 const GlobalSettings = {
   development: {
     siteEnvironment: "Dev",
-    apiBaseURL: "http://localhost:5000/api/",
-    baseURL: "http://localhost:5000/",
+    apiBaseURL: "https://olmagpl.azurewebsites.net/api/",
+    baseURL: "https://olmagpl.azurewebsites.net/",
     googleTagManagerKey: "GTM-W8WK3DF",
     googleTagManagerEnabled: true,
     googleTagManagerDebug: true,

@@ -4,6 +4,7 @@ export const useApplication = defineStore('application', {
   state: () => ({
     questionProduct: false,
     topMenuIsOpen: false,
+    blogs: [],
   }),
   actions: {
     changeQuestionProduct(): void {

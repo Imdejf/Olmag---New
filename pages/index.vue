@@ -3,12 +3,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import axios from "axios";
-
+import { useApplication } from "~/stores/application";
 // compiler macro
 definePageMeta({
   layout: "page",
 });
 
+const application = useApplication();
 const config = useRuntimeConfig().public;
 const $gtm = useGTM();
 
@@ -276,6 +277,7 @@ useHead({
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
             <div>
+              {{ application.blogs }}
               <GridCategoryMostView
                 :categories="categories.filter((c) => c.mostVisited === true)"
               />

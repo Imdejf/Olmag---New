@@ -1,5 +1,6 @@
 import { GlobalSettings } from "./environmentsettings"
 import axios from "axios";
+import { useApplication } from "./stores/application";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const appEnv = process.env.ENV || 'development'
@@ -90,14 +91,16 @@ export default defineNuxtConfig({
 })
 
 const getBlogRoutes = async () => {
-  const categoryList = await axios.get(GlobalSettings[appEnv].apiBaseURL + 'product/blogCategory/slugs', {
+  const blogsList = await axios.get(GlobalSettings[appEnv].apiBaseURL + 'product/blogCategory/slugs', {
     params: {
       storeId: GlobalSettings[appEnv].storeId
     }
   })
 
+  useApplication.blogs = blogsList
+
   // return the array of routes
-  return categoryList.data.map((category) => `/blog/${category}`);
+  return blogsList.data.map((category) => `/blog/${category}`);
 };
 
 const getPostRoutes = async () => {

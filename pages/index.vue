@@ -12,8 +12,12 @@ const $gtm = useGTM();
 
 $gtm.enable();
 
-const { data: categories } = await useAsyncData("categories", () =>
-  $fetch(config.apiBaseURL + "product/category", {
+// const { data: mountains } = await useAsyncData("mountains", () =>
+//   $fetch("https://api.nuxtjs.dev/mountains")
+// );
+
+const { data: mountainsTest } = await useAsyncData("mountainss", () =>
+  $fetch(config.apiBaseURL + "product/blogCategory/test", {
     params: {
       storeId: useCookie("dsStore").value,
       languageId: useCookie("dsLanguage").value,
@@ -21,16 +25,14 @@ const { data: categories } = await useAsyncData("categories", () =>
   })
 );
 
-const { data: mountains } = await useAsyncData("mountains", () =>
-  $fetch("https://api.nuxtjs.dev/mountains")
-);
+console.log(mountainsTest);
 
-// const { data: categories } = await Fetch("product/category", {
-//   params: {
-//     storeId: useCookie("dsStore").value,
-//     languageId: useCookie("dsLanguage").value,
-//   },
-// });
+const { data: categories } = await Fetch("product/category", {
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
+});
 
 const { data: products } = await Fetch("product/HeighlightProduct", {
   params: {
@@ -279,7 +281,9 @@ useHead({
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
             <div>
-              {{ mountains }}
+              {{ mountainsTest }}
+              <br />
+
               <GridCategoryMostView
                 :categories="categories.filter((c) => c.mostVisited === true)"
               />

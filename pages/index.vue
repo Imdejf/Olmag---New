@@ -11,6 +11,7 @@ definePageMeta({
 
 const config = useRuntimeConfig().public;
 const $gtm = useGTM();
+
 $gtm.enable();
 
 const instance = axios.create({

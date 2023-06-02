@@ -27,17 +27,21 @@ const { data: categories } = useCachedAsyncData("categories", async () => {
   return categories.data;
 });
 
+console.log(categories);
+
 const { data: products } = useCachedAsyncData("heighlightProduct", async () => {
   const products = await instance.get(
     config.apiBaseURL + "product/HeighlightProduct"
   );
   return products.data;
 });
+console.log(products);
 
 const { data: blogs } = useCachedAsyncData("blogs", async () => {
   const blogs = await instance.get(config.apiBaseURL + "product/blogCategory");
   return blogs.data;
 });
+console.log(blogs);
 
 useHead({
   link: [

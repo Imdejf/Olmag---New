@@ -21,6 +21,10 @@ const { data: categories } = await useAsyncData("categories", () =>
   })
 );
 
+const { data: mountains } = await useAsyncData("mountains", () =>
+  $fetch("https://api.nuxtjs.dev/mountains")
+);
+
 // const { data: categories } = await Fetch("product/category", {
 //   params: {
 //     storeId: useCookie("dsStore").value,
@@ -275,6 +279,7 @@ useHead({
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
             <div>
+              {{ mountains }}
               <GridCategoryMostView
                 :categories="categories.filter((c) => c.mostVisited === true)"
               />

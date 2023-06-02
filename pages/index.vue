@@ -12,12 +12,21 @@ const $gtm = useGTM();
 
 $gtm.enable();
 
-const { data: categories } = await Fetch("product/category", {
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
+const { data: categories } = await useAsyncData("categories", () =>
+  $fetch(config.apiBaseURL + "product/category", {
+    params: {
+      storeId: useCookie("dsStore").value,
+      languageId: useCookie("dsLanguage").value,
+    },
+  })
+);
+
+// const { data: categories } = await Fetch("product/category", {
+//   params: {
+//     storeId: useCookie("dsStore").value,
+//     languageId: useCookie("dsLanguage").value,
+//   },
+// });
 
 const { data: products } = await Fetch("product/HeighlightProduct", {
   params: {

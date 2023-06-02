@@ -1,6 +1,5 @@
 import { GlobalSettings } from "./environmentsettings"
 import axios from "axios";
-import { useApplication } from "./stores/application";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const appEnv = process.env.ENV || 'development'
@@ -12,6 +11,9 @@ export default defineNuxtConfig({
           crawlLinks:true
       }
   },
+  experimental: {
+    payloadExtraction: false
+},
 
   hooks: {
     async 'nitro:config'(nitroConfig) {
@@ -96,8 +98,6 @@ const getBlogRoutes = async () => {
       storeId: GlobalSettings[appEnv].storeId
     }
   })
-
-  useApplication.blogs = blogsList
 
   // return the array of routes
   return blogsList.data.map((category) => `/blog/${category}`);

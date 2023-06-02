@@ -4,39 +4,6 @@ import axios from "axios";
 definePageMeta({
   layout: "page",
 });
-
-const config = useRuntimeConfig().public;
-const route = useRoute();
-
-const post = ref(null);
-
-const instance = axios.create({
-  withCredentials: true,
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
-
-const { data } = await useAsyncData("data", async () => {
-  const res = await instance.get(
-    config.apiBaseURL + "/product/blogItem/" + route.params.slug
-  );
-  post.value = data.data;
-  return res.data;
-});
-
-// const { data } = await Fetch("/product/blogItem/" + route.params.slug, {
-//   method: "GET",
-//   params: {
-//     languageId: useCookie("dsLanguage"),
-//     storeId: useCookie("dsStore"),
-//   },
-// });
-
-// watch(data, (postDetail) => {
-//   post.value = postDetail.data;
-// });
 </script>
 
 <template>

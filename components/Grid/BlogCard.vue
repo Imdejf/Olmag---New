@@ -1,23 +1,4 @@
-<script lang="ts" setup>
-import axios from "axios";
-
-const config = useRuntimeConfig().public;
-const allBlogs = ref(null);
-
-const instance = axios.create({
-  withCredentials: true,
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
-
-const { data } = await useAsyncData("data", async () => {
-  const res = await instance.get(config.apiBaseURL + "/product/blogCategory");
-  allBlogs.value = res.data.data;
-  return res.data;
-});
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div class="py-section container mx-auto">

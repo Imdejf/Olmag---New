@@ -95,8 +95,9 @@ const getBlogRoutes = async () => {
       storeId: GlobalSettings[appEnv].storeId
     }
   })
+
   // return the array of routes
-  return categoryList.data.data.map((category) => `/blog/${category}`);
+  return categoryList.data.map((category) => `/blog/${category}`);
 };
 
 const getPostRoutes = async () => {
@@ -105,9 +106,8 @@ const getPostRoutes = async () => {
       storeId: GlobalSettings[appEnv].storeId
     }
   })
-  console.log(postList.data)
   // return the array of routes
-  return postList.data.data.map((post) => `/post/${post}`);
+  return postList.data.map((post) => `/post/${post}`);
 };
 
 

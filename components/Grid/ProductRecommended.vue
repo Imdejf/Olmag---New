@@ -1,16 +1,11 @@
 <script lang="ts" setup>
 import { ProductAvailability } from "~/types/Product/productTypes";
 
-const { data } = await Fetch("/product/HeighlightProduct", {
-  method: "GET",
-  params: {
-    languageId: useCookie("dsLanguage"),
-    storeId: useCookie("dsStore"),
+const props = defineProps({
+  products: {
+    type: Object,
+    default: null,
   },
-});
-
-const allProducts = computed((): any => {
-  return data?.value?.data.filter((c) => c.isHomePage === true);
 });
 
 function getProductAvailabilityDescription(
@@ -44,7 +39,7 @@ function getProductAvailabilityDescription(
   <ul
     class="grid-recommended grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 col-auto tracking-normal mt-8"
   >
-    <li v-for="product in allProducts" :key="product.productId">
+    <li v-for="product in products" :key="product.productId">
       <router-link
         :to="'/' + product.slug"
         class="relative transform hover:scale-102 hover:shadow-2xl transition duration-400 ease-in-out rounded-lg bg-white p-4 flex flex-col shadow-sm shadow-gray-200"

@@ -1,20 +1,15 @@
 <script lang="ts" setup>
-const { data } = await Fetch("/product/HeighlightProduct", {
-  method: "GET",
-  params: {
-    languageId: useCookie("dsLanguage"),
-    storeId: useCookie("dsStore"),
+const props = defineProps({
+  products: {
+    type: Object,
+    default: null,
   },
-});
-
-const allProducts = computed((): any => {
-  return data?.value?.data.filter((c) => c.isBestseller === true);
 });
 </script>
 
 <template>
   <ul class="grid md:grid-cols-4 grid-cols-2 gap-7">
-    <li v-for="product in allProducts" :key="product.productId">
+    <li v-for="product in products" :key="product.productId">
       <div
         class="max-w-2xl mx-auto relative transform hover:scale-102 hover:shadow-2xl transition duration-400 ease-in-out rounded-lg"
       >

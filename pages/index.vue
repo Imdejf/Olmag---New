@@ -2,14 +2,41 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import axios from "axios";
 
 // compiler macro
 definePageMeta({
   layout: "page",
 });
 
+const config = useRuntimeConfig().public;
 const $gtm = useGTM();
 $gtm.enable();
+
+const instance = axios.create({
+  withCredentials: true,
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
+});
+
+const { data: categories } = useCachedAsyncData("categories", async () => {
+  const categories = await instance.get(config.apiBaseURL + "product/category");
+  return categories.data;
+});
+
+const { data: products } = useCachedAsyncData("heighlightProduct", async () => {
+  const products = await instance.get(
+    config.apiBaseURL + "product/HeighlightProduct"
+  );
+  return products.data;
+});
+
+const { data: blogs } = useCachedAsyncData("blogs", async () => {
+  const blogs = await instance.get(config.apiBaseURL + "product/blogCategory");
+  return blogs.data;
+});
 
 useHead({
   link: [
@@ -244,7 +271,9 @@ useHead({
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
             <div>
-              <GridCategoryMostView />
+              <GridCategoryMostView
+                :categories="categories.filter((c) => c.mostVisited === true)"
+              />
             </div>
           </div>
         </div>
@@ -362,7 +391,9 @@ useHead({
               <h2 class="distinction__title mx-auto">Wyróżnione kategorie</h2>
             </div>
             <div>
-              <LazyGridCategoryAwarded />
+              <LazyGridCategoryAwarded
+                :categories="categories.filter((c) => c.highlight === true)"
+              />
             </div>
           </div>
         </div>
@@ -374,7 +405,9 @@ useHead({
               <h2 class="distinction__title mx-auto">Bestsellery</h2>
             </div>
             <div class="container mx-auto">
-              <LazyGridProductBestseller />
+              <LazyGridProductBestseller
+                :products="products.filter((c) => c.isBestseller === true)"
+              />
             </div>
           </div>
         </div>
@@ -386,7 +419,9 @@ useHead({
               <h2 class="distinction__title mx-auto">Polecamy</h2>
             </div>
             <div class="container mx-auto">
-              <LazyGridProductRecommended />
+              <LazyGridProductRecommended
+                :products="products.filter((c) => c.isHomePage === true)"
+              />
             </div>
           </div>
         </div>
@@ -404,7 +439,7 @@ useHead({
               <h2 class="distinction__title mx-auto">Blog magazynowy</h2>
             </div>
             <div class="mx-auto mx-10">
-              <SwiperBlogCard />
+              <SwiperBlogCard :blogs="blogs" />
             </div>
           </div>
         </div>

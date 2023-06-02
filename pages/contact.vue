@@ -1,7 +1,22 @@
 <script lang="ts" setup>
+import axios from "axios";
 // compiler macro
 definePageMeta({
   layout: "page",
+});
+const config = useRuntimeConfig().public;
+
+const instance = axios.create({
+  withCredentials: true,
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
+});
+
+const { data: testData } = useCachedAsyncData("RANDOM", async () => {
+  const test = await instance.get(config.apiBaseURL + "product/category");
+  return test.data;
 });
 </script>
 <template>
@@ -12,6 +27,7 @@ definePageMeta({
     <PageBody>
       <PageSection>
         <div class="px-6 <sm:py-2 py-12 text-center">
+          {{ testData }}
           <div class="mx-auto xl:px-32">
             <div class="grid lg:grid-cols-2 flex items-center">
               <div class="md:mt-12 lg:mt-0 mb-12 lg:mb-0 px-2">

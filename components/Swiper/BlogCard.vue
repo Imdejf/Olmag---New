@@ -1,18 +1,9 @@
 <script lang="ts" setup>
-import { BlogItemDTO } from "~/types/Blog/BlogTypes";
-
-import "swiper/css";
-import "swiper/css/navigation";
-const { data: blogList } = await Fetch("/product/blogItem/home", {
-  method: "GET",
-  params: {
-    storeId: useCookie("dsStore"),
-    languageId: useCookie("dsLanguage"),
+const props = defineProps({
+  blogs: {
+    type: Object,
+    default: null,
   },
-});
-
-const allBlogs = computed((): BlogItemDTO[] => {
-  return blogList?.value?.data;
 });
 </script>
 <template>
@@ -33,7 +24,7 @@ const allBlogs = computed((): BlogItemDTO[] => {
     }"
     :navigation="true"
   >
-    <SwiperSlide v-for="blog in allBlogs" :key="blog.id">
+    <SwiperSlide v-for="blog in blogs" :key="blog.id">
       <div class="mx-auto max-w-screen-xl">
         <div class="mt-8 h-sm">
           <article

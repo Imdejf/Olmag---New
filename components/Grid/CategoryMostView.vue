@@ -1,16 +1,15 @@
 <script lang="ts" setup>
-const { data } = await Fetch("/product/category", {
-  method: "GET",
-});
-
-const allCategories = computed((): any => {
-  return data?.value?.data.filter((c) => c.mostVisited === true);
+const props = defineProps({
+  categories: {
+    type: Object,
+    default: null,
+  },
 });
 </script>
 
 <template>
   <ul class="grid md:grid-cols-4 grid-cols-2 gap-7 my-8">
-    <li v-for="category in allCategories" :key="category.categoryId">
+    <li v-for="category in categories" :key="category.categoryId">
       <router-link
         :to="'/category/' + category.slug"
         class="group relative block w-full md:w-56 h-[250px]"

@@ -1,10 +1,19 @@
 <script lang="ts" setup>
-const { data } = await Fetch("/product/category", {
-  method: "GET",
+import axios from "axios";
+
+const config = useRuntimeConfig().public;
+
+const instance = axios.create({
+  withCredentials: true,
+  params: {
+    storeId: useCookie("dsStore").value,
+    languageId: useCookie("dsLanguage").value,
+  },
 });
 
-const allCategories = computed((): any => {
-  return data?.value?.data;
+const { data: categories } = useCachedAsyncData("categories", async () => {
+  const categories = await instance.get(config.apiBaseURL + "product/category");
+  return categories.data;
 });
 </script>
 
@@ -15,7 +24,7 @@ const allCategories = computed((): any => {
         class="md:p-10 grid grid-cols-1 text-[10px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-5"
       >
         <div
-          v-for="category in allCategories"
+          v-for="category in categories"
           :key="category.name"
           class="flex self-center h-full border-b-2 border-solid border-emerald-100 transform hover:scale-101 hover:shadow-md transition duration-400 ease-in-out"
         >

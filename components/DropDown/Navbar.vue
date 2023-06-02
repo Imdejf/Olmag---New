@@ -3,18 +3,18 @@ import axios from "axios";
 
 const config = useRuntimeConfig().public;
 
-const instance = axios.create({
-  withCredentials: true,
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
+// const instance = axios.create({
+//   withCredentials: true,
+//   params: {
+//     storeId: useCookie("dsStore").value,
+//     languageId: useCookie("dsLanguage").value,
+//   },
+// });
 
-const { data: categories } = useCachedAsyncData("categories", async () => {
-  const categories = await instance.get(config.apiBaseURL + "product/category");
-  return categories.data;
-});
+// const { data: categories } = useCachedAsyncData("categories", async () => {
+//   const categories = await instance.get(config.apiBaseURL + "product/category");
+//   return categories.data;
+// });
 </script>
 
 <template>

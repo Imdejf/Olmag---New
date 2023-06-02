@@ -28,26 +28,26 @@ const { data: mountainsTest } = await useAsyncData("mountainss", () =>
 console.log(mountainsTest);
 console.log(mountains);
 
-const { data: categories } = await Fetch("product/category", {
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
+// const { data: categories } = await Fetch("product/category", {
+//   params: {
+//     storeId: useCookie("dsStore").value,
+//     languageId: useCookie("dsLanguage").value,
+//   },
+// });
 
-const { data: products } = await Fetch("product/HeighlightProduct", {
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
+// const { data: products } = await Fetch("product/HeighlightProduct", {
+//   params: {
+//     storeId: useCookie("dsStore").value,
+//     languageId: useCookie("dsLanguage").value,
+//   },
+// });
 
-const { data: blogs } = await Fetch("product/blogCategory", {
-  params: {
-    storeId: useCookie("dsStore").value,
-    languageId: useCookie("dsLanguage").value,
-  },
-});
+// const { data: blogs } = await Fetch("product/blogCategory", {
+//   params: {
+//     storeId: useCookie("dsStore").value,
+//     languageId: useCookie("dsLanguage").value,
+//   },
+// });
 
 useHead({
   link: [

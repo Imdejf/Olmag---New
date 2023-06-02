@@ -49,6 +49,10 @@ console.log(mountains);
 //   },
 // });
 
+const products = [];
+const blogs = [];
+const categories = [];
+
 useHead({
   link: [
     {

@@ -1,18 +1,17 @@
 <script lang="ts" setup>
-const config = useRuntimeConfig().public;
 const allBlogs = ref(null);
 
-const url =
-  config.apiBaseURL +
-  "product/blogCategory" +
-  "?languageId=" +
-  useCookie("dsLanguage").value +
-  "&storeId=" +
-  useCookie("dsStore").value;
+const { data } = await Fetch("/product/blogCategory", {
+  method: "GET",
+  params: {
+    storeId: useCookie("dsStore"),
+    languageId: useCookie("dsLanguage"),
+  },
+});
 
-const { data: postDetail } = await useAsyncData("slug", () => $fetch(url));
-
-allBlogs.value = postDetail.value?.data;
+watch(data, (blogs) => {
+  allBlogs.value = blogs.data;
+});
 </script>
 
 <template>

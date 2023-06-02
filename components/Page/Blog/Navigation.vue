@@ -6,21 +6,17 @@ const config = useRuntimeConfig().public;
 
 const allBlogs = ref(null);
 
-const url =
-  config.apiBaseURL +
-  "product/blogCategory/" +
-  "?languageId=" +
-  useCookie("dsLanguage").value +
-  "&" +
-  useCookie("dsLanguage").value;
+const { data: blogsDetail } = await Fetch("/product/blogCategory", {
+  method: "GET",
+  params: {
+    languageId: useCookie("dsLanguage"),
+    storeId: useCookie("dsStore"),
+  },
+});
 
-console.log(url);
-
-const { data: postDetail } = await useAsyncData("slug", () => $fetch(url));
-
-allBlogs.value = postDetail.value.data;
-console.log("je");
-console.log(allBlogs);
+watch(blogsDetail, (blogs) => {
+  allBlogs.value = blogs.data;
+});
 </script>
 
 <template>

@@ -5,7 +5,6 @@ definePageMeta({
   layout: "page",
 });
 
-// const category = ref<BlogCategoryDTO | null>(null);
 const category = ref(null);
 
 const route = useRoute();

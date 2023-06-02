@@ -13,7 +13,7 @@ definePageMeta({
     <PageBody>
       <PageSection>
         <div class="pb-5">
-          <GridBlogCard />
+          <LazyGridBlogCard />
         </div>
       </PageSection>
     </PageBody>

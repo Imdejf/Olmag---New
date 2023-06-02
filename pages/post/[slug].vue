@@ -3,22 +3,21 @@ definePageMeta({
   layout: "page",
 });
 
-const config = useRuntimeConfig().public;
 const route = useRoute();
 
 const post = ref(null);
 
-const url =
-  config.apiBaseURL +
-  "product/blogItem/" +
-  route.params.slug +
-  "?languageId=" +
-  useCookie("dsLanguage").value;
-console.log(url);
+const { data } = await Fetch("/product/blogItem/" + route.params.slug, {
+  method: "GET",
+  params: {
+    languageId: useCookie("dsLanguage"),
+    storeId: useCookie("dsStore"),
+  },
+});
 
-const { data: postDetail } = await useAsyncData("slug", () => $fetch(url));
-
-post.value = postDetail.value.data;
+watch(data, (postDetail) => {
+  post.value = postDetail.data;
+});
 </script>
 
 <template>

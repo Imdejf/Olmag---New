@@ -12,9 +12,9 @@ const $gtm = useGTM();
 
 $gtm.enable();
 
-// const { data: mountains } = await useAsyncData("mountains", () =>
-//   $fetch("https://api.nuxtjs.dev/mountains")
-// );
+const { data: mountains } = await useAsyncData("mountains", () =>
+  $fetch("https://api.nuxtjs.dev/mountains")
+);
 
 const { data: mountainsTest } = await useAsyncData("mountainss", () =>
   $fetch(config.apiBaseURL + "product/blogCategory/test", {
@@ -283,7 +283,9 @@ useHead({
             <div>
               {{ mountainsTest }}
               <br />
-
+              ODDZIEL
+              <br />
+              {{ mountains }}
               <GridCategoryMostView
                 :categories="categories.filter((c) => c.mostVisited === true)"
               />

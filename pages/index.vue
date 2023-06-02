@@ -26,6 +26,7 @@ const { data: mountainsTest } = await useAsyncData("mountainss", () =>
 );
 
 console.log(mountainsTest);
+console.log(mountains);
 
 const { data: categories } = await Fetch("product/category", {
   params: {

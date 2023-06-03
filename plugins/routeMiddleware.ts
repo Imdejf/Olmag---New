@@ -19,13 +19,12 @@ export default defineNuxtPlugin(() => {
 
       //@ts-ignore
       if(!cookieUser.value) {
-        console.log(config.apiBaseURL)
         axios.get(config.apiBaseURL + 'checkSession',{
           headers: {
             dsStore: config.storeId,
             dsLanguage: config.languageId,
           },
-          withCredentials: true
+          // withCredentials: true
         })
       }
       },

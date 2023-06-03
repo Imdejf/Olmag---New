@@ -2,6 +2,7 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import axios from "axios";
 // compiler macro
 definePageMeta({
   layout: "page",
@@ -50,7 +51,11 @@ console.log(mountains);
 // });
 
 async function test() {
-  await Fetch("checkSession");
+  var test = await Fetch("checkSession");
+  // axios.get(config.apiBaseURL + "checkSession", {
+  //   withCredentials: true,
+  // });
+  console.log(test);
 }
 
 const products = [];

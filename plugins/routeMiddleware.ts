@@ -40,7 +40,8 @@ export default defineNuxtPlugin(() => {
       if(!cookieUser.value) {
         axios.get(config.apiBaseURL + 'checkSession',{
           headers: {
-            Cookie: cookies.join('; ') + ";dsUser=" + useCookie("dsUser").value,
+            Cookie: "test:test"
+            // Cookie: cookies.join('; ') + ";dsUser=" + useCookie("dsUser").value,
             // Cookie: useCookie('dsStore').value + ";" + useCookie('dsLanguage').value + ";" + useCookie('dsUser').value,
           },
         //  withCredentials: true

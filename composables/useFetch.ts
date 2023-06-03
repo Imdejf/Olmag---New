@@ -45,8 +45,7 @@ export function Fetch<T>(
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
     headers: {
-      dsStore: config.storeId,
-      dsLanguage: config.languageId,
+      Cookie: useCookie('dsStore').value + ";" + useCookie('dsLanguage').value + ";" + useCookie('dsUser').value,
     },
     credentials: 'include',
     ...opts,

@@ -8,7 +8,7 @@ export default defineNuxtPlugin(() => {
         httpOnly: false,
         maxAge: 60 * 60 * 24 * 7
       })
-      
+
       const cookieLanguage = useCookie('dsLanguage', {
         sameSite: 'none',
         path: '/',
@@ -35,8 +35,7 @@ export default defineNuxtPlugin(() => {
       if(!cookieUser.value) {
         axios.get(config.apiBaseURL + 'checkSession',{
           headers: {
-            dsStore: config.storeId,
-            dsLanguage: config.languageId,
+            Cookie: useCookie('dsStore').value + ";" + useCookie('dsLanguage').value + ";" + useCookie('dsUser').value,
           },
          withCredentials: true
         })

@@ -1,8 +1,22 @@
 import axios from "axios"
 export default defineNuxtPlugin(() => {
     addRouteMiddleware('global-middleware',async (to, from) => {
-      const cookieStore = useCookie('dsStore')
-      const cookieLanguage = useCookie('dsLanguage')
+      const cookieStore = useCookie('dsStore', {
+        sameSite: 'none',
+        path: '/',
+        secure: true,
+        httpOnly: false,
+        maxAge: 60 * 60 * 24 * 7
+      })
+      
+      const cookieLanguage = useCookie('dsLanguage', {
+        sameSite: 'none',
+        path: '/',
+        secure: true,
+        httpOnly: false,
+        maxAge: 60 * 60 * 24 * 7
+      })
+
       const cookieUser = useCookie('dsUser')
 
       const config = useRuntimeConfig().public

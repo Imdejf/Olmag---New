@@ -59,6 +59,7 @@ async function test() {
     },
     withCredentials: true,
   });
+  console.log("test");
   console.log(test);
 }
 

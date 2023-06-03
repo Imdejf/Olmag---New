@@ -24,7 +24,7 @@ export default defineNuxtPlugin(() => {
             dsStore: config.storeId,
             dsLanguage: config.languageId,
           },
-          // withCredentials: true
+         withCredentials: true
         })
       }
       },

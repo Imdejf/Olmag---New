@@ -19,6 +19,10 @@ export function Fetch<T>(
 //@ts-ignore
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
+    headers: {
+      dsStore: config.storeId,
+      dsLanguage: config.languageId,
+    },
     credentials: 'include',
     ...opts,
   })

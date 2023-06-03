@@ -49,6 +49,10 @@ console.log(mountains);
 //   },
 // });
 
+async function test() {
+  await Fetch("checkSession");
+}
+
 const products = [];
 const blogs = [];
 const categories = [];
@@ -77,6 +81,7 @@ useHead({
   <PageWrapper>
     <PageBody>
       <PageSection class="section__welcome">
+        <button @click="test">tests</button>
         <div class="relative bg-cover bg-no-repeat bg-center h-full">
           <img
             data-src="assets/tlo.webp"

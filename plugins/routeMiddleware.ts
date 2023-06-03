@@ -1,7 +1,10 @@
+import axios from "axios"
 export default defineNuxtPlugin(() => {
     addRouteMiddleware('global-middleware',async (to, from) => {
       const cookieStore = useCookie('dsStore')
       const cookieLanguage = useCookie('dsLanguage')
+      const cookieUser = useCookie('dsUser')
+
       const config = useRuntimeConfig().public
 
       //@ts-ignore
@@ -14,6 +17,16 @@ export default defineNuxtPlugin(() => {
         cookieLanguage.value = config.languageId
       }
 
+      //@ts-ignore
+      if(!cookieUser.value) {
+        axios.get(config.apiBaseURL + 'checkSession',{
+          headers: {
+            dsStore: config.storeId,
+            dsLanguage: config.languageId
+          },
+          withCredentials: true
+        })
+      }
       },
       { global: true }
     )

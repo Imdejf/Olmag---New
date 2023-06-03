@@ -50,7 +50,7 @@ export function Fetch<T>(
     headers: {
       Cookie: cookies.join('; ') + ";dsUser=" + useCookie("dsUser").value,
     },
-    credentials: 'include',
+    // credentials: 'include',
     ...opts,
   })
 }

@@ -305,7 +305,7 @@ useHead({
               <br />
               ODDZIEL
               <br />
-              {{ mountains }}
+              <!-- {{ mountains }} -->
               <GridCategoryMostView
                 :categories="categories.filter((c) => c.mostVisited === true)"
               />

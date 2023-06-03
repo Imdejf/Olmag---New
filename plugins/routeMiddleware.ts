@@ -43,7 +43,7 @@ export default defineNuxtPlugin(() => {
             Cookie: cookies.join('; ') + ";dsUser=" + useCookie("dsUser").value,
             // Cookie: useCookie('dsStore').value + ";" + useCookie('dsLanguage').value + ";" + useCookie('dsUser').value,
           },
-         withCredentials: true
+        //  withCredentials: true
         })
       }
       },

@@ -51,7 +51,10 @@ console.log(mountains);
 // });
 
 async function test() {
-  var test = await Fetch("checkSession");
+  // var test = await Fetch("checkSession");
+  axios.get(config.apiBaseURL + "checkSession", {
+    withCredentials: true,
+  });
   console.log(test);
 }
 

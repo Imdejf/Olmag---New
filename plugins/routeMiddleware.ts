@@ -30,12 +30,18 @@ export default defineNuxtPlugin(() => {
       if(cookieLanguage !== config.languageId) {
         cookieLanguage.value = config.languageId
       }
+      
+      const cookies = [
+        'dsStore=' + config.storeId,
+        'dsLanguage=' + config.languageId,
+      ];
 
       //@ts-ignore
       if(!cookieUser.value) {
         axios.get(config.apiBaseURL + 'checkSession',{
           headers: {
-            Cookie: useCookie('dsStore').value + ";" + useCookie('dsLanguage').value + ";" + useCookie('dsUser').value,
+            Cookie: cookies.join('; ') + ";dsUser=" + useCookie("dsUser").value,
+            // Cookie: useCookie('dsStore').value + ";" + useCookie('dsLanguage').value + ";" + useCookie('dsUser').value,
           },
          withCredentials: true
         })

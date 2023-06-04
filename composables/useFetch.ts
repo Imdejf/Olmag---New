@@ -41,15 +41,15 @@ export function Fetch<T>(
     dsLanguage.value = config.languageId
   }
   const cookies = [
-    'dsStore=' + config.storeId,
-    'dsLanguage=' + config.languageId,
+    'dsstore=' + config.storeId,
+    'dslanguage=' + config.languageId,
   ];
 //@ts-ignore
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
     headers: {
-      dsStore: config.storeId,
-      dsLanguage: config.languageId
+      dsstore: config.storeId,
+      dslanguage: config.languageId
     },
     credentials: 'include',
     ...opts,

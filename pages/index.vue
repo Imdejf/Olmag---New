@@ -52,12 +52,11 @@ console.log(mountains);
 
 async function test() {
   // var test = await Fetch("checkSession");
-  axios.get(config.apiBaseURL + "checkSession", {
+  await axios.get(config.apiBaseURL + "checkSession", {
     headers: {
-      "Access-Control-Allow-Origin": true,
-      "Access-Control-Allow-Credentials": true,
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
       Cookie: "cookie1=value; cookie2=value; cookie3=value;",
+      Cookie: `dsStore=${config.storeId}; dsLanguage=${config.languageId}`,
     },
     withCredentials: true,
   });

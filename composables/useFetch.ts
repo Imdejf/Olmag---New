@@ -40,13 +40,14 @@ export function Fetch<T>(
   if(!dsLanguage.value) {
     dsLanguage.value = config.languageId
   }
-  
+
 //@ts-ignore
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
     headers: {
       dsstore: config.storeId,
-      dslanguage: config.languageId
+      dslanguage: config.languageId,
+      "X-Static-Generation": process.client.toString()
     },
     credentials: 'include',
     ...opts,

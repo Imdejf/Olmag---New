@@ -54,6 +54,7 @@ async function test() {
   // var test = await Fetch("checkSession");
   await axios.get(config.apiBaseURL + "checkSession", {
     headers: {
+      Cookie: "cookie1=value; cookie2=value; cookie3=value",
       "Content-Type": "application/json",
     },
     withCredentials: true,

@@ -13,12 +13,8 @@ const $gtm = useGTM();
 
 $gtm.enable();
 
-const { data: mountains } = await useAsyncData("mountains", () =>
-  $fetch("https://api.nuxtjs.dev/mountains")
-);
-
-const { data: mountainsTest } = await useAsyncData("mountainss", () =>
-  $fetch(config.apiBaseURL + "product/blogCategory/test", {
+const { data: blogCategories } = await useAsyncData("blogCategories", () =>
+  $fetch(config.apiBaseURL + "product/blogCategory", {
     params: {
       storeId: config.storeId,
       languageId: config.languageId,
@@ -26,8 +22,23 @@ const { data: mountainsTest } = await useAsyncData("mountainss", () =>
   })
 );
 
-console.log(mountainsTest);
-console.log(mountains);
+const { data: categories } = await useAsyncData("categories", () =>
+  $fetch(config.apiBaseURL + "product/category", {
+    params: {
+      storeId: config.storeId,
+      languageId: config.languageId,
+    },
+  })
+);
+
+const { data: products } = await useAsyncData("heighlightProducts", () =>
+  $fetch(config.apiBaseURL + "product/HeighlightProduct", {
+    params: {
+      storeId: config.storeId,
+      languageId: config.languageId,
+    },
+  })
+);
 
 // const { data: categories } = await Fetch("product/category", {
 //   params: {
@@ -53,10 +64,6 @@ console.log(mountains);
 async function test() {
   await Fetch("checkSession");
 }
-
-const products = [];
-const blogs = [];
-const categories = [];
 
 useHead({
   link: [
@@ -292,10 +299,6 @@ useHead({
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
             <div>
-              {{ mountainsTest }}
-              <br />
-              ODDZIEL
-              <br />
               <!-- {{ mountains }} -->
               <GridCategoryMostView
                 :categories="categories.filter((c) => c.mostVisited === true)"
@@ -465,7 +468,7 @@ useHead({
               <h2 class="distinction__title mx-auto">Blog magazynowy</h2>
             </div>
             <div class="mx-auto mx-10">
-              <SwiperBlogCard :blogs="blogs" />
+              <SwiperBlogCard :blogs="blogCategories" />
             </div>
           </div>
         </div>

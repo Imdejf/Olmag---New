@@ -34,7 +34,7 @@ export default defineNuxtPlugin(() => {
 
       //@ts-ignore
       if(!cookieUser.value) {
-        await axios.get(config.apiBaseURL + 'checkSession',{
+        axios.get(config.apiBaseURL + 'checkSession',{
           headers: {
             dsstore: config.storeId,
             dslanguage: config.languageId

@@ -48,7 +48,8 @@ export function Fetch<T>(
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
     headers: {
-      "Content-Type": "application/json",
+      dsStore: config.storeId,
+      dsLanguage: config.languageId
     },
     credentials: 'include',
     ...opts,

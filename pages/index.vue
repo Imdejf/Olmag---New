@@ -54,11 +54,10 @@ async function test() {
   var test3 = await Fetch("checkSession");
   const test2 = await axios.get(config.apiBaseURL + "checkSession", {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": true,
-      "Access-Control-Allow-Credentials": true,
+      dsStore: config.storeId,
+      dsLanguage: config.languageId
     },
-    // withCredentials: true,
+    withCredentials: true,
   });
   console.log("test");
   console.log(test2);

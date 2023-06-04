@@ -40,10 +40,7 @@ export function Fetch<T>(
   if(!dsLanguage.value) {
     dsLanguage.value = config.languageId
   }
-  const cookies = [
-    'dsstore=' + config.storeId,
-    'dslanguage=' + config.languageId,
-  ];
+  
 //@ts-ignore
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,

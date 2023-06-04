@@ -2,7 +2,7 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import axios from "axios";
+
 // compiler macro
 definePageMeta({
   layout: "page",
@@ -40,31 +40,6 @@ const { data: products } = await useAsyncData("heighlightProducts", () =>
   })
 );
 
-// const { data: categories } = await Fetch("product/category", {
-//   params: {
-//     storeId: useCookie("dsStore").value,
-//     languageId: useCookie("dsLanguage").value,
-//   },
-// });
-
-// const { data: products } = await Fetch("product/HeighlightProduct", {
-//   params: {
-//     storeId: useCookie("dsStore").value,
-//     languageId: useCookie("dsLanguage").value,
-//   },
-// });
-
-// const { data: blogs } = await Fetch("product/blogCategory", {
-//   params: {
-//     storeId: useCookie("dsStore").value,
-//     languageId: useCookie("dsLanguage").value,
-//   },
-// });
-
-async function test() {
-  await Fetch("checkSession");
-}
-
 useHead({
   link: [
     {
@@ -89,7 +64,6 @@ useHead({
   <PageWrapper>
     <PageBody>
       <PageSection class="section__welcome">
-        <button @click="test">tests</button>
         <div class="relative bg-cover bg-no-repeat bg-center h-full">
           <img
             data-src="assets/tlo.webp"

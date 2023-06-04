@@ -51,18 +51,7 @@ console.log(mountains);
 // });
 
 async function test() {
-  var test3 = await Fetch("checkSession");
-  // const test2 = await axios.get(config.apiBaseURL + "checkSession", {
-  //   headers: {
-  //     dsstore: config.storeId,
-  //     dslanguage: config.languageId
-  //   },
-  //   withCredentials: true,
-  // });
-  // console.log("test");
-  // console.log(test2);
-  // console.log(test3);
-  console.log(test3);
+  await Fetch("checkSession");
 }
 
 const products = [];

@@ -54,6 +54,7 @@ async function test() {
   var test = await Fetch("checkSession");
   axios.get(config.apiBaseURL + "checkSession", {
     headers: {
+      "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/x-www-form-urlencoded",
       Cookie: "cookie1=value; cookie2=value; cookie3=value;",
     },

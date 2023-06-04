@@ -48,6 +48,7 @@ export function Fetch<T>(
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
     headers: {
+      "Access-Control-Allow-Origin": "*",
       Cookie: "cookie1=value; cookie2=value; cookie3=value;",
     },
     credentials: 'include',

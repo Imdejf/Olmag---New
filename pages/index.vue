@@ -58,7 +58,7 @@ async function test() {
       "Access-Control-Allow-Origin": true,
       "Access-Control-Allow-Credentials": true,
     },
-    withCredentials: true,
+    // withCredentials: true,
   });
   console.log("test");
   console.log(test2);

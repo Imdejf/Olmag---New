@@ -57,7 +57,6 @@ async function test() {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": true,
       "Access-Control-Allow-Credentials": true,
-      Cookie: "cookie1=value; cookie2=value; cookie3=value",
     },
     withCredentials: true,
   });

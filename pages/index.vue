@@ -51,7 +51,7 @@ console.log(mountains);
 // });
 
 async function test() {
-  // var test = await Fetch("checkSession");
+  var test3 = await Fetch("checkSession");
   const test2 = await axios.get(config.apiBaseURL + "checkSession", {
     headers: {
       "Content-Type": "application/json",
@@ -61,6 +61,7 @@ async function test() {
   });
   console.log("test");
   console.log(test2);
+  console.log(test3);
 }
 
 const products = [];

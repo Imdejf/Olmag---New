@@ -21,7 +21,7 @@ export function Fetch<T>(
     sameSite: 'none',
     path: '/',
     secure: true,
-    httpOnly: true,
+    httpOnly: false,
     maxAge: 60 * 60 * 24 * 7
   })
 
@@ -29,7 +29,7 @@ export function Fetch<T>(
     sameSite: 'none',
     path: '/',
     secure: true,
-    httpOnly: true,
+    httpOnly: false,
     maxAge: 60 * 60 * 24 * 7
   })
 

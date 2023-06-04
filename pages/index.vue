@@ -55,7 +55,6 @@ async function test() {
   await axios.get(config.apiBaseURL + "checkSession", {
     headers: {
       "Content-Type": "application/json",
-      Cookie: "cookie1=value; cookie2=value; cookie3=value;",
       Cookie: `dsStore=${config.storeId}; dsLanguage=${config.languageId}`,
     },
     withCredentials: true,

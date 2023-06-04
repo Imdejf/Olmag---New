@@ -20,8 +20,8 @@ const { data: mountains } = await useAsyncData("mountains", () =>
 const { data: mountainsTest } = await useAsyncData("mountainss", () =>
   $fetch(config.apiBaseURL + "product/blogCategory/test", {
     params: {
-      storeId: useCookie("dsStore").value,
-      languageId: useCookie("dsLanguage").value,
+      storeId: config.storeId,
+      languageId: config.languageId,
     },
   })
 );

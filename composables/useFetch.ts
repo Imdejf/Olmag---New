@@ -21,7 +21,7 @@ export function Fetch<T>(
     sameSite: 'none',
     path: '/',
     secure: true,
-    httpOnly: false,
+    httpOnly: true,
     maxAge: 60 * 60 * 24 * 7
   })
 
@@ -29,7 +29,7 @@ export function Fetch<T>(
     sameSite: 'none',
     path: '/',
     secure: true,
-    httpOnly: false,
+    httpOnly: true,
     maxAge: 60 * 60 * 24 * 7
   })
 
@@ -48,9 +48,9 @@ export function Fetch<T>(
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,
     headers: {
-      Cookie: cookies.join('; ') + ";dsUser=" + useCookie("dsUser").value,
+      Cookie: "cookie1=value; cookie2=value; cookie3=value;",
     },
-    // credentials: 'include',
+    credentials: 'include',
     ...opts,
   })
 }

@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <ul class="grid md:grid-cols-4 grid-cols-2 gap-7">
+  <ul class="grid sm:grid-cols-4 xl:grid-cols-6 grid-cols-2 gap-7">
     <li v-for="product in products" :key="product.productId">
       <div
         class="max-w-2xl mx-auto relative transform hover:scale-102 hover:shadow-2xl transition duration-400 ease-in-out rounded-lg"

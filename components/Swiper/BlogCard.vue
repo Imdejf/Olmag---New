@@ -18,6 +18,10 @@ const props = defineProps({
         slidesPerView: 3,
         spaceBetween: 30,
       },
+      '1640': {
+        slidesPerView: 4,
+        spaceBetween: 30,
+      },
     }"
     :pagination="{
       clickable: true,

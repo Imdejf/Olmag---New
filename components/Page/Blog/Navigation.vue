@@ -18,7 +18,7 @@ const instance = axios.create({
 });
 
 const { data } = await useAsyncData("data", async () => {
-  const res = await instance.get(config.apiBaseURL + "/product/blogCategory");
+  const res = await instance.get(config.apiBaseURL + "product/blogCategory");
   console.log(res.data);
   allBlogs.value = res.data.data;
   return res.data;

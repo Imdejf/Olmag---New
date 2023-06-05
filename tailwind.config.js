@@ -119,7 +119,7 @@ module.exports = {
         800: "#dee2e6",
         900: "#dde1e3",
       },
-      light: {
+      red: {
         DEFAULT: "#0096FF",
         50: "#fef2f2",
         100: "#fee2e2",

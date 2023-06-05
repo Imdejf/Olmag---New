@@ -34,7 +34,7 @@
             class="grid grid-cols-1 gap-8 text-center lg:grid-cols-3 lg:text-left"
           >
             <div>
-              <strong class="font-semibold text-red-400"> Firma </strong>
+              <strong class="font-semibold"> Firma </strong>
               <nav
                 aria-label="Footer About Nav"
                 class="mt-6 flex flex-col space-y-1"

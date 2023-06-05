@@ -219,8 +219,8 @@ const showContatct = ref(false);
                 2
               </div>
             </a>
-            <a
-              href="#"
+            <NuxtLink
+              to="/login"
               class="text-center text-gray-700 hover:text-primary transition relative"
             >
               <svg
@@ -243,7 +243,7 @@ const showContatct = ref(false);
               <div class="text-[9.5px] font-semibold leading-3 uppercase">
                 Zaloguj
               </div>
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </nav>

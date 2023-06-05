@@ -10,7 +10,7 @@ const category = ref(null);
 const route = useRoute();
 
 const { data: categoryDetail } = await Fetch(
-  "/product/blogCategory/" + route.params.slug,
+  "product/blogCategory/" + route.params.slug,
   {
     method: "get",
     params: {

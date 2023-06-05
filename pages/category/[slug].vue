@@ -365,7 +365,7 @@ const { data: categoryDetail } = await useAsyncData<ProductsByCategoryDTO>(
 <style>
 .warehouse-background {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(3, 3, 3, 0.5)),
-    url("assets/content/warehouse.webp");
+    url("/assets/content/warehouse.webp");
   background-size: 100% 100%;
 }
 </style>

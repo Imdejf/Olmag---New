@@ -5,7 +5,7 @@ import axios from "axios";
 const appEnv = process.env.ENV || 'development'
 
 export default defineNuxtConfig({
-  ssr: false, //When false
+  ssr:true,
   nitro: {
       prerender: {
           crawlLinks:true

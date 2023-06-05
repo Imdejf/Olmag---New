@@ -22,8 +22,8 @@ const { data: categories } = await useAsyncData("categories", () =>
           :key="category.name"
           class="flex self-center h-full border-b-2 border-solid border-emerald-100 transform hover:scale-101 hover:shadow-md transition duration-400 ease-in-out"
         >
-          <router-link
-            :to="'/category' + category.slug"
+          <NuxtLink
+            :to="'/category/' + category.slug"
             class="w-full h-full flex items-center hover:text-green-500"
           >
             <img
@@ -46,7 +46,7 @@ const { data: categories } = await useAsyncData("categories", () =>
                   : category.name
               }}
             </p>
-          </router-link>
+          </NuxtLink>
         </div>
       </div>
     </div>

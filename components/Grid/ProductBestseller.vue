@@ -43,12 +43,12 @@ const props = defineProps({
               </p>
             </div>
             <div class="pt-3">
-              <router-link
+              <NuxtLink
                 :to="'/' + product.slug"
                 class="block w-full text-center text-white rounded-xl font-600 bg-emerald-500 hover:bg-emerald-400/90 py-4 text-sm md:text-14px font-medium"
               >
                 Sprawdź produkt!
-              </router-link>
+              </NuxtLink>
             </div>
           </div>
         </div>

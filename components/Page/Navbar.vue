@@ -43,7 +43,7 @@ const showContatct = ref(false);
             />
             <span class="tracking-1px font-bold uppercase">Kategorie</span>
           </button>
-          <a href="/" class="md:block md:mx-8">
+          <NuxtLink to="/" class="md:block md:mx-8">
             <img
               data-src="/assets/logo.webp"
               data-sizes="auto"
@@ -57,7 +57,7 @@ const showContatct = ref(false);
               width="280"
               alt="Logo Olmag.pl"
             />
-          </a>
+          </NuxtLink>
 
           <div
             class="w-full px-1 h-9 md:h-full max-w-[250px] md:max-w-md xl:max-w-3xl relative flex"

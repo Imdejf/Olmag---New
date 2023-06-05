@@ -72,7 +72,9 @@ const { data: categoryDetail } = await useAsyncData<ProductsByCategoryDTO>(
     </PageHeader>
     <PageBody>
       <PageSection class="my-5">
-        <div class="warehouse-background h-[250px] px-4 py-8 md:p-8 text-white">
+        <div
+          class="warehouse-background h-[180px] h-[250px] px-4 py-8 md:p-8 text-white"
+        >
           <h1 class="text-center text-xl md:text-3xl font-black">
             {{ categoryDetail?.categoryName }}
           </h1>

@@ -1,4 +1,18 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { BlogCategoryDTO } from "~/types/Blog/BlogTypes";
+
+const config = useRuntimeConfig().public;
+
+const { data: blogs } = await useAsyncData<BlogCategoryDTO>("blogs", () =>
+  $fetch(config.apiBaseURL + "product/blogCategory", {
+    method: "get",
+    params: {
+      languageId: config.languageId,
+      storeId: config.storeId,
+    },
+  })
+);
+</script>
 
 <template>
   <div class="py-section container mx-auto">
@@ -8,12 +22,12 @@
     <div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-[40px]">
         <div
-          v-for="blog in allBlogs"
+          v-for="blog in blogs"
           :key="blog.blogCategoryId"
           class="max-w-2xl mx-auto w-full h-full"
         >
           <div
-            class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700"
+            class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mx-auto"
           >
             <NuxtLink :to="'/blog/' + blog.slug">
               <img

@@ -11,7 +11,7 @@ defineProps({
   <nav aria-label="Breadcrumb">
     <ol
       role="list"
-      class="md:ml-14 flex flex-wrap items-center gap-1 text-sm text-gray-600"
+      class="md:ml-14 mt-1 mb-5 flex flex-wrap items-center gap-1 text-sm text-gray-600"
     >
       <li>
         <NuxtLink to="/" class="flex transition hover:text-gray-700">

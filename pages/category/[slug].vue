@@ -58,6 +58,10 @@ const { data: categoryDetail } = await useAsyncData<ProductsByCategoryDTO>(
 );
 </script>
 <template>
+  <Head>
+    <Title>{{ categoryDetail?.metaTitle }}</Title>
+    <Meta name="description" :content="categoryDetail?.metaDescription" />
+  </Head>
   <PageWrapper>
     <PageHeader>
       <PageTitle
@@ -71,7 +75,7 @@ const { data: categoryDetail } = await useAsyncData<ProductsByCategoryDTO>(
       ></PageTitle>
     </PageHeader>
     <PageBody>
-      <PageSection class="my-5">
+      <PageSection>
         <div
           class="warehouse-background h-[180px] h-[250px] px-4 py-8 md:p-8 text-white"
         >

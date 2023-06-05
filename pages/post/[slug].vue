@@ -1,9 +1,24 @@
 <script lang="ts" setup>
 import axios from "axios";
+import { BlogCategoryDTO } from "~/types/Blog/BlogTypes";
 
 definePageMeta({
   layout: "page",
 });
+
+const config = useRuntimeConfig().public;
+const route = useRoute();
+
+const { data: post } = await useAsyncData<BlogCategoryDTO>(
+  route.params.slug.toString(),
+  () =>
+    $fetch(config.apiBaseURL + "product/blogItem/" + route.params.slug, {
+      method: "GET",
+      params: {
+        languageId: config.languageId,
+      },
+    })
+);
 </script>
 
 <template>
@@ -12,7 +27,15 @@ definePageMeta({
     <Meta name="description" :content="post?.metaDescription" />
   </Head>
   <PageHeader>
-    <PageTitle></PageTitle>
+    <PageTitle
+      :textNav="[
+        { text: 'Blog', slug: '/blog' },
+        {
+          text: `${post?.name}`,
+          slug: `${post?.slug}`,
+        },
+      ]"
+    ></PageTitle>
   </PageHeader>
   <PageBody>
     <div class="container m-auto text-blue-900 my-10">

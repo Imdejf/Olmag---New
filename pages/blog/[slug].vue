@@ -5,22 +5,18 @@ definePageMeta({
   layout: "page",
 });
 
-const category = ref(null);
-
+const config = useRuntimeConfig().public;
 const route = useRoute();
 
-const { data: categoryDetail } = await Fetch(
-  "product/blogCategory/" + route.params.slug,
-  {
-    method: "get",
-    params: {
-      languageId: useCookie("dsLanguage"),
-    },
-  }
+const { data: categoryDetail } = await useAsyncData<BlogCategoryDTO>(
+  route.params.slug.toString(),
+  () =>
+    $fetch(config.apiBaseURL + "product/blogCategory/" + route.params.slug, {
+      params: {
+        languageId: config.languageId,
+      },
+    })
 );
-
-category.value = categoryDetail;
-category.value = category.value.value;
 
 function formatDate(date) {
   const parsedDate = new Date(date);
@@ -34,14 +30,22 @@ function formatDate(date) {
 
 <template>
   <Head>
-    <Title>{{ categoryDetail?.data?.metaTitle }}</Title>
-    <Meta name="description" :content="categoryDetail?.data?.metaDescription" />
+    <Title>{{ categoryDetail.metaTitle }}</Title>
+    <Meta name="description" :content="categoryDetail.metaDescription" />
   </Head>
   <PageHeader>
-    <PageTitle></PageTitle>
+    <PageTitle
+      :textNav="[
+        { text: 'Blog', slug: '/blog' },
+        {
+          text: `${categoryDetail?.name}`,
+          slug: `${categoryDetail?.slug}`,
+        },
+      ]"
+    ></PageTitle>
   </PageHeader>
   <PageBody>
-    <PageWrapper class="flex flex-col mx-5">
+    <PageWrapper class="flex flex-col m-5">
       <PageSection class="product__section__title">
         <div
           class="container w-full h-full mx-auto block mb-2 text-center <md:px-2 dashed self-center h-full"
@@ -49,14 +53,14 @@ function formatDate(date) {
           <h1
             class="text-3xl py-8 font-bold leading-none text-center sm:text-4xl"
           >
-            {{ category?.name }}
+            {{ categoryDetail.name }}
           </h1>
         </div>
         <div
-          class="p-10 grid text-blue-900 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
+          class="px-10 grid text-blue-900 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
         >
           <div
-            v-for="article in categoryDetail?.data?.blogItems"
+            v-for="article in categoryDetail.blogItems"
             :key="article.id"
             class="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white"
           >

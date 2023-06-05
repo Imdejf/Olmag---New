@@ -17,7 +17,7 @@ export default defineNuxtPlugin(() => {
         maxAge: 60 * 60 * 24 * 7
       })
 
-      const cookieUser = useCookie('dsUser')
+      const cookieUser = useCookie('dsCustomer')
 
       const config = useRuntimeConfig().public
 

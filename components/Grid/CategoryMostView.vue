@@ -10,7 +10,7 @@ const props = defineProps({
 <template>
   <ul class="grid md:grid-cols-4 grid-cols-2 gap-7 my-8">
     <li v-for="category in categories" :key="category.categoryId">
-      <router-link
+      <NuxtLink
         :to="'/category/' + category.slug"
         class="group relative block w-full md:w-56 h-[250px]"
       >
@@ -80,7 +80,7 @@ const props = defineProps({
             >
           </div>
         </div>
-      </router-link>
+      </NuxtLink>
     </li>
   </ul>
 </template>

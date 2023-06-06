@@ -2,42 +2,29 @@
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import axios from "axios";
+// import categories from "../public/data/category/categories.json";
+// const categoriesData = require("../static/data/category/categories.json");
 
 // compiler macro
 definePageMeta({
   layout: "page",
 });
-
 const config = useRuntimeConfig().public;
 const $gtm = useGTM();
 
 $gtm.enable();
 
 const { data: blogCategories } = await useAsyncData("blogCategories", () =>
-  $fetch(config.apiBaseURL + "product/blogCategory", {
-    params: {
-      storeId: config.storeId,
-      languageId: config.languageId,
-    },
-  })
+  $fetch(config.hostURL + "data/blog/blogs.json")
 );
 
 const { data: categories } = await useAsyncData("categories", () =>
-  $fetch(config.apiBaseURL + "product/category", {
-    params: {
-      storeId: config.storeId,
-      languageId: config.languageId,
-    },
-  })
+  $fetch(config.hostURL + "data/category/categories.json")
 );
 
-const { data: products } = await useAsyncData("heighlightProducts", () =>
-  $fetch(config.apiBaseURL + "product/HeighlightProduct", {
-    params: {
-      storeId: config.storeId,
-      languageId: config.languageId,
-    },
-  })
+const { data: products } = await useAsyncData("products", () =>
+  $fetch(config.hostURL + "data/product/products.json")
 );
 
 useHead({

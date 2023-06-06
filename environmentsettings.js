@@ -3,6 +3,7 @@ const GlobalSettings = {
     siteEnvironment: "Dev",
     apiBaseURL: "https://olmagpl.azurewebsites.net/api/",
     baseURL: "https://olmagpl.azurewebsites.net/",
+    hostURL: "https://white-ocean-06e833503.3.azurestaticapps.net/",
     googleTagManagerKey: "GTM-W8WK3DF",
     googleTagManagerEnabled: true,
     googleTagManagerDebug: true,

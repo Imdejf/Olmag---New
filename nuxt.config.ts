@@ -1,11 +1,13 @@
 import { GlobalSettings } from "./environmentsettings"
 import axios from "axios";
+import { fetchCategories, fetchBlogs, fetchProducts } from "./static/api/getData"
+import { config } from "process";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 const appEnv = process.env.ENV || 'development'
 
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   nitro: {
       prerender: {
           crawlLinks:true
@@ -13,13 +15,14 @@ export default defineNuxtConfig({
   },
   experimental: {
     payloadExtraction: false
-},
+  },
 
   hooks: {
     async 'nitro:config'(nitroConfig) {
         // if (nitroConfig.dev) {
         //     return
         // }
+        await saveDataToFile();
         const blogSlugs = await getBlogRoutes();
         const postSlugs = await getPostRoutes();
         const categorySlugs = await getCategory();
@@ -68,6 +71,7 @@ export default defineNuxtConfig({
       siteEnvironment: GlobalSettings[appEnv].siteEnvironment,
       baseURL: GlobalSettings[appEnv].baseURL,
       apiBaseURL: GlobalSettings[appEnv].apiBaseURL,
+      hostURL: GlobalSettings[appEnv].hostURL,
       gtm_id: GlobalSettings[appEnv].googleTagManagerKey,
       gtm_enabled: GlobalSettings[appEnv].googleTagManagerEnabled,
       gtm_debug: GlobalSettings[appEnv].googleTagManagerDebug,
@@ -123,5 +127,11 @@ const getCategory = async () => {
   // return the array of routes
   return categoryList.data.map((category) => `/category/${category}`);
 };
+
+const saveDataToFile = async () => {
+  await fetchCategories(GlobalSettings[appEnv].storeId, GlobalSettings[appEnv].languageId, GlobalSettings[appEnv].apiBaseURL);
+  await fetchBlogs(GlobalSettings[appEnv].storeId, GlobalSettings[appEnv].languageId, GlobalSettings[appEnv].apiBaseURL);
+  await fetchProducts(GlobalSettings[appEnv].storeId, GlobalSettings[appEnv].languageId, GlobalSettings[appEnv].apiBaseURL);
+}
 
 //https://github.com/Smef/nuxt-ssg-issue-demo/tree/main

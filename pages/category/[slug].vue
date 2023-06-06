@@ -46,7 +46,8 @@ const searchOptions: SearchOptions = {
 
 const { data: categoryDetail } =
   await useCachedAsyncData<ProductsByCategoryDTO>(
-    route.params.slug.toString(),
+    //route.params.slug.toString(),
+    "test",
     () =>
       $fetch(config.apiBaseURL + "product/category/CategoryDetail", {
         params: {

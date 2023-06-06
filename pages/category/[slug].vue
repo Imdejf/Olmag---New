@@ -44,20 +44,26 @@ const searchOptions: SearchOptions = {
   maxPrice: null,
 };
 
-const { data: categoryDetail } =
-  await useCachedAsyncData<ProductsByCategoryDTO>(
-    //route.params.slug.toString(),
-    "test",
-    () =>
-      $fetch(config.apiBaseURL + "product/category/CategoryDetail", {
-        params: {
-          storeId: config.storeId,
-          languageId: config.languageId,
-          slug: route.params.slug,
-          params: searchOptions,
-        },
-      })
-  );
+const categoryDetail = ref(null);
+
+if (!process.client) {
+  const { data: categoryDetail2 } =
+    await useCachedAsyncData<ProductsByCategoryDTO>(
+      //route.params.slug.toString(),
+      "test",
+      () =>
+        $fetch(config.apiBaseURL + "product/category/CategoryDetail", {
+          params: {
+            storeId: config.storeId,
+            languageId: config.languageId,
+            slug: route.params.slug,
+            params: searchOptions,
+          },
+        })
+    );
+
+  categoryDetail.value = categoryDetail2.value;
+}
 </script>
 <template>
   <Head>

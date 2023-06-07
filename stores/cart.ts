@@ -34,7 +34,7 @@ interface CartState {
   }
 
 // Definiujemy sklep koszyka
-export const useCartStore = defineStore({
+export const useCart = defineStore({
   id: 'cart',
   state: (): CartState => ({
     cart: null,
@@ -59,7 +59,7 @@ export const useCartStore = defineStore({
     async initCartBadge(): Promise<void> {
         try {
           var response = await Fetch('/product/shoppingcart/CartBadge', { method: 'get' })
-          this.setTotalCount(response.data.value.data)
+          this.setTotalCount(response.data.value)
         } catch (error) {
           console.error(error)
         }
@@ -85,18 +85,18 @@ export const useCartStore = defineStore({
     },
 
     async getCartDetail(calculateTransport: boolean): Promise<void> {
+      const config = useRuntimeConfig().public;
       const dsCustomer = useCookie('dsCustomer')
-      const dsLanguage = useCookie('dsLanguage')
+      const dsLanguage = config.languageId
 
-      const cart = await Fetch('/product/shoppingcart/GetActiveCartDetails', { method: 'get', query: {
-        userId: dsCustomer,
+      const {data: cartDetails} = await Fetch('product/shoppingcart/GetActiveCartDetails', { method: 'get', query: {
+        userId: dsCustomer.value,
         languageId: dsLanguage,
         calculateTransport: calculateTransport
       }})
 
-      const cartDetail: CartDTO = cart.data.value.data;
-
-      this.cart = cartDetail    
+      const cartDetail: CartDTO = cartDetails.value;
+      this.cart = cartDetail
     },
 
     calculatePalletsAndCardboards(productId: string, value: number): void {
@@ -136,7 +136,8 @@ export const useCartStore = defineStore({
       const dsStore = useCookie('dsStore')
       const dsCustomer = useCookie('dsCustomer')
       this.setAddCartResult()
-
+      console.log("dwa")
+      console.log(item)
       Fetch('/product/shoppingcart/Add', { method: 'post', body: {
         productId: item.id,
         storeId: dsStore,
@@ -144,16 +145,15 @@ export const useCartStore = defineStore({
         Quantity: item.quantity
       }})
       this.totalCount = +this.totalCount + +item.quantity
-      var lastAdded = await Fetch('/product/shoppingcart/add-cart-result', {method:'get', query: {
-        productId: item.id
-      }})
-
+      // var lastAdded = await Fetch('/product/shoppingcart/add-cart-result', {method:'get', query: {
+      //   productId: item.id
+      // }})
       const cartItem: CartItem = {
-        id: lastAdded.data.value.data.productId,
-        name: lastAdded.data.value.data.productName,
-        filePath: lastAdded.data.value.data.productImage,
-        price: lastAdded.data.value.data.productPrice,
-        quantity: lastAdded.data.value.data.quantity
+        id: item.id,
+        name: item.name,
+        filePath: item.filePath,
+        price: item.price,
+        quantity: item.quantity
       }
 
       this.setLastAddedItem(cartItem)

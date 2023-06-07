@@ -1,11 +1,16 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
+import { useCart } from "~/stores/cart";
+
+const cart = useCart();
 const application = useApplication();
 const showContatct = ref(false);
 
 const openShoppingCart = () => {
   application.changeShoppingCart();
 };
+
+cart.initCartBadge();
 </script>
 
 <template>
@@ -218,9 +223,10 @@ const openShoppingCart = () => {
                 Koszyk
               </div>
               <div
+                v-if="cart.totalCount > 0"
                 class="absolute bg-green-400 -right-0 -top-2 w-4 h-4 rounded-full flex items-center justify-center text-white text-xs"
               >
-                2
+                {{ cart.totalCount }}
               </div>
             </button>
             <NuxtLink

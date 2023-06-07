@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { Fetch } from "~/composables/useFetch";
 import { ProductsByCategoryDTO } from "~/types/ProductsByCategory/productsByCategoryDTO";
 import axios from "axios";
+import { useCart } from "~/stores/cart";
 
 export interface SearchOptions {
   query: string | null;
@@ -14,23 +15,13 @@ export interface SearchOptions {
   minPrice: number | null;
   maxPrice: number | null;
 }
-
-const config = useRuntimeConfig().public;
-
-const addToCart = (product: ProductDTO) => {
-  const cartStore = useCartStore();
-  cartStore.addToCart({
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    quantity: product.stockQuantity > 0 ? product.stockQuantity : 1,
-  });
-};
-
 // compiler macro
 definePageMeta({
   layout: "page",
 });
+
+const cart = useCart();
+const config = useRuntimeConfig().public;
 
 const route = useRoute();
 const searchOptions: SearchOptions = {
@@ -57,11 +48,23 @@ const { data: categoryDetail } = await useAsyncData(
     );
   }
 );
+
+console.log(categoryDetail);
+
+const addToCart = (product) => {
+  cart.addToCart({
+    id: product.productId,
+    name: product.name,
+    price: product.price,
+    filePath: product.thumbnailImage.filePath,
+    quantity: product.stockQuantity > 0 ? product.stockQuantity : 1,
+  });
+};
 </script>
 <template>
   <Head>
-    <Title>{{ categoryDetail.metaTitle }}</Title>
-    <Meta name="description" :content="categoryDetail.metaDescription" />
+    <Title>{{ categoryDetail?.metaTitle }}</Title>
+    <Meta name="description" :content="categoryDetail?.metaDescription" />
   </Head>
   <PageWrapper>
     <PageHeader>
@@ -69,8 +72,8 @@ const { data: categoryDetail } = await useAsyncData(
         :textNav="[
           { text: 'Kategorie', slug: '/category' },
           {
-            text: `${categoryDetail.name}`,
-            slug: `${categoryDetail.slug}`,
+            text: `${categoryDetail?.name}`,
+            slug: `${categoryDetail?.slug}`,
           },
         ]"
       ></PageTitle>
@@ -81,10 +84,10 @@ const { data: categoryDetail } = await useAsyncData(
           class="warehouse-background h-[180px] h-[250px] px-4 py-8 md:p-8 text-white"
         >
           <h1 class="text-center text-xl md:text-3xl font-black">
-            {{ categoryDetail.name }}
+            {{ categoryDetail?.name }}
           </h1>
           <p class="text-sm md:text-lg font-medium mt-3">
-            {{ categoryDetail.description }}
+            {{ categoryDetail?.description }}
           </p>
         </div>
       </PageSection>
@@ -236,12 +239,12 @@ const { data: categoryDetail } = await useAsyncData(
                     </div>
                   </NuxtLink>
                   <div
-                    class="md:py-4 py-3 md:px-4 border-t-2 border-solid border-emerald-100 text-center md:text-left px-2.5 w-full md:w-5/12 pr-4"
+                    class="md:py-4 py-3 md:px-4 border-l-2 border-solid border-emerald-100 text-center md:text-left px-2.5 w-full md:w-5/12 pr-4"
                   >
                     <div class="rounded">
-                      <div class="text-sm relative">
+                      <div class="text-sm">
                         <div class="flex justify-center md:justify-start">
-                          <div class="relative">
+                          <div class="">
                             <span
                               v-show="product.oldPrice"
                               class="ml-[50%] table line-through decoration-red-400 font-bold text-lg text-red-500"

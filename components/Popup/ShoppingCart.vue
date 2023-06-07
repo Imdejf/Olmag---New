@@ -1,11 +1,18 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
+import { useCart } from "~/stores/cart";
 
 const application = useApplication();
-
+const cart = useCart();
 const toggleShoppingCart = () => {
   application.changeShoppingCart();
 };
+
+const getCartDetail = () => {
+  cart.getCartDetail(false);
+};
+
+getCartDetail();
 </script>
 
 <template>
@@ -81,7 +88,7 @@ const toggleShoppingCart = () => {
                       class="-my-6 divide-y-2 divide-dashed divide-gray-200"
                     >
                       <li
-                        v-for="product in cart?.items"
+                        v-for="product in cart.cart?.items"
                         :key="product.id"
                         class="flex py-6"
                       >
@@ -103,7 +110,7 @@ const toggleShoppingCart = () => {
                               <h3>
                                 <a href="#">{{ product.productName }}</a>
                               </h3>
-                              <p class="ml-4 font-700 text-blue-900">
+                              <p class="ml-4 font-extrabold text-blue-900">
                                 {{ product.productPrice }} zł
                               </p>
                             </div>
@@ -145,17 +152,19 @@ const toggleShoppingCart = () => {
                 class="border-t border-t-2 border-spacing-t-100 border-dashed gray-200 py-6 px-4 sm:px-6"
               >
                 <div
-                  class="flex justify-between text-base font-medium text-green-400"
+                  class="flex justify-between text-base font-extrabold text-green-400"
                 >
                   <p>Razem(netto)</p>
-                  <p class="font-800">{{ cart?.subTotal?.toFixed(2) }} PLN</p>
+                  <p class="font-extrabold">
+                    {{ cart.cart?.subTotal?.toFixed(2) }} PLN
+                  </p>
                 </div>
                 <div
                   class="flex mt-1 justify-between text-12px font-medium text-gray-400"
                 >
                   <p>Razem (brutto)</p>
-                  <p class="font-600">
-                    {{ cart?.subTotalGross?.toFixed(2) }} PLN
+                  <p class="font-semibold">
+                    {{ cart.cart?.subTotalGross?.toFixed(2) }} PLN
                   </p>
                 </div>
                 <p class="mt-5 text-sm text-gray-500">

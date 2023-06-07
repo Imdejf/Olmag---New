@@ -26,7 +26,8 @@ export default defineNuxtConfig({
         const blogSlugs = await getBlogRoutes();
         const postSlugs = await getPostRoutes();
         const categorySlugs = await getCategory();
-        nitroConfig.prerender.routes.push(...blogSlugs, ...postSlugs, ...categorySlugs)
+        const productSlugs = await getProduct();
+        nitroConfig.prerender.routes.push(...blogSlugs, ...postSlugs, ...categorySlugs, ...productSlugs)
         return
     }
 },
@@ -114,7 +115,6 @@ const getPostRoutes = async () => {
       storeId: GlobalSettings[appEnv].storeId
     }
   })
-  // return the array of routes
   return postList.data.map((post) => `/post/${post}`);
 };
 
@@ -124,9 +124,20 @@ const getCategory = async () => {
       storeId: GlobalSettings[appEnv].storeId
     }
   })
-  // return the array of routes
   return categoryList.data.map((category) => `/category/${category}`);
 };
+
+const getProduct = async () => {
+  console.log(GlobalSettings[appEnv].apiBaseURL + 'product/slugs')
+  const productList = await axios.get(GlobalSettings[appEnv].apiBaseURL + 'product/slugs', {
+    params: {
+      storeId: GlobalSettings[appEnv].storeId
+    }
+  })
+
+  return productList.data.map((product) => `/${product}`);
+};
+
 
 const saveDataToFile = async () => {
   await fetchCategories(GlobalSettings[appEnv].storeId, GlobalSettings[appEnv].languageId, GlobalSettings[appEnv].apiBaseURL);

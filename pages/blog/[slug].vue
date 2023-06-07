@@ -32,8 +32,8 @@ function formatDate(date) {
 
 <template>
   <Head>
-    <Title>{{ categoryDetail.metaTitle }}</Title>
-    <Meta name="description" :content="categoryDetail.metaDescription" />
+    <Title>{{ categoryDetail?.metaTitle }}</Title>
+    <Meta name="description" :content="categoryDetail?.metaDescription" />
   </Head>
   <PageHeader>
     <PageTitle
@@ -55,14 +55,14 @@ function formatDate(date) {
           <h1
             class="text-3xl py-8 font-bold leading-none text-center sm:text-4xl"
           >
-            {{ categoryDetail.name }}
+            {{ categoryDetail?.name }}
           </h1>
         </div>
         <div
           class="px-10 grid text-blue-900 grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"
         >
           <div
-            v-for="article in categoryDetail.blogItems"
+            v-for="article in categoryDetail?.blogItems"
             :key="article.id"
             class="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-white"
           >

@@ -62,7 +62,7 @@ export async function fetchProducts(storeId: string, languageId: string, apiBase
       if (err) {
         console.error('Błąd zapisu do pliku:', err);
       } else {
-        console.log('Produkty zostały zapisane do pliku categories.json');
+        console.log('Produkty zostały zapisane do pliku product.json');
       }
     });
   } catch (error) {

@@ -105,7 +105,6 @@ const getBlogRoutes = async () => {
     }
   })
 
-  // return the array of routes
   return blogsList.data.map((category) => `/blog/${category}`);
 };
 

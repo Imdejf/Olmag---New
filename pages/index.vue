@@ -62,7 +62,7 @@ useHead({
           />
           <div class="relative">
             <h1 class="font-base text-center text-md">
-              Olmag.pl - wyposażenie magazynu
+              Olmag.pl - zaopatrzenie magazynu
             </h1>
             <div class="container mx-auto py-4 md:py-24">
               <h2

@@ -9,7 +9,7 @@ const application = useApplication();
 <template>
   <Html lang="pl">
     <Body
-      class="text-blue-900 font-nunito bg-gray-50"
+      class="text-blue-900 overflow-x-hidden font-nunito bg-gray-50"
       :class="`${application.topMenuIsOpen ? 'overflow-hidden' : ''}`"
     >
       <NuxtLayout>

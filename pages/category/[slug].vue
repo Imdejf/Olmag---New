@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { Fetch } from "~/composables/useFetch";
 import { ProductsByCategoryDTO } from "~/types/ProductsByCategory/productsByCategoryDTO";
+import axios from "axios";
 
 export interface SearchOptions {
   query: string | null;
@@ -44,31 +45,23 @@ const searchOptions: SearchOptions = {
   maxPrice: null,
 };
 
-const categoryDetail = ref(null);
-
-if (!process.client) {
-  const { data: categoryDetail2 } =
-    await useCachedAsyncData<ProductsByCategoryDTO>(
-      //route.params.slug.toString(),
-      "test",
-      () =>
-        $fetch(config.apiBaseURL + "product/category/CategoryDetail", {
-          params: {
-            storeId: config.storeId,
-            languageId: config.languageId,
-            slug: route.params.slug,
-            params: searchOptions,
-          },
-        })
+const { data: categoryDetail } = await useAsyncData(
+  route.params.slug.toString(),
+  async () => {
+    const categories = await axios.get(
+      config.hostURL + "data/category/categories.json"
     );
 
-  categoryDetail.value = categoryDetail2.value;
-}
+    return categories.data.find(
+      (item) => item.slug === route.params.slug.toString()
+    );
+  }
+);
 </script>
 <template>
   <Head>
-    <Title>{{ categoryDetail?.metaTitle }}</Title>
-    <Meta name="description" :content="categoryDetail?.metaDescription" />
+    <Title>{{ categoryDetail.metaTitle }}</Title>
+    <Meta name="description" :content="categoryDetail.metaDescription" />
   </Head>
   <PageWrapper>
     <PageHeader>
@@ -76,8 +69,8 @@ if (!process.client) {
         :textNav="[
           { text: 'Kategorie', slug: '/category' },
           {
-            text: `${categoryDetail?.categoryName}`,
-            slug: `${categoryDetail?.categorySlug}`,
+            text: `${categoryDetail.name}`,
+            slug: `${categoryDetail.slug}`,
           },
         ]"
       ></PageTitle>
@@ -88,10 +81,10 @@ if (!process.client) {
           class="warehouse-background h-[180px] h-[250px] px-4 py-8 md:p-8 text-white"
         >
           <h1 class="text-center text-xl md:text-3xl font-black">
-            {{ categoryDetail?.categoryName }}
+            {{ categoryDetail.name }}
           </h1>
           <p class="text-sm md:text-lg font-medium mt-3">
-            {{ categoryDetail?.description }}
+            {{ categoryDetail.description }}
           </p>
         </div>
       </PageSection>

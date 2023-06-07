@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import axios from "axios";
-import { BlogCategoryDTO } from "~/types/Blog/BlogTypes";
 
 definePageMeta({
   layout: "page",
@@ -9,16 +8,33 @@ definePageMeta({
 const config = useRuntimeConfig().public;
 const route = useRoute();
 
-const { data: post } = await useAsyncData<BlogCategoryDTO>(
+const { data: post } = await useAsyncData(
   route.params.slug.toString(),
-  () =>
-    $fetch(config.apiBaseURL + "product/blogItem/" + route.params.slug, {
-      method: "GET",
-      params: {
-        languageId: config.languageId,
-      },
-    })
+  async () => {
+    const categories = await axios.get(config.hostURL + "data/blog/blogs.json");
+    const searchPost = await findSlugInData(
+      categories.data,
+      route.params.slug.toString()
+    );
+    return searchPost;
+  }
 );
+
+function findSlugInData(data, slug) {
+  let foundItem = null;
+  data.forEach((item) => {
+    if (Array.isArray(item.blogItems)) {
+      for (let i = 0; i < item.blogItems.length; i++) {
+        if (item.blogItems[i].slug === slug) {
+          foundItem = item.blogItems[i];
+          break;
+        }
+      }
+    }
+  });
+
+  return foundItem;
+}
 </script>
 
 <template>

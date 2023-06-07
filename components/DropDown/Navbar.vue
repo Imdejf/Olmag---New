@@ -1,13 +1,9 @@
 <script lang="ts" setup>
 const config = useRuntimeConfig().public;
 
-const { data: categories } = await useAsyncData("categories", () =>
-  $fetch(config.apiBaseURL + "product/category", {
-    params: {
-      storeId: config.storeId,
-      languageId: config.languageId,
-    },
-  })
+const { data: categories } = await useAsyncData<Category | []>(
+  "categories",
+  () => $fetch(config.hostURL + "data/category/categories.json")
 );
 </script>
 

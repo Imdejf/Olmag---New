@@ -2,6 +2,10 @@
 import { useApplication } from "~/stores/application";
 const application = useApplication();
 const showContatct = ref(false);
+
+const openShoppingCart = () => {
+  application.changeShoppingCart();
+};
 </script>
 
 <template>
@@ -10,19 +14,19 @@ const showContatct = ref(false);
       <div class="navbar__banner bg-blue-900">
         <div class="container mx-auto <md:px`-2">
           <div class="flex relative justify-between">
-            <div class="flex relative w-1/3 h-10">
+            <div class="flex relative w-1/4 h-10">
               <div
                 class="h-full absolute w-full top-10 right-0 transform -rotate-45 origin-top-left bg-green-600"
               ></div>
             </div>
             <div
-              class="w-2/3 relative self-center md:w-1/3 text-center text-[#78BE20]"
+              class="w-3/4 relative self-center md:w-2/4 text-center text-[#78BE20]"
             >
               <div class="w-full text-[9px] md:text-base">
-                <span>Witamy w Olmag - wyposażenie do magazynu</span>
+                <span>Witamy w Olmag - Najlepsze wyposażenie do magazynu</span>
               </div>
             </div>
-            <div class="flex w-1/3 right-0 justify-end relative">
+            <div class="flex w-1/4 right-0 justify-end relative">
               <div
                 class="h-full absolute w-full top-10 right-0 transform rotate-45 origin-top-right bg-green-600"
               ></div>
@@ -158,7 +162,7 @@ const showContatct = ref(false);
                 <ul class="p-2">
                   <span class="text-sm font-semibold">Kontakt</span>
                   <li
-                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-green-600 hover:bg-emerald-50"
                     role="menuitem"
                   >
                     <svg
@@ -175,7 +179,7 @@ const showContatct = ref(false);
                     sklep@olmag.pl
                   </li>
                   <li
-                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                    class="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-green-600 hover:bg-emerald-50"
                     role="menuitem"
                   >
                     <svg
@@ -194,8 +198,8 @@ const showContatct = ref(false);
                 </ul>
               </div>
             </NuxtLink>
-            <a
-              href="#"
+            <button
+              @click="openShoppingCart"
               class="text-center text-gray-700 hover:text-primary transition relative"
             >
               <svg
@@ -218,7 +222,7 @@ const showContatct = ref(false);
               >
                 2
               </div>
-            </a>
+            </button>
             <NuxtLink
               to="/login"
               class="text-center text-gray-700 hover:text-primary transition relative"
@@ -246,6 +250,7 @@ const showContatct = ref(false);
             </NuxtLink>
           </div>
         </div>
+        <PopupShoppingCart />
       </nav>
     </template>
   </BuilderNavbar>

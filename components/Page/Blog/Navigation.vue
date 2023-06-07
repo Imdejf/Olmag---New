@@ -8,14 +8,9 @@ definePageMeta({
 
 const config = useRuntimeConfig().public;
 
-const { data: blogs } = await useAsyncData<BlogCategoryDTO>("blogs", () =>
-  $fetch(config.apiBaseURL + "product/blogCategory", {
-    method: "get",
-    params: {
-      languageId: config.languageId,
-      storeId: config.storeId,
-    },
-  })
+const { data: blogs } = await useAsyncData<BlogCategoryDTO | []>(
+  "categories",
+  () => $fetch(config.hostURL + "data/blog/blogs.json")
 );
 </script>
 

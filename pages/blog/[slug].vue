@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import axios from "axios";
 import { BlogCategoryDTO } from "~/types/Blog/BlogTypes";
 
 definePageMeta({
@@ -8,14 +9,15 @@ definePageMeta({
 const config = useRuntimeConfig().public;
 const route = useRoute();
 
-const { data: categoryDetail } = await useAsyncData<BlogCategoryDTO>(
+const { data: categoryDetail } = await useAsyncData(
   route.params.slug.toString(),
-  () =>
-    $fetch(config.apiBaseURL + "product/blogCategory/" + route.params.slug, {
-      params: {
-        languageId: config.languageId,
-      },
-    })
+  async () => {
+    const categories = await axios.get(config.hostURL + "data/blog/blogs.json");
+
+    return categories.data.find(
+      (item) => item.slug === route.params.slug.toString()
+    );
+  }
 );
 
 function formatDate(date) {

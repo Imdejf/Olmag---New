@@ -38,6 +38,7 @@ const props = defineProps({
               quality="80"
               height="120px"
               width="120px"
+              class="lazyload"
             />
           </div>
           <div

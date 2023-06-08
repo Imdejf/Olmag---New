@@ -27,7 +27,7 @@ const setThumbsSwiper = (swiper: Swiper) => {
         SwiperNavigation,
         SwiperFreeMode,
       ]"
-      class="h-[300px]"
+      class="h-[200px] md:h-[300px]"
     >
       <SwiperSlide v-for="image in images" :key="image"
         ><img :data-src="image.url" class="lazyload" alt="Skrzynia"
@@ -56,7 +56,7 @@ const setThumbsSwiper = (swiper: Swiper) => {
         SwiperThumbs,
         SwiperFreeMode,
       ]"
-      class="swiper_image_vertical h-[300px] w-[250px] !hidden md:!block"
+      class="swiper_image_vertical h-[150px] md:h-[300px] w-[250px] !hidden md:!block"
     >
       <SwiperSlide v-for="image in images" :key="image"
         ><img :data-src="image.url" class="lazyload" alt="Skrzynia"

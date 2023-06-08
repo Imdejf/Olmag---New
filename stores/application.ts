@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useApplication = defineStore('application', {
   state: () => ({
-    questionProduct: false,
+    questionProduct:  false,
     shoppingCartOpen: false,
     topMenuIsOpen: false,
     blogs: [],

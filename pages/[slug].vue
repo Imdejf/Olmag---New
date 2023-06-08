@@ -198,14 +198,14 @@ const addToCart = () => {
                   <SwiperProductImages :images="product.images" />
                 </div>
                 <div
-                  class="md:sticky top-[105px] block border-l-2 mt-13 md:mt-0 border-t-2 md:border-t-0 border-b-2 md:border-b-0 border-r-2 md:border-r-0 flex-1 md:w-2/6 border-dashed h-full"
+                  class="md:sticky top-[105px] block p-2 border-l-2 mt-13 md:mt-0 border-t-2 md:border-t-0 border-b-2 md:border-b-0 border-r-2 md:border-r-0 flex-1 md:w-2/6 border-dashed h-full"
                 >
-                  <div class="flex justify-end gap-2 mt-2">
+                  <div class="flex justify-end gap-2">
                     <BannerBestseller v-show="product.isBestseller" />
                     <BannerNew v-show="product.isNew" />
                     <BannerSales v-show="product.isSales" />
                   </div>
-                  <form class="space-y-2 pt-2">
+                  <form class="space-y-2">
                     <div class="rounded px-5 pb-6 border-b-3 border-dashed">
                       <p class="text-sm">
                         <span class="block font-semibold text-xl">

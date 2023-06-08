@@ -14,29 +14,32 @@ const setThumbsSwiper = (swiper: Swiper) => {
 >
 
 <template>
-  <div class="flex h-sm <sm:h-50 <sm:w-full flex-row-reverse">
+  <div class="md:flex md:flex-row-reverse">
     <Swiper
       :loop="true"
-      :spaceBetween="10"
       :navigation="true"
       :thumbs="{ swiper: thumbsSwiper }"
+      :centeredSlides="true"
+      :slidesPerView="'auto'"
       :modules="[
         SwiperPagination,
         SwiperThumbs,
         SwiperNavigation,
         SwiperFreeMode,
       ]"
-      class="mySwiper2 swiper-product w-full"
+      class="h-[300px]"
     >
       <SwiperSlide v-for="image in images" :key="image"
         ><img :data-src="image.url" class="lazyload" alt="Skrzynia"
       /></SwiperSlide>
     </Swiper>
-    <swiper
+    <Swiper
       @swiper="setThumbsSwiper"
-      :loop="images.length >= 4 ? true : false"
       :spaceBetween="10"
       :slidesPerView="4"
+      :loop="images.length >= 4 ? true : false"
+      :freeMode="false"
+      :direction="'vertical'"
       :breakpoints="{
         '640': {
           slidesPerView: 4,
@@ -47,42 +50,66 @@ const setThumbsSwiper = (swiper: Swiper) => {
           spaceBetween: 10,
         },
       }"
-      :freeMode="true"
-      :direction="'vertical'"
-      :watchSlidesProgress="true"
       :modules="[
         SwiperPagination,
         SwiperNavigation,
         SwiperThumbs,
         SwiperFreeMode,
       ]"
-      class="mySwiper"
+      class="swiper_image_vertical h-[300px] w-[250px] !hidden md:!block"
     >
-      <SwiperSlide v-for="image in images" :key="image">
-        <div class="slider__image">
-          <img :data-src="image.url" class="lazyload !h-full" alt="Skrzynia" />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide v-for="image in images" :key="image">
-        <div class="slider__image">
-          <img :data-src="image.url" class="lazyload !h-full" alt="Skrzynia" />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide v-for="image in images" :key="image">
-        <div class="slider__image">
-          <img :data-src="image.url" class="lazyload !h-full" alt="Skrzynia" />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide v-for="image in images" :key="image">
-        <div class="slider__image">
-          <img :data-src="image.url" class="lazyload !h-full" alt="Skrzynia" />
-        </div>
-      </SwiperSlide>
-      <SwiperSlide v-for="image in images" :key="image">
-        <div class="slider__image">
-          <img :data-src="image.url" class="lazyload !h-full" alt="Skrzynia" />
-        </div>
-      </SwiperSlide>
-    </swiper>
+      <SwiperSlide v-for="image in images" :key="image"
+        ><img :data-src="image.url" class="lazyload" alt="Skrzynia"
+      /></SwiperSlide>
+    </Swiper>
+    <Swiper
+      @swiper="setThumbsSwiper"
+      :spaceBetween="10"
+      :slidesPerView="4"
+      :loop="images.length >= 4 ? true : false"
+      :freeMode="false"
+      :direction="'horizontal'"
+      :breakpoints="{
+        '640': {
+          slidesPerView: 4,
+          spaceBetween: 10,
+        },
+        '1024': {
+          slidesPerView: 5,
+          spaceBetween: 10,
+        },
+      }"
+      :modules="[
+        SwiperPagination,
+        SwiperNavigation,
+        SwiperThumbs,
+        SwiperFreeMode,
+      ]"
+      class="swiper_image_vertical my-5 h-[80px] w-[300px] md:!hidden"
+    >
+      <SwiperSlide v-for="image in images" :key="image"
+        ><img :data-src="image.url" class="lazyload" alt="Skrzynia"
+      /></SwiperSlide>
+    </Swiper>
   </div>
 </template>
+
+<style>
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px;
+}
+
+.swiper_image_vertical .swiper-slide {
+  opacity: 0.5;
+}
+
+.swiper_image_vertical .swiper-slide-thumb-active {
+  opacity: 1;
+  border-radius: 10px;
+  border: 2px solid #6ee7b7 !important;
+}
+</style>

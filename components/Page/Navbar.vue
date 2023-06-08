@@ -10,7 +10,9 @@ const openShoppingCart = () => {
   application.changeShoppingCart();
 };
 
-cart.initCartBadge();
+if (useCookie("dsCustomer").value) {
+  cart.initCartBadge();
+}
 </script>
 
 <template>

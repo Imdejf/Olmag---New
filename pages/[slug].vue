@@ -79,6 +79,7 @@ function findVariant() {
 const currentProduct = ref(null);
 
 const handleButtonClick = () => {
+  console.log(product);
   if (
     product.value.availableOptions != null &&
     product.value.availableOptions.length != 0
@@ -112,7 +113,6 @@ const handleButtonClick = () => {
 };
 
 const setUpdateValue = (value) => {
-  console.log(product);
   const index = selectedValue.value.findIndex(
     (item) => item.optionId === value.optionId
   );
@@ -163,7 +163,7 @@ const addToCart = () => {
     name: currentProduct.value.name,
     price: currentProduct.price,
     quantity: productQuantity.value,
-    filePath: currentProduct.value.thumbnailImage,
+    filePath: currentProduct.value.thumbnailImage.filePath,
   });
 };
 </script>
@@ -184,21 +184,21 @@ const addToCart = () => {
       <PageSection class="product__section__title">
         <div v-if="product">
           <div
-            class="mx-auto w-full h-full block mb-2 rounded-md <md:px-2 self-center h-full bg-white"
+            class="mx-auto w-full h-full block mb-2 rounded-md px-2 md:px-0 self-center h-full bg-white"
           >
-            <div class="border-b-3 border-dashed <lg:border-b-2">
+            <div class="lg:border-b-2 border-dashed border-b-2">
               <BannerUS />
               <h1 class="text-xl py-4 mx-8 font-bold leading-none sm:text-2xl">
                 {{ product?.name }}
               </h1>
             </div>
             <div class="mx-auto">
-              <div class="flex flex-wrap <sm:block">
-                <div class="pt-4 md:w-4/6">
+              <div class="md:flex md:flex-wrap block">
+                <div class="pt-4 md:w-4/6 flex">
                   <SwiperProductImages :images="product.images" />
                 </div>
                 <div
-                  class="lg:sticky top-31 block border-l-3 <md:mt-13 <md:border-t-2 <md:border-b-2 <md:border-r-2 flex-1 md:w-2/6 <lg:border-l-2 border-dashed h-full"
+                  class="md:sticky top-[105px] block border-l-2 mt-13 md:mt-0 border-t-2 md:border-t-0 border-b-2 md:border-b-0 border-r-2 md:border-r-0 flex-1 md:w-2/6 border-dashed h-full"
                 >
                   <div class="flex justify-end gap-2 mt-2">
                     <BannerBestseller v-show="product.isBestseller" />
@@ -208,20 +208,20 @@ const addToCart = () => {
                   <form class="space-y-2 pt-2">
                     <div class="rounded px-5 pb-6 border-b-3 border-dashed">
                       <p class="text-sm">
-                        <span class="block font-600 text-xl">
+                        <span class="block font-semibold text-xl">
                           Twoja cena:
                         </span>
                       </p>
                       <p class="text-sm relative pt-4 w-65">
                         <span
-                          class="absolute -top-1 right-26 line-through decoration-red-700 font-600 text-lg text-red-500"
+                          class="absolute -top-1 right-32 line-through decoration-red-700 font-semibold text-lg text-red-500"
                         >
                           {{ product?.oldPrice?.toFixed(2) }} zł
                         </span>
-                        <strong class="font-600 text-3xl text-blue-600">
+                        <strong class="font-semibold text-3xl text-blue-600">
                           {{ product?.price?.toFixed(2) }} zł
                         </strong>
-                        <span class="font-600 text-md text-gray-400">
+                        <span class="font-semibold text-md text-gray-400">
                           {{ product?.priceGross?.toFixed(2) }} zł (brutto)
                         </span>
                       </p>
@@ -229,10 +229,14 @@ const addToCart = () => {
 
                     <div class="px-5">
                       <div class="flex pt-3">
-                        <p class="text-lg w-5/12 font-600 text-gray-400">
+                        <p
+                          class="text-sm md:text-md w-4/12 font-semibold text-gray-400"
+                        >
                           Dostępność:
                         </p>
-                        <p class="text-lg w-3/12 font-800 text-emerald-400">
+                        <p
+                          class="text-sm md:text-md w-8/12 font-extrabold text-emerald-400 self-center"
+                        >
                           {{
                             getProductAvailabilityDescription(
                               product?.productAvailability
@@ -241,18 +245,25 @@ const addToCart = () => {
                         </p>
                       </div>
                       <div class="flex">
-                        <p class="text-lg w-5/12 font-600 text-gray-400">
+                        <p
+                          class="text-sm md:text-md w-4/12 font-semibold text-gray-400"
+                        >
                           Jednostka:
                         </p>
-                        <p class="text-lg w-3/12 font-800 text-gray-600">
+                        <p
+                          class="text-sm md:text-md w-8/12 self-center font-extrabold text-gray-600"
+                        >
                           szt.
                         </p>
                       </div>
                       <div
-                        v-if="product.variations && product.optionDisplayValues"
+                        v-if="
+                          product.variations.length > 0 &&
+                          product.optionDisplayValues.length > 0
+                        "
                       >
                         <p
-                          class="font-600 text-lg mt-8 w-full pb-4 border-b border-gray-300"
+                          class="font-semibold text-lg mt-8 w-full pb-4 border-b border-gray-300"
                         >
                           Wybierz wariant
                         </p>
@@ -283,7 +294,6 @@ const addToCart = () => {
                     </div>
                     <div class="flex">
                       <FormQuantityInput
-                        class=""
                         @update:value="productQuantity = $event"
                       />
                       <a
@@ -297,7 +307,7 @@ const addToCart = () => {
                       <button
                         @click="application.changeQuestionProduct"
                         type="button"
-                        class="w-full rounded border border-blue-900 bg-blue-900 py-3 text-0.75rem font-bold uppercase tracking-wide"
+                        class="w-full rounded border border-blue-900 bg-blue-900 py-3 text-[0.75rem] font-bold uppercase tracking-wide"
                       >
                         <Icon name="ic:round-question-mark" class="w-5 h-5" />
                         Zapytaj o produkt
@@ -308,7 +318,7 @@ const addToCart = () => {
                 <div class="md:w-4/6 relative">
                   <div class="pt-4">
                     <div class="px-4">
-                      <p class="font-600 text-lg">Opis produktu:</p>
+                      <p class="font-semibold text-lg">Opis produktu:</p>
                       <p
                         class="mt-4"
                         v-html="product.productLang[0].description"
@@ -318,7 +328,7 @@ const addToCart = () => {
                       <div class="w-2/3">
                         <div>
                           <p
-                            class="font-600 text-lg border-b pb-3 border-gray-300"
+                            class="font-semibold text-lg border-b pb-3 border-gray-300"
                           >
                             Szczegóły:
                           </p>

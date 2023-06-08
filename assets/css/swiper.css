@@ -1,30 +1,13 @@
+
+
 .swiper-button-prev {
     color: #6ee7b7 !important;
-    border-radius: 50%;
-    background-color: #00263a;
-    width: 50px !important;
-    height: 50px !important;
-    margin:auto !important;
 
    }
   
-   .swiper-button-prev:after {
-    font-size: 20px !important;
-   }
-
-   .swiper-button-next:after {
-    font-size: 20px !important;
-   }
 
   .swiper-button-next {
     color: #6ee7b7 !important;
-    border-radius: 50%;
-    background-color: #00263a;
-    width: 50px !important;
-    height: 50px !important;
-    margin:auto !important;
+
 }
 
-.swiper-pagination-bullet-active {
-    background-color: #6ee7b7 !important;
-}

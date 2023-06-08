@@ -18,14 +18,14 @@ function updateValue(value: number) {
 <template>
   <div>
     <label for="Quantity" class="sr-only"> Quantity </label>
-    <div class="flex w-full items-center gap-1">
+    <div class="flex w-full h-full items-center gap-1">
       <input
         type="number"
         id="Quantity"
         :max="10"
         :value="value"
         @input="updateValue($event.target.value)"
-        class="bg-gray-200 w-full text-center rounded-l-lg py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:border-gree appearance-none border-3 bordn-400"
+        class="bg-gray-200 h-full w-full text-center rounded-l-lg py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:border-gree appearance-none border-3 bordn-400"
       />
     </div>
   </div>

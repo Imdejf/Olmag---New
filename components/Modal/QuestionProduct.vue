@@ -12,7 +12,7 @@ onMounted(async () => {
 });
 
 const handleSubmit = async (values, actions) => {
-  useFetch("/administration/store/productQuestion", {
+  Fetch("/administration/store/productQuestion", {
     method: "POST",
     body: {
       storeId: config.storeId,
@@ -42,6 +42,7 @@ configure({
   validateOnInput: false, // controls if `input` events should trigger validation with `handleChange` handler
   validateOnModelUpdate: true, // controls if `update:modelValue` events should trigger validation with `handleChange` handler
 });
+
 const schema = object({
   email: string().required().email().label("Email Address"),
   phone: string().required().min(8).label("Phone number"),

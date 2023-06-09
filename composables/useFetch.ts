@@ -41,6 +41,8 @@ export function Fetch<T>(
     dsLanguage.value = config.languageId
   }
 
+console.log(config.apiBaseURL+ request)
+
 //@ts-ignore
   return useFetch<T>(request, {
     baseURL: config.apiBaseURL,

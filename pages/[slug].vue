@@ -18,13 +18,10 @@ const { data: product } = await useAsyncData(
       config.hostURL + "data/product/products.json"
     );
 
-    console.log(products);
-
     const getProduct = products.data.find(
       (item) => item.slug === route.params.slug.toString()
     );
 
-    console.log(getProduct);
     return getProduct;
   }
 );
@@ -79,7 +76,6 @@ function findVariant() {
 const currentProduct = ref(null);
 
 const handleButtonClick = () => {
-  console.log(product);
   if (
     product.value.availableOptions != null &&
     product.value.availableOptions.length != 0

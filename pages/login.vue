@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { object, string, ref as yupRef } from "yup";
 import { configure } from "vee-validate";
-import { Fetch } from "~/composables/useFetch";
 
 // compiler macro
 definePageMeta({

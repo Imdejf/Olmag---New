@@ -1,6 +1,8 @@
+import axios from 'axios'
 import { defineStore } from 'pinia'
-import { Fetch } from '~/composables/useFetch'
 import { CartDTO } from '~/types/ShoppingCart/Cart'
+import { Fetch } from '~/composables/useFetch'
+import { $axios } from '~/composables/useAxios'
 
 export interface Cart {
   total: number,
@@ -58,8 +60,8 @@ export const useCart = defineStore({
   actions: {
     async initCartBadge(): Promise<void> {
         try {
-          var response = await Fetch('/product/shoppingcart/CartBadge', { method: 'get' })
-          this.setTotalCount(response.data.value)
+          var response = await $axios('product/shoppingcart/CartBadge')
+          this.setTotalCount(response.data)
         } catch (error) {
           console.error(error)
         }
@@ -86,16 +88,21 @@ export const useCart = defineStore({
 
     async getCartDetail(calculateTransport: boolean): Promise<void> {
       const config = useRuntimeConfig().public;
-      const dsCustomer = useCookie('dsCustomer')
-      const dsLanguage = config.languageId
+      const dsCustomer = useCookie('dsCustomer').value
 
-      const {data: cartDetails} = await Fetch('product/shoppingcart/GetActiveCartDetails', { method: 'get', query: {
-        userId: dsCustomer.value,
-        languageId: dsLanguage,
-        calculateTransport: calculateTransport
-      }})
+      const { data: cartDetails } = await $axios(
+        "product/shoppingcart/GetActiveCartDetails",
+        {
+          method: "get",
+          params: {
+            userId: dsCustomer,
+            languageId: config.languageId,
+            calculateTransport: false,
+          },
+        }
+      );
 
-      const cartDetail: CartDTO = cartDetails.value;
+      const cartDetail: CartDTO = cartDetails;
       this.cart = cartDetail
     },
 
@@ -136,8 +143,6 @@ export const useCart = defineStore({
       const dsStore = useCookie('dsStore')
       const dsCustomer = useCookie('dsCustomer')
       this.setAddCartResult()
-      console.log("dwa")
-      console.log(item)
       Fetch('/product/shoppingcart/Add', { method: 'post', body: {
         productId: item.id,
         storeId: dsStore,

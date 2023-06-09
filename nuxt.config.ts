@@ -95,7 +95,7 @@ export default defineNuxtConfig({
   swiper: {
     styleLang: 'css',
     modules: ['navigation', 'pagination', 'free-mode', 'thumbs', 'mousewheel'],
-  }
+  },
 })
 
 const getBlogRoutes = async () => {
@@ -127,7 +127,6 @@ const getCategory = async () => {
 };
 
 const getProduct = async () => {
-  console.log(GlobalSettings[appEnv].apiBaseURL + 'product/slugs')
   const productList = await axios.get(GlobalSettings[appEnv].apiBaseURL + 'product/slugs', {
     params: {
       storeId: GlobalSettings[appEnv].storeId

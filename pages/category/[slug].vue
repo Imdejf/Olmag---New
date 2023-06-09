@@ -49,8 +49,6 @@ const { data: categoryDetail } = await useAsyncData(
   }
 );
 
-console.log(categoryDetail);
-
 const addToCart = (product) => {
   cart.addToCart({
     id: product.productId,

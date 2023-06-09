@@ -10,9 +10,9 @@ const openShoppingCart = () => {
   application.changeShoppingCart();
 };
 
-if (useCookie("dsCustomer").value) {
+onMounted(() => {
   cart.initCartBadge();
-}
+});
 </script>
 
 <template>
@@ -258,7 +258,7 @@ if (useCookie("dsCustomer").value) {
             </NuxtLink>
           </div>
         </div>
-        <PopupShoppingCart />
+        <LazyPopupShoppingCart />
       </nav>
     </template>
   </BuilderNavbar>

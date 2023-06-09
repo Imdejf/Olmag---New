@@ -12,7 +12,9 @@ const getCartDetail = () => {
   cart.getCartDetail(false);
 };
 
-getCartDetail();
+onMounted(() => {
+  getCartDetail();
+});
 </script>
 
 <template>

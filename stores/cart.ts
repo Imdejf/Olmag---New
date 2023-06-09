@@ -66,6 +66,7 @@ export const useCart = defineStore({
           console.error(error)
         }
     },
+    
     setItems(items: CartItem[]): void {
         // this.items = items
     },
@@ -97,7 +98,7 @@ export const useCart = defineStore({
           params: {
             userId: dsCustomer,
             languageId: config.languageId,
-            calculateTransport: false,
+            calculateTransport: calculateTransport,
           },
         }
       );

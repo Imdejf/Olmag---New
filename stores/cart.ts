@@ -145,6 +145,7 @@ export const useCart = defineStore({
       const dsStore = useCookie('dsStore')
       const dsCustomer = useCookie('dsCustomer')
       this.setAddCartResult()
+      console.log(dsCustomer)
       Fetch('/product/shoppingcart/Add', { method: 'post', body: {
         productId: item.id,
         storeId: dsStore,

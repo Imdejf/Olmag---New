@@ -26,8 +26,6 @@ const { data: product } = await useAsyncData(
   }
 );
 
-console.log(product);
-
 const selectedValue = ref([]);
 const cart = useCart();
 const productQuantity = ref(1);

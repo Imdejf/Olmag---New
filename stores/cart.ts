@@ -61,6 +61,7 @@ export const useCart = defineStore({
     async initCartBadge(): Promise<void> {
         try {
           var response = await $axios('product/shoppingcart/CartBadge')
+          console.log(response)
           this.setTotalCount(response.data)
         } catch (error) {
           console.error(error)

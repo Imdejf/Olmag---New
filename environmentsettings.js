@@ -3,7 +3,7 @@ const GlobalSettings = {
     siteEnvironment: "Dev",
     apiBaseURL: "https://api.olmag.pl/api/",
     baseURL: "https://api.olmag.pl/",
-    hostURL: "http://olmag.pl/",
+    hostURL: "https://olmag.pl/",
     googleTagManagerKey: "GTM-W8WK3DF",
     googleTagManagerEnabled: true,
     googleTagManagerDebug: true,

@@ -60,7 +60,11 @@ export const useCart = defineStore({
   actions: {
     async initCartBadge(): Promise<void> {
         try {
-          var response = await $axios('product/shoppingcart/CartBadge')
+          var response = await $axios('product/shoppingcart/CartBadge', {
+            params: {
+              userId: useCookie("dsCustomer").value
+            }
+          })
           console.log(response)
           this.setTotalCount(response.data)
         } catch (error) {

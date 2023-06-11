@@ -149,7 +149,7 @@ export const useCart = defineStore({
         productId: item.id,
         storeId: dsStore,
         userId: dsCustomer,
-        Quantity: item.quantity
+        quantity: item.quantity
       }})
       this.totalCount = +this.totalCount + +item.quantity
       // var lastAdded = await Fetch('/product/shoppingcart/add-cart-result', {method:'get', query: {

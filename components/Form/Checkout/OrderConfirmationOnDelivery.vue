@@ -15,7 +15,7 @@ onMounted(() => {});
 <template>
   <div class="flex text-blue-900">
     <div class="w-1/2">
-      <img src="assets/img/order-confirmation.jpg" />
+      <img src="/assets/content/order-confirmation.jpg" />
     </div>
     <div class="w-1/2 text-center my-auto">
       <div>

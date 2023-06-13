@@ -333,7 +333,6 @@ const handleOrder = async (values, actions) => {
     orderNote: values.orderNote,
     deliveryMethod: +values.deliveryMethod,
     payment: +values.paymentMethod,
-    orderNote: "",
     shippingMethod: DeliveryMethodType[+values.deliveryMethod],
     ExistingShippingAddresses: [],
   };

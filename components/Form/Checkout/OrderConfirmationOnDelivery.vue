@@ -1,21 +1,21 @@
 <script lang="ts" setup>
-import { defineProps } from 'vue'
+import { defineProps } from "vue";
 
 const props = defineProps({
   orderNumber: {
     type: String,
   },
-})
+});
 
-const numberOrder = ref('')
+const numberOrder = ref("");
 
-onMounted(() => {})
+onMounted(() => {});
 </script>
 
 <template>
   <div class="flex text-blue-900">
     <div class="w-1/2">
-      <img src="/assets/img/order-confirmation.jpg" />
+      <img src="assets/img/order-confirmation.jpg" />
     </div>
     <div class="w-1/2 text-center my-auto">
       <div>

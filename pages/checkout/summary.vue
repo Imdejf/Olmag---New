@@ -1,31 +1,31 @@
 <script lang="ts" setup>
-import { Fetch } from '~~/composables/useFetch'
-import { ref } from 'vue'
+import { Fetch } from "~~/composables/useFetch";
+import { ref } from "vue";
 
 // compiler macro
 definePageMeta({
-  layout: 'page',
-})
+  layout: "page",
+});
 
-const order = ref(null)
+const order = ref(null);
 
 onMounted(() => {
-  const code = new URLSearchParams(window.location.search).get('orderId')
+  const code = new URLSearchParams(window.location.search).get("orderId");
   if (!code) {
-    navigateTo('/')
+    navigateTo("/");
   }
 
-  Fetch('/product/order/' + code, { method: 'get' }).then((response) => {
-    order.value = response.data.value.data
-    console.log(order.value)
-  })
-})
+  Fetch("/product/order/" + code, { method: "get" }).then((response) => {
+    order.value = response.data.value.data;
+    console.log(order.value);
+  });
+});
 </script>
 
 <template>
   <PageWrapper>
-    <PageHeader class="!m-0">
-      <PageTitle></PageTitle>
+    <PageHeader class="container mx-auto block">
+      <BannerSteps :value="3" />
     </PageHeader>
     <div class="bg-white">
       <PageBody>

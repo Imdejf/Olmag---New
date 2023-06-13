@@ -38,7 +38,7 @@ export default defineNuxtConfig({
 
   // build
   build: {
-    transpile: ['@vee-validate/rules'],
+    transpile: ['@headlessui/vue', '@vee-validate/rules'],
   },
 
   postcss: {

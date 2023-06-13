@@ -150,7 +150,7 @@ const selectedFontSizeStyle = computed(
           v-show="nipActive"
           required
           v-bind="field"
-          :class="` w-full border-1  bg-gray-400  ${css} ${
+          :class="` w-full border-1  bg-gray-100  ${css} ${
             !meta.valid && meta.touched == true
               ? 'border-red-300'
               : 'border-gray-300'

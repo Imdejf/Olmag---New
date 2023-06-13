@@ -71,7 +71,7 @@
                 <a class="transition">
                   <span class="section_text text_line">Zwrot produktu</span>
                 </a>
-                <NuxtLink to="/" class="transition">
+                <NuxtLink to="/payment" class="transition">
                   <span class="section_text text_line">Płatności</span>
                 </NuxtLink>
                 <a class="transition">

@@ -4,7 +4,7 @@ import { useCart } from "~/stores/cart";
 import { CartDTO, CartItemDTO } from "~/types/ShoppingCart/Cart";
 // compiler macro
 definePageMeta({
-  layout: "page",
+  layout: "cart",
 });
 
 const itemsBrandList = ref(null);
@@ -12,7 +12,6 @@ const itemsBrandList = ref(null);
 const cart = useCart();
 
 const currentCart = computed(() => {
-  console.log(cart.cart);
   return cart.cart;
 });
 
@@ -57,11 +56,11 @@ onMounted(async () => {
 
 <template>
   <PageWrapper>
-    <PageHeader class="!m-0">
-      <PageTitle></PageTitle>
+    <PageHeader class="container mx-auto block">
+      <BannerSteps :value="1" />
     </PageHeader>
     <PageBody>
-      <div v-show="currentCart?.items.length == 0">
+      <div v-show="currentCart?.items?.length === 0 || currentCart === null">
         <FormCheckoutEmptyCart />
       </div>
       <div
@@ -100,7 +99,7 @@ onMounted(async () => {
                     <span>Wartość koszyka (brutto):</span>
                     <span>{{ currentCart?.subTotalGross?.toFixed(2) }} zł</span>
                   </div>
-                  <div class="flex mt-3 justify-between">
+                  <div class="flex mt-3 justifvee-between">
                     <span>Dostawa (netto):</span>
                     <span
                       >{{ currentCart?.shippingAmount?.toFixed(2) }} zł</span
@@ -125,12 +124,11 @@ onMounted(async () => {
                   >
                 </div>
               </div>
-              <Anchor
+              <NuxtLink
                 class="!block items-center !px-0 text-center justify-center rounded-md border border-transparent bg-green-400 py-3 text-base font-medium text-white shadow-sm hover:text-white hover:bg-green-500"
-                text="Śledź zamówienie"
+                text="Złóż zamówienie"
                 to="onestep"
-                >Złóż zamówienie</Anchor
-              >
+              ></NuxtLink>
               <div class="my-3">
                 <span>Skorzystaj z rabatu:</span>
               </div>

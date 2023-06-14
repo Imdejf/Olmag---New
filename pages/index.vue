@@ -373,7 +373,7 @@ useHead({
             </div>
             <div class="block sm:hidden relative my-10 mx-auto">
               <img
-                data-src="assets/content/macbook-olmag-min.webp"
+                data-src="assets/content/macbook-olmag.webp"
                 class="lazyload block float-right w-[340px] h-[210px] m-auto"
               />
             </div>

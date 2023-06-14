@@ -125,7 +125,7 @@ const addToCart = (product) => {
         <PageSection class="min-w-85 max-w-85 hidden md:block">
           <PageCategoryNavigation />
         </PageSection>
-        <PageSection>
+        <PageSection class="flex-auto">
           <div class="section__category__items container mx-auto block sm:px-2">
             <div
               v-if="categoryDetail?.products.length != 0"
@@ -302,7 +302,7 @@ const addToCart = (product) => {
                         class="w-full items-center flex p-1 text-center rounded"
                         style="border: 1px solid gainsboro"
                       >
-                        <div class="w-1/8">
+                        <div class="w-1/8 ml-auto">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="w-6 h-6"
@@ -314,7 +314,7 @@ const addToCart = (product) => {
                             />
                           </svg>
                         </div>
-                        <div class="w-7/8">
+                        <div class="w-7/8 mx-auto">
                           <span class="block"> lub zamów telefonicznie </span>
                           <a
                             href="tel:698 304 621"
@@ -344,7 +344,7 @@ const addToCart = (product) => {
                         />
                       </svg>
                     </div>
-                    <div class="w-7/8">
+                    <div class="w-7/8 mx-auto">
                       <span class="block"> lub zamów telefonicznie </span>
                       <a
                         href="tel:698 304 621"

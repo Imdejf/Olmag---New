@@ -43,7 +43,7 @@ if (useCookie("dsCustomer").value) {
       </div>
     </template>
     <template #search>
-      <nav class="bg-white md:mx-14 xl:mx-auto xl:container my-5">
+      <nav class="bg-white mx-auto container my-5">
         <div class="flex items-center justify-between">
           <button @click="application.changeTopMenu" class="hidden md:block">
             <img

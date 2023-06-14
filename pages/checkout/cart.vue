@@ -99,7 +99,7 @@ onMounted(async () => {
                     <span>Wartość koszyka (brutto):</span>
                     <span>{{ currentCart?.subTotalGross?.toFixed(2) }} zł</span>
                   </div>
-                  <div class="flex mt-3 justifvee-between">
+                  <div class="flex mt-3 justify-between">
                     <span>Dostawa (netto):</span>
                     <span
                       >{{ currentCart?.shippingAmount?.toFixed(2) }} zł</span

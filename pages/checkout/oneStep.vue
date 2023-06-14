@@ -412,28 +412,30 @@ const handleOrder = async (values, actions) => {
                   <ul class="items-stretch space-x-3 gap-3 flex m-auto">
                     <li v-for="(item, i) in sections" :key="i" class="flex">
                       <a
-                        @change="changeSection(item)"
+                        @click="changeSection(item)"
                         rel="noopener noreferrer"
-                        href="#"
                         class="flex uppercase font-semibold text-xs items-center"
-                        >{{ item.name }}</a
                       >
+                        {{ item.name }}
+                      </a>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="relative overflow-x-hidden md:flex md:gap-10">
+              <div
+                class="absolute sm:relative w-full overflow-x-hidden md:flex md:gap-10"
+              >
                 <div
                   class="md:w-1/3 h-max rounded-md md:border-1 top-0 border-gray-300 bg-white"
                 >
                   <div
-                    class="relative p-3 <sm:transform duration-600 ease-out transition-all"
+                    class="sm:relative p-3 transform duration-600 ease-out transition-all"
                     :class="
                       activeSectionId.section == 'data'
-                        ? 'opacity-100 !-translate-x-0/2 '
+                        ? 'opacity-100 !-translate-x-[0%] '
                         : activeSectionId.id >= lastSectionId
-                        ? 'opacity-0 sm:opacity-1 !-translate-x-3/2 absolute '
-                        : 'opacity-0 sm:opacity-1 !-translate-x-3/2 absolute '
+                        ? 'opacity-0 sm:opacity-1 !-translate-x-[100%] absolute '
+                        : 'opacity-0 sm:opacity-1 !-translate-x-[100%] absolute '
                     "
                   >
                     <div class="bg-white">
@@ -865,7 +867,7 @@ const handleOrder = async (values, actions) => {
                       </div>
                       <p class="mt-4">* Wymagane pola</p>
                       <div class="border-b border-gray-400 mt-7 md:hidden">
-                        <button
+                        <a
                           @click="nextSection()"
                           class="items-center rounded border-2 w-full border-green-400 px-8 py-3 text-white bg-green-400 hover:bg-white hover:text-green-400 focus:outline-none focus:ring active:bg-green-400 duration-400"
                         >
@@ -877,26 +879,26 @@ const handleOrder = async (values, actions) => {
                             name="material-symbols:arrow-right-alt-rounded"
                             class="w-6 h-6"
                           />
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="<sm:flex md:w-1/3">
+                <div class="flex md:block md:w-1/3">
                   <div
-                    class="relative <sm:top-0 <sm:transform w-full duration-600 ease-out transition-all"
+                    class="sm:relative top-0 transform w-full sm:!translate-x-0 duration-600 ease-out transition-all"
                     :class="
                       activeSectionId.section == 'delivery'
-                        ? 'opacity-100 !-translate-x-0/2 <sm:p-0'
+                        ? 'opacity-100 !-translate-x-0/2 p-0'
                         : activeSectionId.id >= lastSectionId
-                        ? '<sm:opacity-0 !-translate-x-3/2  <sm:absolute'
+                        ? 'opacity-0 sm:opacity-100 !-translate-x-[100%] absolute'
                         : lastSectionId > 3
-                        ? '<sm:opacity-0 !-translate-x-3/2  <sm:absolute'
-                        : '<sm:opacity-0 !translate-x-3/2 <sm:absolute'
+                        ? 'opacity-0 sm:opacity-100 !-translate-x-[100%] absolute'
+                        : 'opacity-0 sm:opacity-100 !translate-x-[100%] absolute'
                     "
                   >
                     <div
-                      class="md:border-1 p-3 rounded-md border-gray-300 px-3 bg-white <sm:transform duration-600 ease-out transition-all"
+                      class="md:border-1 p-3 rounded-md border-gray-300 px-3 bg-white transform duration-600 ease-out transition-all"
                       :class="`${
                         activeSectionId.section == 'delivery' ? '' : ''
                       } ${
@@ -991,7 +993,7 @@ const handleOrder = async (values, actions) => {
                         formErrors.deliveryMethod
                       }}</span>
                       <div class="border-b border-gray-400 mt-7 md:hidden">
-                        <button
+                        <a
                           @click="nextSection()"
                           class="items-center rounded border-2 w-full border-green-400 px-8 py-3 text-white bg-green-400 hover:bg-white hover:text-green-400 focus:outline-none focus:ring active:bg-green-400 duration-400"
                         >
@@ -1003,19 +1005,19 @@ const handleOrder = async (values, actions) => {
                             name="material-symbols:arrow-right-alt-rounded"
                             class="w-6 h-6"
                           />
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
                   <div
-                    class="relative rounded-md border-1 border-gray-300 p-3 <sm:top-0 w-full <sm:transform duration-600 ease-out transition-all bg-white md:mt-5"
+                    class="sm:relative rounded-md border-1 sm:!translate-x-0 border-gray-300 p-3 top-0 w-full transform duration-600 ease-out transition-all bg-white md:mt-5"
                     :class="`${
                       activeSectionId.section == 'payment'
                         ? 'opacity-100 !-translate-x-0/2 '
                         : activeSectionId.id >= lastSectionId &&
                           activeSectionId.id > 3
-                        ? '<sm:opacity-0 !-translate-x-3/2 <sm:absolute'
-                        : '<sm:opacity-0 !translate-x-3/2 <sm:absolute'
+                        ? 'opacity-0 sm:opacity-100 !-translate-x-[100%] absolute'
+                        : 'opacity-0 sm:opacity-100 !translate-x-[100%] absolute'
                     }
                         ${activeSectionId.section == 'delivery' ? '' : ''} ${
                       formErrors.paymentMethod != null ? '!border-red-600' : ''
@@ -1023,7 +1025,9 @@ const handleOrder = async (values, actions) => {
                   >
                     <div
                       :class="
-                        activeSectionId.section != 'payment' ? '<sm:hidden' : ''
+                        activeSectionId.section != 'payment'
+                          ? 'hidden sm:block'
+                          : ''
                       "
                     >
                       <h2 class="font-semibold text-xl mb-4">
@@ -1150,7 +1154,7 @@ const handleOrder = async (values, actions) => {
                       formErrors.paymentMethod
                     }}</span>
                     <div class="border-b border-gray-400 mt-7 md:hidden">
-                      <button
+                      <a
                         @click="nextSection()"
                         class="items-center rounded border-2 w-full border-green-400 px-8 py-3 text-white bg-green-400 hover:bg-white hover:text-green-400 focus:outline-none focus:ring active:bg-green-400 duration-400"
                       >
@@ -1162,28 +1166,32 @@ const handleOrder = async (values, actions) => {
                           name="material-symbols:arrow-right-alt-rounded"
                           class="w-6 h-6"
                         />
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
                 <div
-                  class="md:w-1/3 <sm:top-0 <sm:transform duration-600 ease-out transition-all"
+                  class="sm:block md:w-1/3 top-0 sm:!translate-x-0 transform duration-600 ease-out transition-all"
                   :class="`${
-                    activeSectionId.section != 'data' ? '' : '<sm:hidden'
+                    activeSectionId.section != 'data'
+                      ? ''
+                      : 'hidden sm:relative'
                   }
                 ${
                   activeSectionId.section == 'summary'
-                    ? 'opacity-100 !-translate-x-0/2 <sm:p-0 relative'
+                    ? 'opacity-100 !-translate-x-0/2 p-0 sm:relative'
                     : activeSectionId.id >= lastSectionId
-                    ? '<sm:opacity-0 !translate-x-3/2  <sm:absolute'
-                    : '<sm:opacity-0 !translate-x-3/2 <sm:!absolute'
+                    ? 'opacity-0 sm:opacity-100  !translate-x-[100%] absolute '
+                    : 'opacity-0 sm:opacity-100 !translate-x-[100%] absolute'
                 }
                 `"
                 >
                   <div
                     class="border-1 rounded-md border-gray-300 bg-white"
                     :class="
-                      activeSectionId.section != 'summary' ? '<sm:hidden' : ''
+                      activeSectionId.section != 'summary'
+                        ? 'hidden sm:block'
+                        : ''
                     "
                   >
                     <div class="p-3">

@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="my-5">
+  <div class="my-5 mx-3 sm:container sm:mx-auto">
     <h2 class="sr-only">Steps</h2>
     <div class="w-full mx-auto">
       <div class="overflow-hidden rounded-full bg-gray-200">

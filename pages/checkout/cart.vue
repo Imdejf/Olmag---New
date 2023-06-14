@@ -56,7 +56,7 @@ onMounted(async () => {
 
 <template>
   <PageWrapper>
-    <PageHeader class="container mx-auto block">
+    <PageHeader>
       <BannerSteps :value="1" />
     </PageHeader>
     <PageBody>
@@ -65,13 +65,13 @@ onMounted(async () => {
       </div>
       <div
         v-show="currentCart?.items.length > 0"
-        class="container mx-auto py-5 <md:px-2"
+        class="container mx-auto py-5 px-2"
       >
         <div>
           <h2 class="text-xl font-semibold">Twój koszyk</h2>
         </div>
         <PageSection>
-          <div class="flex <sm:flex-col gap-5 w-full mt-5">
+          <div class="flex flex-col md:flex-row gap-5 w-full mt-5">
             <div class="md:w-2/3">
               <div v-for="(item, index) in itemsBrandList">
                 <GridCheckout
@@ -87,7 +87,7 @@ onMounted(async () => {
               class="md:w-1/3 bg-slate-200 h-min sticky !top-31 rounded-lg border-1 border-slate-300 shadow-xl text-blue-800 p-5"
             >
               <div class="mb-5">
-                <span class="text-lg font-600">Twoje zamówienie:</span>
+                <span class="text-lg font-semibold">Twoje zamówienie:</span>
               </div>
               <div>
                 <div class="border-b-2 border-gray-300">
@@ -119,7 +119,7 @@ onMounted(async () => {
                   <span class="self-center text-lg font-500"
                     >Razem do zapłaty</span
                   >
-                  <span class="font-600 text-2xl"
+                  <span class="font-semibold text-2xl"
                     >{{ currentCart?.orderTotal?.toFixed(2) }} zł</span
                   >
                 </div>
@@ -153,10 +153,9 @@ onMounted(async () => {
               <div class="flex mt-2">
                 <NuxtLink
                   class="!block items-center w-full py-4 !px-0 text-center justify-center rounded-md border border-transparent bg-blue-900 text-14px font-800 text-orange-400 shadow-md hover:text-orange-400 hover:bg-blue-800"
-                  text="Śledź zamówienie"
-                  to="checkout"
-                  >Zadzwoń do nas</NuxtLink
-                >
+                  text="Zadzwoń do nas"
+                  to="/contact"
+                ></NuxtLink>
               </div>
             </div>
           </div>

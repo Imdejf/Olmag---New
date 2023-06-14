@@ -21,7 +21,7 @@ if (useCookie("dsCustomer").value) {
       <div class="navbar__banner bg-blue-900">
         <div class="container mx-auto <md:px`-2">
           <div class="flex relative justify-between">
-            <div class="flex relative w-1/4 h-10">
+            <div class="flex relative w-2/6 h-10">
               <div
                 class="h-full absolute w-full top-10 right-0 transform -rotate-45 origin-top-left bg-green-600"
               ></div>
@@ -33,7 +33,7 @@ if (useCookie("dsCustomer").value) {
                 <span>Witamy w Olmag - Najlepsze wyposażenie do magazynu</span>
               </div>
             </div>
-            <div class="flex w-1/4 right-0 justify-end relative">
+            <div class="flex w-2/6 right-0 justify-end relative">
               <div
                 class="h-full absolute w-full top-10 right-0 transform rotate-45 origin-top-right bg-green-600"
               ></div>

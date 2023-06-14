@@ -8,7 +8,7 @@ const config = useRuntimeConfig().public;
 <template>
   <PageWrapper>
     <PageHeader>
-      <PageTitle></PageTitle>
+      <PageTitle :textNav="[{ text: 'Kontakt', slug: 'contact' }]"> </PageTitle>
     </PageHeader>
     <PageBody>
       <PageSection>
@@ -187,10 +187,18 @@ const config = useRuntimeConfig().public;
                   </div>
                 </div>
               </div>
-              <div class="h-full md:mb-12 lg:mb-0 px-2">
-                <div class="h-full relative shadow-lg rounded-lg">
+              <div class="h-full flex flex-col gap-5 md:mb-12 lg:mb-0 px-2">
+                <div class="h-1/2 relative shadow-lg rounded-lg">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2424.8192678198643!2d15.678654212026439!3d52.57287957195864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4706ed9ffdc54efb%3A0x532cf79278532f9e!2sOlmag.pl%20-%20wyposa%C5%BCenie%20magazynowe!5e0!3m2!1spl!2spl!4v1685552149372!5m2!1spl!2spl"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="h-full w-full absolute rounded-lg"
+                  ></iframe>
+                </div>
+                <div class="h-1/2 relative shadow-lg rounded-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1446.0079427643584!2d16.95180736478351!3d52.44498362093257!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47045de579e295c5%3A0x3bd6bf1770d16a53!2sOlmag.pl%20-%20wyposa%C5%BCenie%20do%20magazyn%C3%B3w!5e0!3m2!1spl!2spl!4v1686725936786!5m2!1spl!2spl"
                     loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"
                     class="h-full w-full absolute rounded-lg"

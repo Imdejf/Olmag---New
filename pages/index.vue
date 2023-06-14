@@ -365,10 +365,18 @@ useHead({
                 <span class="uppercase">Kontakt</span>
               </NuxtLink>
             </div>
-            <div class="-mr-64 w-full h-36 md:h-auto relative flex">
+            <div
+              class="-mr-64 w-full h-36 md:h-auto hidden sm:block relative flex"
+            >
               <img
-                data-src="assets/content/macbook-emagazynowo.webp"
+                data-src="assets/content/macbook-olmag.webp"
                 class="lazyload hidden md:flex float-right w-[380px] h-[240px] md:h-[390px] md:w-[580px] m-auto"
+              />
+            </div>
+            <div class="block sm:hidden relative my-10">
+              <img
+                data-src="assets/content/macbook-olmag.webp"
+                class="lazyload block float-right w-[380px] h-[240px] md:h-[390px] md:w-[580px] m-auto"
               />
             </div>
           </div>

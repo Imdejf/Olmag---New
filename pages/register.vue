@@ -288,7 +288,7 @@ const initialValues = {
                     <label
                       class="form-check-label inline-block text-gray-800 cursor-pointer"
                       >Zapoznałem się z Regulaminem i chcę otrzymywać na podany
-                      adres e-mail informacje od gomez.pl o najnowszych
+                      adres e-mail informacje od olmag.pl o najnowszych
                       kolekcjach i ofertach więcej...</label
                     >
                   </div>

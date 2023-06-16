@@ -35,9 +35,8 @@ const props = defineProps({
                   ? category.thumbnailImage.mediaLangs[0].altAttribute
                   : category.thumbnailImage.altAttribute
               "
-              quality="80"
-              height="120px"
-              width="120px"
+              height="140"
+              width="140"
               class="lazyload"
             />
           </div>

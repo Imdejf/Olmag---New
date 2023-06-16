@@ -98,7 +98,7 @@ useHead({
               class="hidden md:block md:p-3 md:w-1/4 text-emerald-400 w-1/3 p-1"
             >
               <div class="p-4 px-0 flex">
-                <div class="flex mx-auto">
+                <div class="flex items-center mx-auto">
                   <div class="mr-1 md:mr-3 self-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -114,12 +114,8 @@ useHead({
                     </svg>
                   </div>
                   <div class="block">
-                    <span class="self-center text-[9px] md:text-sm w-full"
+                    <span class="self-center text-[9px] md:text-lg w-full"
                       >Szybkie dostawy</span
-                    >
-                    <span
-                      class="block text-13px text-[9.5px] md:text-xs text-center text-gray-400"
-                      >Najlepsi przewoźnicy</span
                     >
                   </div>
                 </div>
@@ -127,7 +123,7 @@ useHead({
             </div>
             <div class="md:p-3 md:w-1/4 text-emerald-400 w-1/3 p-1">
               <div class="p-4 px-0 flex">
-                <div class="flex mx-auto">
+                <div class="flex mx-auto items-center">
                   <div class="mr-1 md:mr-3 self-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -143,12 +139,8 @@ useHead({
                     </svg>
                   </div>
                   <div class="block">
-                    <span class="self-center text-[10px] md:text-sm w-full"
+                    <span class="self-center text-[11px] md:text-lg w-full"
                       >Negocjacje cen</span
-                    >
-                    <span
-                      class="block text-13px text-[9.5px] md:text-xs text-center text-gray-400"
-                      >Indywidualna wycena</span
                     >
                   </div>
                 </div>
@@ -156,7 +148,7 @@ useHead({
             </div>
             <div class="md:p-3 md:w-1/4 text-emerald-400 w-1/3 p-1">
               <div class="p-4 px-0 flex">
-                <div class="flex mx-auto">
+                <div class="flex mx-auto items-center">
                   <div class="mr-1 md:mr-3 self-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -198,12 +190,8 @@ useHead({
                     </svg>
                   </div>
                   <div class="block">
-                    <span class="self-center text-[11px] md:text-sm w-full"
+                    <span class="self-center text-[11px] md:text-lg w-full"
                       >Duże oszczędności</span
-                    >
-                    <span
-                      class="block text-13px text-[9.5px] md:text-xs text-center text-gray-400"
-                      >Niskie ceny</span
                     >
                   </div>
                 </div>
@@ -211,7 +199,7 @@ useHead({
             </div>
             <div class="md:p-3 md:w-1/4 text-emerald-400 w-1/3 p-1">
               <div class="p-4 px-0 flex">
-                <div class="flex mx-auto">
+                <div class="flex mx-auto items-center">
                   <div class="mr-1 md:mr-3 self-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -239,12 +227,8 @@ useHead({
                     </svg>
                   </div>
                   <div class="block">
-                    <span class="self-center text-[11px] md:text-sm w-full"
+                    <span class="self-center text-[11px] md:text-lg w-full"
                       >Łatwe zwroty</span
-                    >
-                    <span
-                      class="block text-13px text-[9.5px] md:text-xs text-center text-gray-400"
-                      >Zadzwoń do nas</span
                     >
                   </div>
                 </div>

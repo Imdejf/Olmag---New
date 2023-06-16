@@ -1,10 +1,17 @@
 <script lang="ts" setup>
+import { useApplication } from "~/stores/application";
+
 const config = useRuntimeConfig().public;
+const application = useApplication();
 
 const { data: categories } = await useAsyncData<Category | []>(
   "categories",
   () => $fetch(config.hostURL + "data/category/categories.json")
 );
+
+const hoverCategoryDropDown = () => {
+  application.changeTopMenu();
+};
 </script>
 
 <template>
@@ -19,6 +26,7 @@ const { data: categories } = await useAsyncData<Category | []>(
           class="flex self-center h-full border-b-2 border-solid border-emerald-100 transform hover:scale-101 hover:shadow-md transition duration-400 ease-in-out"
         >
           <NuxtLink
+            @click="hoverCategoryDropDown"
             :to="'/category/' + category.slug"
             class="w-full h-full flex items-center hover:text-green-500"
           >

@@ -24,6 +24,7 @@ const cart = useCart();
 const config = useRuntimeConfig().public;
 
 const route = useRoute();
+
 const searchOptions: SearchOptions = {
   slug: route.params.slug,
   query: null,

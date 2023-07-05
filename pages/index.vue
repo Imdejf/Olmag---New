@@ -241,10 +241,11 @@ useHead({
         <div class="px-2 md:px-0">
           <div class="tracking-1px font-semibold text-2xl">
             <div class="flex">
+              test
+              {{ categories }}
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
             <div>
-              <!-- {{ mountains }} -->
               <GridCategoryMostView
                 :categories="categories?.filter((c) => c.mostVisited === true)"
               />

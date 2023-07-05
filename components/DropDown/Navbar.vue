@@ -18,12 +18,12 @@ const hoverCategoryDropDown = () => {
   <div class="h-full w-full">
     <div>
       <div
-        class="md:p-10 grid grid-cols-1 text-[10px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-5"
+        class="md:p-10 grid grid-cols-1 text-[10px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
       >
         <div
           v-for="category in categories"
           :key="category.name"
-          class="flex self-center h-full border-b-2 border-solid border-emerald-100 transform hover:scale-101 hover:shadow-md transition duration-400 ease-in-out"
+          class="flex self-center h-20 border-b-2 border-solid border-emerald-100 transform hover:scale-101 hover:shadow-md transition duration-400 ease-in-out"
         >
           <NuxtLink
             @click="hoverCategoryDropDown"
@@ -41,9 +41,9 @@ const hoverCategoryDropDown = () => {
                   ? category.thumbnailImage.mediaLangs[0].altAttribute
                   : category.thumbnailImage.altAttribute
               "
-              class="lazyload w-12 h-5"
+              class="lazyload w-13 h-12"
             />
-            <p class="w-full md:text-sm break-normal ml-5">
+            <p class="w-full md:text-sm font-base break-normal ml-5 w-full">
               {{
                 category.categoriesLang[0].name
                   ? category.categoriesLang[0].name

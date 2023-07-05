@@ -22,7 +22,7 @@ const props = defineProps({
           class="relative flex flex-col h-full transform items-end rounded-3xl bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2"
         >
           <div
-            class="w-full items-center group-hover:h-1px h-3/5 flex justify-center group-hover:opacity-0"
+            class="w-full items-center group-hover:h-1px h-3/5 flex justify-center group-hover:opacity-0 group-hover:h-0"
           >
             <img
               :data-src="
@@ -35,8 +35,8 @@ const props = defineProps({
                   ? category.thumbnailImage.mediaLangs[0].altAttribute
                   : category.thumbnailImage.altAttribute
               "
-              height="140"
-              width="140"
+              height="90"
+              width="90"
               class="lazyload"
             />
           </div>
@@ -44,7 +44,7 @@ const props = defineProps({
             class="px-2 pb-4 m-auto group-hover:h-1px transition-opacity h-2/5 group-hover:absolute group-hover:opacity-0"
           >
             <h3
-              class="mt-4 group-hover:h-1px text-sm font-600 text-center group-hover:opacity-0"
+              class="mt-4 group-hover:h-1px text-base font-600 text-center group-hover:opacity-0"
             >
               {{
                 category.categoriesLang[0].name
@@ -56,21 +56,27 @@ const props = defineProps({
           <div
             class="absolute text-center w-full h-full opacity-0 transition-opacity group-hover:relative group-hover:opacity-100"
           >
-            <h3 class="mt-4 text-sm font-600">
+            <h3 class="mt-4 text-base font-600">
               {{
                 category.categoriesLang[0].name
                   ? category.categoriesLang[0].name
                   : category.name
               }}
             </h3>
-            <div
-              class="card-text mt-4 font-400"
-              v-html="
-                category.categoriesLang[0].description
-                  ? category.categoriesLang[0].description
-                  : category.description
+            <template
+              v-if="
+                category.categoriesLang[0].description || category.description
               "
-            ></div>
+            >
+              <div
+                class="visible-text text-sm"
+                v-html="
+                  category.categoriesLang[0].description
+                    ? category.categoriesLang[0].description
+                    : category.description
+                "
+              ></div>
+            </template>
           </div>
           <div
             class="w-full h-1/5 bg-blue-900 text-emerald-300 text-center text-xs rounded-b-3xl"
@@ -84,3 +90,13 @@ const props = defineProps({
     </li>
   </ul>
 </template>
+
+<style>
+.visible-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

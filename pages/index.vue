@@ -246,7 +246,7 @@ useHead({
             <div>
               <!-- {{ mountains }} -->
               <GridCategoryMostView
-                :categories="categories.filter((c) => c.mostVisited === true)"
+                :categories="categories?.filter((c) => c.mostVisited === true)"
               />
             </div>
           </div>
@@ -372,7 +372,7 @@ useHead({
             </div>
             <div>
               <LazyGridCategoryAwarded
-                :categories="categories.filter((c) => c.highlight === true)"
+                :categories="categories?.filter((c) => c.highlight === true)"
               />
             </div>
           </div>
@@ -386,7 +386,7 @@ useHead({
             </div>
             <div class="container mx-auto">
               <LazyGridProductBestseller
-                :products="products.filter((c) => c.isBestseller === true)"
+                :products="products?.filter((c) => c.isBestseller === true)"
               />
             </div>
           </div>
@@ -400,7 +400,7 @@ useHead({
             </div>
             <div class="container mx-auto">
               <LazyGridProductRecommended
-                :products="products.filter((c) => c.isHomePage === true)"
+                :products="products?.filter((c) => c.isHomePage === true)"
               />
             </div>
           </div>

@@ -7,11 +7,13 @@ definePageMeta({
   layout: "cart",
 });
 
-const itemsBrandList = ref(null);
+const itemsBrandList = ref([]);
 
 const cart = useCart();
 
 const currentCart = computed(() => {
+  console.log("dwadaww");
+  console.log(cart.cart);
   return cart.cart;
 });
 
@@ -19,7 +21,7 @@ const sortItemsByBrand = (cartToSort: CartDTO) => {
   const itemsByBrand = [];
   let index = 0;
 
-  cartToSort.items.forEach((item) => {
+  cartToSort?.items?.forEach((item) => {
     const brandId = item.brandId;
     const brandName = item.brand?.name;
     let brandIndex = -1;
@@ -49,8 +51,10 @@ async function removeItem(id: string) {
 }
 
 onMounted(async () => {
-  await cart.getCartDetail(true);
-  sortItemsByBrand(cart.cart);
+  if (useCookie("dsCustomer").value) {
+    await cart.getCartDetail(true);
+    sortItemsByBrand(cart.cart);
+  }
 });
 </script>
 
@@ -60,11 +64,11 @@ onMounted(async () => {
       <BannerSteps :value="1" />
     </PageHeader>
     <PageBody>
-      <div v-show="currentCart?.items?.length === 0 || currentCart === null">
+      <div v-show="currentCart?.items?.length === 0 || !currentCart">
         <FormCheckoutEmptyCart />
       </div>
       <div
-        v-show="currentCart?.items.length > 0"
+        v-show="currentCart?.items?.length > 0"
         class="container mx-auto py-5 px-2"
       >
         <div>

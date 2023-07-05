@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { object, string, ref as yupRef } from "yup";
 import { configure } from "vee-validate";
+import jwt_decode from "jwt-decode";
 
 // compiler macro
 definePageMeta({
@@ -9,9 +10,10 @@ definePageMeta({
 });
 
 const rememberMe = ref("");
+const errorLogin = ref(false);
 
 const handleLogin = (values, actions) => {
-  const config = useRuntimeConfig();
+  const config = useRuntimeConfig().public;
   $fetch(config.baseURL + "Connect/Token", {
     credentials: "include",
     method: "POST",
@@ -19,10 +21,17 @@ const handleLogin = (values, actions) => {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: `client_id=ro.client&client_secret=secret&grant_type=password&username=${values.email}&password=${values.password}`,
-  }).then((response) => {
-    SetTokenCookie(response.access_token);
-    window.location.reload();
-  });
+  })
+    .then((response) => {
+      const decode = jwt_decode(response.access_token);
+      const customer = useCookie("dsCustomer");
+      customer.value = decode.sub;
+      SetTokenCookie(response.access_token);
+      window.location.reload();
+    })
+    .catch((error) => {
+      errorLogin.value = true;
+    });
 };
 
 const SetTokenCookie = (token: string) => {
@@ -46,8 +55,8 @@ configure({
   validateOnModelUpdate: true, // controls if `update:modelValue` events should trigger validation with `handleChange` handler
 });
 const schema = object({
-  email: string().required().email().label("Email Address"),
-  password: string().required().min(8).label("Your Password"),
+  email: string().required("Musisz podać email lub login"),
+  password: string().required("Musisz podać hasło"),
 });
 const initialValues = { email: "", password: "" };
 const route = useRoute();
@@ -55,8 +64,8 @@ const route = useRoute();
 
 <template>
   <PageWrapper>
-    <PageHeader class="!m-0">
-      <PageTitle></PageTitle>
+    <PageHeader>
+      <PageTitle :textNav="[{ text: 'Logowanie', slug: '/login' }]"></PageTitle>
     </PageHeader>
     <PageBody>
       <div class="bg-white">
@@ -98,7 +107,9 @@ const route = useRoute();
                       placeholder="Hasło"
                       leftIcon="ic:sharp-lock-person"
                     />
-
+                    <span v-show="errorLogin" class="text-red-400"
+                      >Nieprawidłowy login lub hasło</span
+                    >
                     <button
                       class="mt-5 tracking-wide font-semibold bg-green-400 text-gray-100 w-full py-4 rounded-lg hover:bg-green-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                     >

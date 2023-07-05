@@ -1,10 +1,17 @@
 <script lang="ts" setup>
 import { useApplication } from "~/stores/application";
 import { useCart } from "~/stores/cart";
+import { useIdentity } from "~/stores/identity";
 
 const cart = useCart();
 const application = useApplication();
+const identity = useIdentity();
+
 const showContatct = ref(false);
+
+const isAuthenticated = computed(() => {
+  return identity.getIsAuthenticated();
+});
 
 const openShoppingCart = () => {
   application.changeShoppingCart();
@@ -13,6 +20,12 @@ const openShoppingCart = () => {
 if (useCookie("dsCustomer").value) {
   cart.initCartBadge();
 }
+
+onMounted(() => {
+  if (useCookie("dsCustomer").value && useCookie("Authorization").value) {
+    identity.setUserData();
+  }
+});
 </script>
 
 <template>
@@ -232,8 +245,8 @@ if (useCookie("dsCustomer").value) {
               </div>
             </button>
             <NuxtLink
-              to="/login"
-              class="text-center text-gray-700 hover:text-primary transition relative"
+              :to="isAuthenticated ? '/account' : '/login'"
+              class="text-center text-gray-700 w-max hover:text-primary transition relative"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +266,7 @@ if (useCookie("dsCustomer").value) {
                 </g>
               </svg>
               <div class="text-[9.5px] font-semibold leading-3 uppercase">
-                Zaloguj
+                {{ isAuthenticated ? "Moje konto" : "Zaloguj" }}
               </div>
             </NuxtLink>
           </div>

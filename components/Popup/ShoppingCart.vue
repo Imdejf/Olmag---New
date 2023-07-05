@@ -13,7 +13,7 @@ const getCartDetail = () => {
 };
 
 onMounted(() => {
-  if (useCookie("dsCustomer")) {
+  if (useCookie("dsCustomer").value) {
     cart.getCartDetail(false);
   }
 });

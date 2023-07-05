@@ -56,10 +56,10 @@ function getProductAvailabilityDescription(
                 ? product.thumbnailImage.mediaLangs[0].altAttribute
                 : product.thumbnailImage.altAttribute
             "
-            class="lazyload mx-auto w-[150px] h-[70px]"
+            class="lazyload mx-auto w-[100px] h-[100px]"
           />
 
-          <div class="mt-2">
+          <div class="mt-2 w-full">
             <div class="flex flex-col">
               <h3></h3>
               <h3 class="sr-only">Name</h3>

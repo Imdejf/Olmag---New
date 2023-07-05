@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware((to, from) => {
     const cookie = useCookie('Authorization')
-    if(to.meta.layout == 'profile' && !cookie.value) {
+    if(to.name == 'account' && !cookie.value) {
       return navigateTo("/login")
     }
   

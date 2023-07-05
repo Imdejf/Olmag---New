@@ -1,6 +1,20 @@
 <script lang="ts" setup>
 import { object, string, ref as yupRef } from "yup";
 import { configure } from "vee-validate";
+import {
+  Combobox,
+  Switch,
+  ComboboxInput,
+  ComboboxButton,
+  ComboboxOptions,
+  ComboboxOption,
+  TransitionRoot,
+} from "@headlessui/vue";
+
+export interface IStateOrProvince {
+  id: number;
+  name: string;
+}
 
 // compiler macro
 definePageMeta({
@@ -10,7 +24,36 @@ definePageMeta({
 const registerForm = ref(null);
 const showInvoice = ref(false);
 
+let selected = ref(null);
+const isSelected = ref(true);
+const stateOrProvinces = ref([] as IStateOrProvince[]);
+let query = ref("");
+let filteredProvince = computed(() =>
+  query.value === ""
+    ? stateOrProvinces.value
+    : stateOrProvinces.value.filter((stateOrProvince) =>
+        stateOrProvince.name
+          .toLowerCase()
+          .replace(/\s+/g, "")
+          .includes(query.value.toLowerCase().replace(/\s+/g, ""))
+      )
+);
+
 const handleRegister = (values, actions) => {
+  if (!showInvoice.value) {
+    values.addresses = [];
+  }
+
+  if (selected.value == null && showInvoice.value) {
+    isSelected.value = false;
+    return;
+  }
+
+  if (showInvoice.value) {
+    values.addresses[0].stateOrProvinceId = selected.value.id;
+  }
+
+  isSelected.value = true;
   Fetch("User/Identity/CreateUser", { method: "post", body: values }).then(
     (response) => {
       if (!response.error.value) {
@@ -25,7 +68,6 @@ const changeShowInvoice = () => {
 };
 
 const invalidHandleRegister = () => {
-  alert();
   window.scrollTo(0, 150);
 };
 
@@ -46,37 +88,55 @@ const initialValues = {
   email: "",
   password: "",
   repeatedPassword: "",
-  name: "",
-  surname: "",
-  companyName: "",
-  nip: "",
-  city: "",
-  country: "",
-  postalCode: "",
-  region: "",
+  lastIpAddress: "",
+  storeId: useCookie("dsStore").value,
+  languageId: useCookie("dsLanguage").value,
+  acceptedPrivatePolicyAndRegulation: true,
+  informationClausule: true,
+  launchTask: true,
+  marketingDataProcessing: true,
+  marketingDataRecieving: true,
   addresses: [
     {
       firstName: "",
       lastName: "",
-      email: "",
+      contactName: "",
       company: "",
-      stateProvince: "",
+      email: "",
+      phone: "",
+      addressLine1: "",
+      addressLine2: "",
       city: "",
-      address1: "",
-      address2: "",
-      zipPostalCode: "",
-      phoneNumber: "",
-      faxNumber: "",
-      addressType: 2,
+      zipCode: "",
+      countryId: "0b64292c-e249-4906-ab48-429441745899",
     },
   ],
 };
+
+onMounted(async () => {
+  const dsStore = useCookie("dsStore");
+  Fetch("/product/shoppingcart/GetAvilableAddresses", {
+    method: "get",
+    params: {
+      storeId: dsStore,
+    },
+  }).then((response) => {
+    response.data.value.stateOrProvinces.map((stateProvince) => {
+      stateOrProvinces.value.push({
+        id: stateProvince.value,
+        name: stateProvince.text,
+      });
+    });
+  });
+});
 </script>
 
 <template>
   <PageWrapper>
     <PageHeader class="!m-0">
-      <PageTitle></PageTitle>
+      <PageTitle
+        :textNav="[{ text: 'Rejestracja', slug: '/register' }]"
+      ></PageTitle>
     </PageHeader>
     <PageBody>
       <div class="bg-white">
@@ -219,15 +279,7 @@ const initialValues = {
                       <div class="w-full lg:w-4/12 px-4">
                         <FormVTextInput
                           type="text"
-                          name="addresses[0].country"
-                          label="Kraj"
-                          placeholder="Kraj"
-                        />
-                      </div>
-                      <div class="w-full lg:w-4/12 px-4">
-                        <FormVTextInput
-                          type="text"
-                          name="addresses[0].zipPostalCode"
+                          name="addresses[0].zipCode"
                           label="Kod pocztowy"
                           placeholder="Kod pocztowy"
                         />
@@ -235,25 +287,124 @@ const initialValues = {
                       <div class="w-full lg:w-4/12 px-4">
                         <FormVTextInput
                           type="text"
-                          name="addresses[0].region"
-                          label="Województwo"
-                          placeholder="Województwo"
-                        />
-                      </div>
-                      <div class="w-full lg:w-8/12 px-4">
-                        <FormVTextInput
-                          type="text"
                           name="addresses[0].address1"
-                          label="Adres/ulica"
-                          placeholder="Adres/ulica"
+                          label="Ulica i numer"
+                          placeholder="Ulica i numer"
                         />
                       </div>
+                      <div class="w-full lg:w-4/12 px-4">
+                        <Combobox v-model="selected">
+                          <div class="relative mt-1">
+                            <div
+                              class="relative w-full cursor-default outline-none overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm"
+                              style="border: 1px solid #e2e8f0"
+                            >
+                              <ComboboxInput
+                                class="w-full py-2 pl-3 pr-10 outline-none text-sm leading-5 text-gray-900"
+                                :class="`${
+                                  selected ? 'bg-white' : 'bg-gray-100'
+                                }`"
+                                :displayValue="(person) => person?.name"
+                                @change="query = $event.target.value"
+                              />
+                              <ComboboxButton
+                                class="absolute inset-y-0 right-0 flex items-center pr-2"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="h-5 w-5 text-gray-400"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    fill="currentColor"
+                                    d="m12 15.4l-6-6L7.4 8l4.6 4.6L16.6 8L18 9.4l-6 6Z"
+                                  />
+                                </svg>
+                              </ComboboxButton>
+                            </div>
+                            <TransitionRoot
+                              leave="transition ease-in duration-100"
+                              leaveFrom="opacity-100"
+                              leaveTo="opacity-0"
+                              @after-leave="query = ''"
+                            >
+                              <ComboboxOptions
+                                class="block mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                              >
+                                <div
+                                  v-if="
+                                    filteredProvince.length === 0 &&
+                                    query !== ''
+                                  "
+                                  class="relative cursor-default select-none py-2 px-4 text-gray-700"
+                                >
+                                  Nie znaleziono.
+                                </div>
+
+                                <ComboboxOption
+                                  v-for="person in filteredProvince"
+                                  as="template"
+                                  :key="person.id"
+                                  :value="person"
+                                  v-slot="{ selected, active }"
+                                >
+                                  <li
+                                    class="relative cursor-default select-none py-2 pl-10 pr-4"
+                                    :class="{
+                                      'bg-emerald-50 text-blue-900': active,
+                                      'text-gray-900': !active,
+                                    }"
+                                  >
+                                    <span
+                                      class="block truncate"
+                                      :class="{
+                                        'font-medium': selected,
+                                        'font-normal': !selected,
+                                      }"
+                                    >
+                                      {{ person.name }}
+                                    </span>
+                                    <span
+                                      v-if="selected"
+                                      class="absolute inset-y-0 left-0 flex items-center pl-3"
+                                      :class="{
+                                        'text-blue-900': active,
+                                        'text-blue-800': !active,
+                                      }"
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          fill="currentColor"
+                                          d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4l-8 8Z"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </li>
+                                </ComboboxOption>
+                              </ComboboxOptions>
+                            </TransitionRoot>
+                          </div>
+                        </Combobox>
+                      </div>
+
                       <div class="w-full lg:w-4/12 px-4">
                         <FormVTextInput
                           type="text"
                           name="addresses[0].phoneNumber"
                           label="Numer telefonu"
                           placeholder="Numer telefonu"
+                        />
+                      </div>
+                      <div class="w-full lg:w-8/12 px-4">
+                        <FormVTextInput
+                          type="text"
+                          name="addresses[0].email"
+                          label="Email"
+                          placeholder="Email"
                         />
                       </div>
                     </div>

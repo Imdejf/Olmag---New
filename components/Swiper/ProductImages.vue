@@ -30,7 +30,7 @@ const setThumbsSwiper = (swiper: Swiper) => {
       class="h-[200px] md:h-[300px]"
     >
       <SwiperSlide v-for="image in images" :key="image"
-        ><img :data-src="image.url" class="lazyload" alt="Skrzynia"
+        ><img :data-src="image.url" class="lazyload w-[50%]" alt="Skrzynia"
       /></SwiperSlide>
     </Swiper>
     <Swiper

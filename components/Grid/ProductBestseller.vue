@@ -26,7 +26,7 @@ const props = defineProps({
                   ? product.thumbnailImage.mediaLangs[0].altAttribute
                   : product.thumbnailImage.altAttribute
               "
-              class="lazyload mx-auto w-[150px] h-[70px]"
+              class="lazyload mx-auto w-[100px] h-[100px]"
             />
           </a>
           <div class="px-2 pb-5">

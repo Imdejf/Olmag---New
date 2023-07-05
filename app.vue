@@ -37,6 +37,6 @@ const cart = useCart();
 <style>
 .wrapper-scroll {
   height: 100vh;
-  padding-right: 17px; /* Dodaj margines dla paska przewijania, jeśli jest widoczny */
+  padding-right: 17px;
 }
 </style>

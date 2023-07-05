@@ -78,15 +78,14 @@ const addToCart = (product) => {
     </PageHeader>
     <PageBody>
       <PageSection>
-        <div
-          class="warehouse-background h-[180px] h-[250px] px-4 py-8 md:p-8 text-white"
-        >
+        <div class="warehouse-background h-auto px-4 py-8 md:p-8 text-white">
           <h1 class="text-center text-xl md:text-3xl font-black">
             {{ categoryDetail?.name }}
           </h1>
-          <p class="text-sm md:text-lg font-medium mt-3">
-            {{ categoryDetail?.description }}
-          </p>
+          <div
+            class="text-sm md:text-base font-medium mt-3"
+            v-html="categoryDetail?.description"
+          ></div>
         </div>
       </PageSection>
       <PageSection>

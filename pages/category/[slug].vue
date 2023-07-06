@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-import { Fetch } from "~/composables/useFetch";
-import { ProductsByCategoryDTO } from "~/types/ProductsByCategory/productsByCategoryDTO";
 import axios from "axios";
 import { useCart } from "~/stores/cart";
 

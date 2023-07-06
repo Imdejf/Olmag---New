@@ -80,7 +80,7 @@ const addToCart = (product) => {
             {{ categoryDetail?.name }}
           </h1>
           <div
-            class="text-sm md:text-base font-medium mt-3"
+            class="text-sm md:text-base font-medium mt-3 category-visible-text"
             v-html="categoryDetail?.description"
           ></div>
         </div>
@@ -365,5 +365,13 @@ const addToCart = (product) => {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(3, 3, 3, 0.5)),
     url("/assets/content/warehouse.webp");
   background-size: 100% 100%;
+}
+
+.category-visible-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 12;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

@@ -99,4 +99,22 @@ const props = defineProps({
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.visible-text p {
+  display: none;
+}
+
+.visible-text p:nth-child(1) {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .visible-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 </style>

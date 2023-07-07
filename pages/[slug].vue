@@ -26,6 +26,15 @@ const { data: product, error } = await useAsyncData(
   }
 );
 
+if (!product.value) {
+  console.log("error");
+  throw showError({
+    statusCode: 404,
+    fatal: true,
+    message: "Page not found",
+  });
+}
+
 const selectedValue = ref([]);
 const cart = useCart();
 const productQuantity = ref(1);

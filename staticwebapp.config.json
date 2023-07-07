@@ -1,0 +1,17 @@
+{
+    "routes": [
+      {
+        "route": "/error",
+        "statusCode": 404,
+        "response": {
+          "headers": {
+            "content-type": "text/html"
+          },
+          "body": {
+            "source": "error.html",
+            "contentType": "text/html"
+          }
+        }
+      }
+    ]
+  }

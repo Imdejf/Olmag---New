@@ -1,17 +1,10 @@
 {
-    "routes": [
+    "routes": [],
+    "platformErrorOverrides": [
       {
-        "route": "/error",
-        "statusCode": 404,
-        "response": {
-          "headers": {
-            "content-type": "text/html"
-          },
-          "body": {
-            "source": "error.html",
-            "contentType": "text/html"
-          }
-        }
+       "errorType": "NotFound",
+       "serve": "/404.html",
+       "statusCode": 404
       }
     ]
-  }
+   }

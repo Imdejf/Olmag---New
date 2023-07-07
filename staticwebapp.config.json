@@ -1,9 +1,0 @@
-{
-    "platformErrorOverrides": [
-        {
-         "errorType": "NotFound",
-         "serve": "/200.html",
-         "statusCode": 200
-        }
-      ]
-  }

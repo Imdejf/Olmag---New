@@ -1,14 +1,6 @@
 {
-    "responseOverrides": {
-      "404": {
-        "rewrite": "/404/index.html",
-        "statusCode": 404
-      }
-    },
-    "globalHeaders": {
-        "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' *.gstatic.com data:;"
-      },
-      "mimeTypes": {
-        ".json": "text/json"
-      }
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": ["/img/*.{png,jpg,gif,webp}", "/css/*"]
+    }
   }

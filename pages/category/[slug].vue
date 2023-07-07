@@ -44,10 +44,6 @@ const { data: categoryDetail, error } = await useAsyncData(
       (item) => item.slug === route.params.slug.toString()
     );
 
-    if (!category) {
-      showError({ message: "Page not found", statusCode: 404 });
-    }
-
     return category;
   }
 );

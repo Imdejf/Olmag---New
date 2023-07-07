@@ -21,19 +21,10 @@ const { data: product, error } = await useAsyncData(
     const getProduct = products.data.find(
       (item) => item.slug === route.params.slug.toString()
     );
+
     return getProduct;
   }
 );
-
-// if (!product.value) {
-//   console.log("ERROR");
-//   throw createError({
-//     statusCode: 404,
-//     statusMessage: "Page Not Found",
-//     fatal: true,
-//   });
-
-// }
 
 const selectedValue = ref([]);
 const cart = useCart();

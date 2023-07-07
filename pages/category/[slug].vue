@@ -48,10 +48,6 @@ const { data: categoryDetail, error } = await useAsyncData(
   }
 );
 
-if (error.value) {
-  throw createError({ statusCode: 404, fatal: true });
-}
-
 const addToCart = (product) => {
   cart.addToCart({
     id: product.productId,

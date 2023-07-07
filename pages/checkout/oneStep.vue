@@ -331,6 +331,7 @@ const handleOrder = async (values, actions) => {
     acceptRegulations: values.acceptRegulations,
     acceptMarketing: values.acceptMarketing,
     orderNote: values.orderNote,
+    orderNote: "",
     deliveryMethod: +values.deliveryMethod,
     payment: +values.paymentMethod,
     shippingMethod: DeliveryMethodType[+values.deliveryMethod],

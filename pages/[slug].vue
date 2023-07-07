@@ -11,8 +11,6 @@ definePageMeta({
 const route = useRoute();
 const config = useRuntimeConfig().public;
 
-throw createError({ statusCode: 404, fatal: true });
-
 const { data: product, error } = await useAsyncData(
   route.params.slug.toString(),
   async () => {
@@ -27,11 +25,19 @@ const { data: product, error } = await useAsyncData(
     return getProduct;
   }
 );
+showError({ message: "Page not found", statusCode: 404 });
 
-if (!product.value) {
-  console.log("ERROR");
-  throw createError({ statusCode: 404, fatal: true });
-}
+// error({ statusCode: 404, message: "Post not found" });
+
+// if (!product.value) {
+//   console.log("ERROR");
+//   throw createError({
+//     statusCode: 404,
+//     statusMessage: "Page Not Found",
+//     fatal: true,
+//   });
+
+// }
 
 const selectedValue = ref([]);
 const cart = useCart();

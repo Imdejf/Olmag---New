@@ -145,4 +145,5 @@ const saveDataToFile = async () => {
   await fetchBlogs(GlobalSettings[appEnv].storeId, GlobalSettings[appEnv].languageId, GlobalSettings[appEnv].apiBaseURL);
   await fetchProducts(GlobalSettings[appEnv].storeId, GlobalSettings[appEnv].languageId, GlobalSettings[appEnv].apiBaseURL);
 }
+
 //https://github.com/Smef/nuxt-ssg-issue-demo/tree/main

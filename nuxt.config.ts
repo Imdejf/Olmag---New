@@ -9,6 +9,7 @@ const appEnv = process.env.ENV || 'development'
 export default defineNuxtConfig({
   ssr: true,
   nitro: {
+      preset: "azure",
       prerender: {
           crawlLinks:true
       },

@@ -22,26 +22,35 @@ const { data: product, error } = await useAsyncData(
       (item) => item.slug === route.params.slug.toString()
     );
 
+    if (!getProduct) {
+      showError({ message: "Page not found", statusCode: 404 });
+    }
+
     return getProduct;
   }
 );
 
-if (!product.value) {
-  console.log("error");
-  throw showError({
-    statusCode: 404,
-    fatal: true,
-    message: "Page not found",
-  });
+if (error.value) {
+  // This will trigger an error page server side
+  throw createError({ message: "Page not found", statusCode: 404 });
 }
 
-if (!product.value) {
-  console.log("Error2");
-  throw createError({
-    statusCode: 404,
-    message: "Page not found",
-  });
-}
+// if (!product.value) {
+//   console.log("error");
+//   throw showError({
+//     statusCode: 404,
+//     fatal: true,
+//     message: "Page not found",
+//   });
+// }
+
+// if (!product.value) {
+//   console.log("Error2");
+//   throw createError({
+//     statusCode: 404,
+//     message: "Page not found",
+//   });
+// }
 
 const selectedValue = ref([]);
 const cart = useCart();

@@ -9,7 +9,6 @@ const appEnv = process.env.ENV || 'development'
 export default defineNuxtConfig({
   ssr: true,
   nitro: {
-      preset: "azure",
       prerender: {
           crawlLinks:true
       },
@@ -19,10 +18,6 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    'close': async () => {
-      const fs = require('fs/promises');
-      await fs.cp('./swa/staticwebapp.config.json', './staticwebapp.config.json', {force: true});
-    },
     async 'nitro:config'(nitroConfig) {
         // if (nitroConfig.dev) {
         //     return

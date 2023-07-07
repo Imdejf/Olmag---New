@@ -1,6 +1,17 @@
 {
-  "navigationFallback": {
-      "rewrite": "/index.html",
-      "exclude": ["/img/*.{png,jpg,gif,webp}", "/css/*"]
+  "responseOverrides": {
+    "400": {
+      "rewrite": "/invalid-invitation-error.html"
+    },
+    "401": {
+      "statusCode": 302,
+      "redirect": "/login"
+    },
+    "403": {
+      "rewrite": "/custom-forbidden-page.html"
+    },
+    "404": {
+      "rewrite": "/404.html"
+    }
   }
 }

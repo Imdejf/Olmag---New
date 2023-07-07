@@ -21,9 +21,13 @@ const { data: product, error } = await useAsyncData(
     const getProduct = products.data.find(
       (item) => item.slug === route.params.slug.toString()
     );
+
     return getProduct;
   }
 );
+showError({ message: "Page not found", statusCode: 404 });
+
+// error({ statusCode: 404, message: "Post not found" });
 
 // if (!product.value) {
 //   console.log("ERROR");

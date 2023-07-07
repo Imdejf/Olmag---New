@@ -45,16 +45,22 @@ const { data: categoryDetail, error } = await useAsyncData(
     );
 
     if (!category) {
-      showError({ message: "Page not found", statusCode: 404 });
+      throw createError({ statusCode: 404, fatal: true });
     }
 
     return category;
   }
 );
 
-if (error.value) {
+if (!categoryDetail.value) {
   throw createError({ statusCode: 404, fatal: true });
 }
+
+// throw createError({ statusCode: 404, fatal: true });
+// if (error.value) {
+//   alert();
+//   throw createError({ statusCode: 404, fatal: true });
+// }
 
 const addToCart = (product) => {
   cart.addToCart({

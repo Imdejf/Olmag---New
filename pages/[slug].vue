@@ -27,6 +27,7 @@ const { data: product, error } = await useAsyncData(
 );
 
 if (!product.value) {
+  console.log("ERROR");
   throw createError({ statusCode: 404, fatal: true });
 }
 

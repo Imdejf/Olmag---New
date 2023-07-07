@@ -1,8 +1,9 @@
 {
-    "responseOverrides": {
-      "404": {
-        "rewrite": "/index.html",
-        "statusCode": 404
-      }
-    }
+    "platformErrorOverrides": [
+        {
+         "errorType": "NotFound",
+         "serve": "/200.html",
+         "statusCode": 200
+        }
+      ]
   }

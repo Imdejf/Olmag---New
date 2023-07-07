@@ -11,6 +11,8 @@ definePageMeta({
 const route = useRoute();
 const config = useRuntimeConfig().public;
 
+throw createError({ statusCode: 404, fatal: true });
+
 const { data: product, error } = await useAsyncData(
   route.params.slug.toString(),
   async () => {

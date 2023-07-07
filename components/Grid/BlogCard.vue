@@ -3,9 +3,8 @@ import { BlogCategoryDTO } from "~/types/Blog/BlogTypes";
 
 const config = useRuntimeConfig().public;
 
-const { data: blogs } = await useAsyncData<BlogCategoryDTO | []>(
-  "categories",
-  () => $fetch(config.hostURL + "data/blog/blogs.json")
+const { data: blogs } = await useAsyncData<BlogCategoryDTO | []>("blogs", () =>
+  $fetch(config.hostURL + "data/blog/blogs.json")
 );
 </script>
 
@@ -47,10 +46,10 @@ const { data: blogs } = await useAsyncData<BlogCategoryDTO | []>(
                   {{ blog.name }}
                 </h4>
               </NuxtLink>
-              <p
-                class="font-normal text-gray-700 mb-3 dark:text-gray-400 h-20"
+              <div
+                class="font-normal text-gray-700 mb-3 dark:text-gray-400 blog-visible-text"
                 v-html="blog.shortDescription"
-              ></p>
+              ></div>
               <NuxtLink
                 :to="'/blog/' + blog.slug"
                 class="text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -76,3 +75,31 @@ const { data: blogs } = await useAsyncData<BlogCategoryDTO | []>(
     </div>
   </div>
 </template>
+
+<style>
+.blog-visible-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-visible-text p {
+  display: none;
+}
+
+.blog-visible-text p:nth-child(1) {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .blog-visible-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+</style>

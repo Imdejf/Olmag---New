@@ -49,7 +49,7 @@ const props = defineProps({
             />
 
             <div class="md:p-4 p-6 bg-slate-300">
-              <NuxtLink :to="'/post/' + blog.slug">
+              <NuxtLink :to="'/blog/' + blog.slug">
                 <h3 class="text-lg font-medium text-gray-900">
                   {{ blog.name }}
                 </h3>
@@ -61,7 +61,7 @@ const props = defineProps({
               ></div>
 
               <NuxtLink
-                :to="'/post/' + blog.slug"
+                :to="'/blog/' + blog.slug"
                 class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-900 text_line section_text"
               >
                 Czytaj więcej...

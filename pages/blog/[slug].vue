@@ -103,7 +103,10 @@ function formatDate(date) {
                   {{ article.name }}
                 </h2>
               </NuxtLink>
-              <p class="text-sm h-15" v-html="article.shortDescription"></p>
+              <p
+                class="text-sm h-15 post-visible-text"
+                v-html="article.shortDescription"
+              ></p>
             </div>
             <div class="flex flex-wrap justify-between">
               <div class="flex space-x-2 text-sm">
@@ -147,3 +150,31 @@ function formatDate(date) {
     </PageWrapper>
   </PageBody>
 </template>
+
+<style>
+.post-visible-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 12;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-visible-text p {
+  display: none;
+}
+
+.post-visible-text p:nth-child(1) {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .post-visible-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+</style>

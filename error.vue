@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 const Errorprops = defineProps({
   error: Object,
 });
@@ -362,4 +362,5 @@ const handleError = () => clearError({ redirect: "/" });
   opacity: 0.55;
   fill: url(#SVGID_1_);
 }
-</style>
+</style> -->
+<template>ERROR</template>

@@ -20,10 +20,6 @@ const { data: categoryDetail } = await useAsyncData(
   }
 );
 
-if (!categoryDetail.value) {
-  throw createError({ statusCode: 404, fatal: true });
-}
-
 function formatDate(date) {
   const parsedDate = new Date(date);
   const day = parsedDate.getDate().toString().padStart(2, "0");

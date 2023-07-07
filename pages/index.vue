@@ -243,7 +243,6 @@ useHead({
             <div class="flex">
               <h2 class="distinction__title mx-auto">Najczęściej odwiedzane</h2>
             </div>
-            <a>Test</a>
             <div>
               <GridCategoryMostView
                 :categories="categories?.filter((c) => c.mostVisited === true)"

@@ -39,7 +39,7 @@ if (!product.value) {
   console.log("Error2");
   throw createError({
     statusCode: 404,
-    statusMessage: "Page not found",
+    message: "Page not found",
   });
 }
 

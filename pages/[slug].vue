@@ -26,11 +26,6 @@ const { data: product, error } = await useAsyncData(
   }
 );
 
-if (!product.value) {
-  console.log("ERROR");
-  throw createError({ statusCode: 404, fatal: true });
-}
-
 const selectedValue = ref([]);
 const cart = useCart();
 const productQuantity = ref(1);

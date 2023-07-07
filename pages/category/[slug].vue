@@ -44,23 +44,9 @@ const { data: categoryDetail, error } = await useAsyncData(
       (item) => item.slug === route.params.slug.toString()
     );
 
-    if (!category) {
-      throw createError({ statusCode: 404, fatal: true });
-    }
-
     return category;
   }
 );
-
-if (!categoryDetail.value) {
-  throw createError({ statusCode: 404, fatal: true });
-}
-
-// throw createError({ statusCode: 404, fatal: true });
-// if (error.value) {
-//   alert();
-//   throw createError({ statusCode: 404, fatal: true });
-// }
 
 const addToCart = (product) => {
   cart.addToCart({

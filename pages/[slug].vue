@@ -35,6 +35,14 @@ if (!product.value) {
   });
 }
 
+if (!product.value) {
+  console.log("Error2");
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page not found",
+  });
+}
+
 const selectedValue = ref([]);
 const cart = useCart();
 const productQuantity = ref(1);

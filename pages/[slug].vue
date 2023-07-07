@@ -11,7 +11,7 @@ definePageMeta({
 const route = useRoute();
 const config = useRuntimeConfig().public;
 
-const { data: product } = await useAsyncData(
+const { data: product, error } = await useAsyncData(
   route.params.slug.toString(),
   async () => {
     const products = await axios.get(
@@ -25,6 +25,10 @@ const { data: product } = await useAsyncData(
     return getProduct;
   }
 );
+
+if (error.value) {
+  throw createError({ statusCode: 404, fatal: true });
+}
 
 const selectedValue = ref([]);
 const cart = useCart();

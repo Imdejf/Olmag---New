@@ -22,9 +22,9 @@ const { data: product, error } = await useAsyncData(
       (item) => item.slug === route.params.slug.toString()
     );
 
-    // if (!getProduct) {
-    //   showError({ message: "Page not found", statusCode: 404 });
-    // }
+    if (!getProduct) {
+      showError({ message: "Page not found", statusCode: 404 });
+    }
 
     return getProduct;
   }

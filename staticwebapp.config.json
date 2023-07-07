@@ -3,8 +3,8 @@
     "platformErrorOverrides": [
       {
        "errorType": "NotFound",
-       "serve": "/404.html",
-       "statusCode": 404
+       "serve": "/200.html",
+       "statusCode": 200
       }
     ]
    }

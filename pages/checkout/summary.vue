@@ -17,7 +17,6 @@ onMounted(() => {
 
   Fetch("/product/order/" + code, { method: "get" }).then((response) => {
     order.value = response.data.value.data;
-    console.log(order.value);
   });
 });
 </script>

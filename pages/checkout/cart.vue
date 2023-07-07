@@ -12,8 +12,6 @@ const itemsBrandList = ref([]);
 const cart = useCart();
 
 const currentCart = computed(() => {
-  console.log("dwadaww");
-  console.log(cart.cart);
   return cart.cart;
 });
 

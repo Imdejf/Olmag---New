@@ -20,6 +20,10 @@ const { data: post } = await useAsyncData(
   }
 );
 
+if (!post.value) {
+  throw createError({ statusCode: 404, fatal: true });
+}
+
 function findSlugInData(data, slug) {
   let foundItem = null;
   data.forEach((item) => {

@@ -33,18 +33,34 @@ const searchOptions: SearchOptions = {
   maxPrice: null,
 };
 
-const { data: categoryDetail } = await useAsyncData(
+const { data: categoryDetail, error } = await useAsyncData(
   route.params.slug.toString(),
   async () => {
     const categories = await axios.get(
       config.hostURL + "data/category/categories.json"
     );
 
-    return categories.data.find(
+    const category = categories.data.find(
       (item) => item.slug === route.params.slug.toString()
     );
+
+    if (!category) {
+      throw createError({ statusCode: 404, fatal: true });
+    }
+
+    return category;
   }
 );
+
+if (!categoryDetail.value) {
+  throw createError({ statusCode: 404, fatal: true });
+}
+
+// throw createError({ statusCode: 404, fatal: true });
+// if (error.value) {
+//   alert();
+//   throw createError({ statusCode: 404, fatal: true });
+// }
 
 const addToCart = (product) => {
   cart.addToCart({

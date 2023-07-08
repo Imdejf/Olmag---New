@@ -9,16 +9,26 @@ definePageMeta({
 const config = useRuntimeConfig().public;
 const route = useRoute();
 
-const { data: categoryDetail } = await useAsyncData(
+const { data: categoryDetail, error } = await useAsyncData(
   route.params.slug.toString(),
   async () => {
     const categories = await axios.get(config.hostURL + "data/blog/blogs.json");
 
-    return categories.data.find(
+    const category = categories.data.find(
       (item) => item.slug === route.params.slug.toString()
     );
+
+    if (!category) {
+      showError({ message: "Page not found", statusCode: 404 });
+    }
+
+    return category;
   }
 );
+
+if (error.value) {
+  throw createError({ message: "Page not found", statusCode: 404 });
+}
 
 function formatDate(date) {
   const parsedDate = new Date(date);

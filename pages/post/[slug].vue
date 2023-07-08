@@ -8,7 +8,7 @@ definePageMeta({
 const config = useRuntimeConfig().public;
 const route = useRoute();
 
-const { data: post } = await useAsyncData(
+const { data: post, error } = await useAsyncData(
   route.params.slug.toString(),
   async () => {
     const categories = await axios.get(config.hostURL + "data/blog/blogs.json");
@@ -16,9 +16,19 @@ const { data: post } = await useAsyncData(
       categories.data,
       route.params.slug.toString()
     );
+
+    if (!searchPost) {
+      showError({ message: "Page not found", statusCode: 404 });
+    }
+
     return searchPost;
   }
 );
+
+if (error.value) {
+  throw createError({ message: "Page not found", statusCode: 404 });
+}
+
 
 function findSlugInData(data, slug) {
   let foundItem = null;

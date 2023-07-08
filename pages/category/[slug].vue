@@ -44,9 +44,17 @@ const { data: categoryDetail, error } = await useAsyncData(
       (item) => item.slug === route.params.slug.toString()
     );
 
+    if (!category) {
+      showError({ message: "Page not found", statusCode: 404 });
+    }
+
     return category;
   }
 );
+
+if (error.value) {
+  throw createError({ message: "Page not found", statusCode: 404 });
+}
 
 const addToCart = (product) => {
   cart.addToCart({

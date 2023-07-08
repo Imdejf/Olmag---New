@@ -11,11 +11,15 @@ const handleError = () => clearError({ redirect: "/" });
       class="min-w-screen min-h-screen bg-blue-100 flex items-center p-5 lg:p-20 overflow-hidden relative"
     >
       <div
-        class="flex-1 min-h-full min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left"
+        class="flex-1 min-h-full p-6 min-w-full rounded-3xl bg-white shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left"
       >
         <div class="w-full md:w-1/2">
           <div class="mb-10 lg:mb-20">
-            <img data-src="assets/logo.webp" class="lazyload w-25 h-25" />
+            <img
+              data-src="/assets/logo.webp"
+              class="lazyload"
+              style="width: 400px"
+            />
           </div>
           <div class="mb-10 md:mb-20 text-gray-600 font-light">
             <h1
